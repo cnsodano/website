@@ -1,0 +1,170 @@
+[
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Recent Projects",
+    "section": "",
+    "text": "Recent Projects\n\nDetecting Post-Retraction Citation Awareness\nThis project aims to discern whether an article that cites a retracted article, and which is published after the retraction notice was released, is doing so knowingly (and acknowledging) the retraction or not. I began the project with the intention of providing data to inform the discussion in metascience about whether and how damaging postretraction citations are. Inspired by Hsiao & Schneider 2022\n\n\nHijacked Journal Detection Toolbox\nInspired by Anna Abalkina’s reporting on the hijacking of the Russian Law Journal, I used Crossref’s API to investigate how these paper mill articles were able to receive valid DOIs, and discovered a new method fraudsters are using to spoof the identity of journals they are hijacking. Rather than just buying the web-domain or typosquatting a similar web domain, they are able to register DOIs under the same journal title in 3rd party DOI provider databases like Crossref. In the process of investigating these hijackings, I found myself using a set of API calls and scripts often, and I am developing them into a browser extension to help other sleuths quickly check for signs of a journal hijacking.\n\n\nDiscovering Unreasonable Citation Stacking\nI’m developing an algorithm to scan the scientific literature and identify authors that have an unusually high number of papers with signs of citation stacking (the presence of many citations to a single author (or group of authors) that are not the result of honest scientific work but rather the result of gaming citation metrics). I’m planning to turn this into a package that is inter-operable with many types of data sources (Scopus, Crossref, OpenAlex) for others to use. Inspired by El País’s reporting https://english.elpais.com/science-tech/2024-03-20/the-aspiring-university-rector-who-wrote-a-four-paragraph-paper-and-cited-himself-100-times.html) on a case of extreme self-citation stacking among an esteemed computer scientist.\n\n\nPredicting Paper Acceptance Status from Peer Reviews\nI used Computer Science conference paper peer reviews to train a ML model to predict whether the paper was accepted or rejected. If done well, algorithms like these can lighten the load of editors’ jobs by helping them synthesize or make decisions on acceptance/rejection altogether (though much improvement must be made before that responsibility can be safely passed). First attempts had poorer performance than I had hoped for, so I am currently revamping with a more sophisticated feature representation that will hopefully capture more nuance.\n\n\n\n\nOlder Projects\n\nDetecting and Denoising EEG Artifacts\nReplicating the results of Li et al. 2023. Created semi-simulated noisy EEG data using an open dataset of common EEG artifacts to train a segmentation neural network to detect where artifacts occur. Although an adjustment needed to be made to match the codebase with the presented methods in the paper, the accuracy of the artifact detection network largely replicated. Approaches like these are promising, as artifact removal is both a highly time-consuming and bias-injecting step in the standard preprocessing pipeline of EEG experiments, however I seriously question the generalizability of this group’s model due to major flaws in the assumptions behind the ‘clean’ EEG dataset used in training.\n\n\nAutomatically Detecting Sleep Spindles on EEG\nReplicating the best performing algorithm from Lacourse et al. 2018 and comparing to a replicated version of Lustenberger et al. 2016. Adding fuzzy logic to the sliding window reduce false negatives on by-event analysis due to singular sample outliers.\n\n\nCognitive Task Anti-Cheating\nSpinoff analysis that came from working on a working memory cognitive task experiment where participants were instructed to attend to the center of their visual field and were prompted to recall stimuli according to, among other things, which visual hemifield the stimuli were presented in. Explored the feasibility of detecting a bias in performance on one side that would suggest participants are not attending to the center of their visual field, but rather ‘cheating’ to one side to improve their odds by minimizing the amount of information they must hold in their working memory."
+  },
+  {
+    "objectID": "projects/index.html#project-i",
+    "href": "projects/index.html#project-i",
+    "title": "Projects",
+    "section": "",
+    "text": "A description of Project"
+  },
+  {
+    "objectID": "projects/index.html#project-ii",
+    "href": "projects/index.html#project-ii",
+    "title": "Projects",
+    "section": "Project II",
+    "text": "Project II\nA description of Project"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Christian N Sodano",
+    "section": "",
+    "text": "Bluesky\n  \n  \n    \n     Github\n  \n\n  \n  \n\n\nI’m a researcher currently working in the emerging field of forensic scientometrics1 and developing tools to detect and prevent breaches of research integrity including questionable research practices, statistical and methodological errors, and fraud.\nMy current projects in this area focus on detecting so-called paper-mills || (businesses conducting for-profit research fraud at large-scale) and journal hijackings ||, as well as authors who game citations for personal benefit || and papers that are unknowingly citing discredited research ||.\n\n\n\nI use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g. PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "Christian Sodano",
+    "section": "",
+    "text": "I received by B.A. in Computer Science and Minor in Neuroscience from the University of North Carolina at Chapel Hill, where I worked on automatic sleep spindle detection algorithms and clinical trials of non-invasive brain stimulation in the Hospital’s Psychiatry Department. I later transitioned to studying reproducibility in biomedical research in general, and breaches of research integrity in specific.\nPrior to UNC, I studied Physics, Math, and the Philosophy of Science at the University of Chicago."
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "Author",
+    "section": "Experience",
+    "text": "Experience\nI have developed X R packages, published Y papers."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Christian N Sodano",
+    "section": "",
+    "text": "Bluesky\n  \n  \n    \n     Github\n  \n\n  \n  \n\n\nI’m a researcher currently working in the emerging field of forensic scientometrics1 and developing tools to detect and prevent breaches of research integrity including questionable research practices, statistical and methodological errors, and fraud.\nMy current projects in this area focus on detecting so-called paper-mills(businesses conducting for-profit research fraud at large-scale) and journal hijackings, as well as authors who game citations for personal benefit and papers that are unknowingly citing discredited research.\n\n\n\nI use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g. PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks."
+  },
+  {
+    "objectID": "about.html#tools",
+    "href": "about.html#tools",
+    "title": "Christian N Sodano",
+    "section": "",
+    "text": "I use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g. PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks."
+  },
+  {
+    "objectID": "about.html#footnotes",
+    "href": "about.html#footnotes",
+    "title": "Christian N Sodano",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nMore on Forensic Scientometrics, sometimes also called forensic metascience↩︎"
+  },
+  {
+    "objectID": "about.html#summary",
+    "href": "about.html#summary",
+    "title": "Christian N Sodano",
+    "section": "",
+    "text": "I’m a researcher currently working in the emerging field of forensic scientometrics1 and developing tools to detect and prevent breaches of research integrity including questionable research practices, statistical and methodological errors, and fraud.\nMy current projects in this area focus on detecting so-called paper-mills || (businesses conducting for-profit research fraud at large-scale) and journal hijackings ||, as well as authors who game citations for personal benefit || and papers that are unknowingly citing discredited research ||."
+  },
+  {
+    "objectID": "index.html#summary",
+    "href": "index.html#summary",
+    "title": "Christian N Sodano",
+    "section": "",
+    "text": "I’m a researcher currently working in the emerging field of forensic scientometrics1 and developing tools to detect and prevent breaches of research integrity including questionable research practices, statistical and methodological errors, and fraud.\nMy current projects in this area focus on detecting so-called paper-mills(businesses conducting for-profit research fraud at large-scale) and journal hijackings, as well as authors who game citations for personal benefit and papers that are unknowingly citing discredited research."
+  },
+  {
+    "objectID": "index.html#tools",
+    "href": "index.html#tools",
+    "title": "Christian N Sodano",
+    "section": "",
+    "text": "I use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g. PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks."
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Christian N Sodano",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nMore on Forensic Scientometrics, sometimes also called forensic metascience↩︎"
+  },
+  {
+    "objectID": "projects/index.html#detecting-post-retraction-citation-awareness",
+    "href": "projects/index.html#detecting-post-retraction-citation-awareness",
+    "title": "Recent Projects",
+    "section": "",
+    "text": "This project aims to discern whether an article that cites a retracted article, and which is published after the retraction notice was released, is doing so knowingly (and acknowledging) the retraction or not. I began the project with the intention of providing data to inform the discussion in metascience about whether and how damaging postretraction citations are. Inspired by Hsiao & Schneider 2022\n\n\nInspired by Anna Abalkina’s reporting on the hijacking of the Russian Law Journal, I used Crossref’s API to investigate how these paper mill articles were able to receive valid DOIs, and discovered a new method fraudsters are using to spoof the identity of journals they are hijacking. Rather than just buying the web-domain or typosquatting a similar web domain, they are able to register DOIs under the same journal title in 3rd party DOI provider databases like Crossref. In the process of investigating these hijackings, I found myself using a set of API calls and scripts often, and I am developing them into a browser extension to help other sleuths quickly check for signs of a journal hijacking.\n\n\n\nI’m developing an algorithm to scan the scientific literature and identify authors that have an unusually high number of papers with signs of citation stacking (the presence of many citations to a single author (or group of authors) that are not the result of honest scientific work but rather the result of gaming citation metrics). I’m planning to turn this into a package that is inter-operable with many types of data sources (Scopus, Crossref, OpenAlex) for others to use. Inspired by El País’s reporting https://english.elpais.com/science-tech/2024-03-20/the-aspiring-university-rector-who-wrote-a-four-paragraph-paper-and-cited-himself-100-times.html) on a case of extreme self-citation stacking among an esteemed computer scientist.\n\n\n\nI used Computer Science conference paper peer reviews to train a ML model to predict whether the paper was accepted or rejected. If done well, algorithms like these can lighten the load of editors’ jobs by helping them synthesize or make decisions on acceptance/rejection altogether (though much improvement must be made before that responsibility can be safely passed). First attempts had poorer performance than I had hoped for, so I am currently revamping with a more sophisticated feature representation that will hopefully capture more nuance."
+  },
+  {
+    "objectID": "projects/index.html#project",
+    "href": "projects/index.html#project",
+    "title": "Projects",
+    "section": "",
+    "text": "A description of Project"
+  },
+  {
+    "objectID": "projects/index.html#detecting-and-denoising-eeg-artifacts",
+    "href": "projects/index.html#detecting-and-denoising-eeg-artifacts",
+    "title": "Recent Projects",
+    "section": "Detecting and Denoising EEG Artifacts",
+    "text": "Detecting and Denoising EEG Artifacts\nReplicating the results of Li et al. 2023. Created semi-simulated noisy EEG data using an open dataset of common EEG artifacts to train a segmentation neural network to detect where artifacts occur. Although an adjustment needed to be made to match the codebase with the presented methods in the paper, the accuracy of the artifact detection network largely replicated. Approaches like these are promising, as artifact removal is both a highly time-consuming and bias-injecting step in the standard preprocessing pipeline of EEG experiments, however I seriously question the generalizability of this group’s model due to major flaws in the assumptions behind the ‘clean’ EEG dataset used."
+  },
+  {
+    "objectID": "projects/index.html#detecting-eeg-spindles",
+    "href": "projects/index.html#detecting-eeg-spindles",
+    "title": "Projects",
+    "section": "Detecting EEG spindles",
+    "text": "Detecting EEG spindles\ndescription"
+  },
+  {
+    "objectID": "projects/index.html#hijacked-journal-detection-toolbox",
+    "href": "projects/index.html#hijacked-journal-detection-toolbox",
+    "title": "Recent Projects",
+    "section": "",
+    "text": "Inspired by Anna Abalkina’s reporting on the hijacking of the Russian Law Journal, I used Crossref’s API to investigate how these paper mill articles were able to receive valid DOIs, and discovered a new method fraudsters are using to spoof the identity of journals they are hijacking. Rather than just buying the web-domain or typosquatting a similar web domain, they are able to register DOIs under the same journal title in 3rd party DOI provider databases like Crossref. In the process of investigating these hijackings, I found myself using a set of API calls and scripts often, and I am developing them into a browser extension to help other sleuths quickly check for signs of a journal hijacking."
+  },
+  {
+    "objectID": "projects/index.html#discovering-unreasonable-citation-stacking",
+    "href": "projects/index.html#discovering-unreasonable-citation-stacking",
+    "title": "Recent Projects",
+    "section": "",
+    "text": "I’m developing an algorithm to scan the scientific literature and identify authors that have an unusually high number of papers with signs of citation stacking (the presence of many citations to a single author (or group of authors) that are not the result of honest scientific work but rather the result of gaming citation metrics). I’m planning to turn this into a package that is inter-operable with many types of data sources (Scopus, Crossref, OpenAlex) for others to use. Inspired by El País’s reporting https://english.elpais.com/science-tech/2024-03-20/the-aspiring-university-rector-who-wrote-a-four-paragraph-paper-and-cited-himself-100-times.html) on a case of extreme self-citation stacking among an esteemed Spanish computer scientist."
+  },
+  {
+    "objectID": "projects/index.html#predicting-paper-acceptance-status-from-peer-reviews",
+    "href": "projects/index.html#predicting-paper-acceptance-status-from-peer-reviews",
+    "title": "Recent Projects",
+    "section": "",
+    "text": "I used Computer Science conference paper peer reviews to train a ML model to predict whether the paper was accepted or rejected. If done well, algorithms like these can lighten the load of editors’ jobs by helping them synthesize or make decisions on acceptance/rejection altogether (though much improvement must be made before that responsibility can be safely passed). First attempts had poorer performance than I had hoped for, so I am currently revamping with a more sophisticated feature representation that will hopefully capture more nuance."
+  },
+  {
+    "objectID": "projects/index.html#automatically-detecting-sleep-spindles-on-eeg",
+    "href": "projects/index.html#automatically-detecting-sleep-spindles-on-eeg",
+    "title": "Recent Projects",
+    "section": "Automatically Detecting Sleep Spindles on EEG",
+    "text": "Automatically Detecting Sleep Spindles on EEG\nReplicating the best performing algorithm from Lacourse et al. 2018 and comparing to a replicated version of Lustenberger et al. 2016. Adding fuzzy logic to the sliding window reduce false negatives on by-event analysis due to singular sample outliers."
+  },
+  {
+    "objectID": "projects/index.html#cognitive-task-anti-cheat-detector",
+    "href": "projects/index.html#cognitive-task-anti-cheat-detector",
+    "title": "Recent Projects",
+    "section": "Cognitive Task Anti-Cheat Detector",
+    "text": "Cognitive Task Anti-Cheat Detector\ndescription"
+  },
+  {
+    "objectID": "projects/index.html#cognitive-task-anti-cheat",
+    "href": "projects/index.html#cognitive-task-anti-cheat",
+    "title": "Recent Projects",
+    "section": "Cognitive Task Anti-Cheat",
+    "text": "Cognitive Task Anti-Cheat\nSpinoff analysis that came from working on a working memory cognitive task experiment where participants were instructed to attend to the center of their visual field and were prompted to recall stimuli according to, among other things, which visual hemifield the stimuli were presented in. Explored the feasibility of detecting a bias in performance on one side that would suggest participants are not attending to the center of their visual field, but rather ‘cheating’ to one side to improve their odds by minimizing the amount of information they must hold in their working memory."
+  },
+  {
+    "objectID": "index.html#techniques",
+    "href": "index.html#techniques",
+    "title": "Christian N Sodano",
+    "section": "",
+    "text": "I use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g. PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks."
+  }
+]
