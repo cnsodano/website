@@ -1,1 +1,38 @@
 /* css styles */
+#fileinput{ 
+    padding-left: 5%;
+    font-size: 0.9em;
+}
+
+#BskyLogo{
+    width: 18px;
+}
+
+th, td{
+    padding: 15px;
+}
+
+.rightCellAlign{
+    text-align: right;
+}
+.centerCellAlign{
+    text-align: center;
+}
+
+.semiBold{
+    font-weight:lighter
+}
+
+#doiinput{
+    width: 35vw;
+}
+
+
+
+.btn-light{
+    filter:brightness(0.9);
+}
+
+#failMemberFind{
+    visibility: hidden;
+}
