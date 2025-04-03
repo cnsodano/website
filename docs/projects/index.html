@@ -378,7 +378,7 @@
             signs of a journal hijacking. Here are some common API calls:</p>
             <form>
               <label for="queryInput">
-                Type a journal title search query to return the first 10 registered journals from Crossref's database matching the query (double click
+                Type a journal title search query to search for <strong>duplicate journal titles</strong> (often signs of hijacking) registered in Crossref's database. Only the first 10 duplicate listings will be shown (double click
                 submit to try a different query. May take a while to load, please don't try queries that would return hundreds of
                 results ("e.g. 'Proceedings'"))
               </label>
@@ -425,6 +425,12 @@
             <p id="memberIDErrorMsg">
 
             </p>
+            <label>Input a publisher ID and find all of it's registered journals that have already been registered (possible hijacked
+            journals):</label>
+            <form id="findAllHijackedJournals">
+              <input type="text" id="findAllHijackedJournalsInput" placeholder="30593" value="30593">
+              <button id="findAllHijackedJournalsSubmit" class="btn btn-light">Submit</button>
+            </form>
         </section>
           <br>
         <section id="discovering-unreasonable-citation-stacking" class="level3">
@@ -446,7 +452,7 @@
             </p>
             <div class="collapse" id="collapseExampleStandardCitingPattern">
               <div class="card card-body">
-              <img style="width: 60%;" src="./SimpleCitationPattern.png">
+              <img class="img-fluid" src="./SimpleCitationPattern.png">
               </div>
             </div>
                 
@@ -458,7 +464,7 @@
               </p>
               <div class="collapse" id="collapseCitationStacking">
                 <div class="card card-body">
-                  <img style="width: 50%;" src="./CitationStackingPattern.png">
+                  <img class="img-fluid" src="./CitationStackingPattern.png">
                 </div>
               </div>
               <p>
@@ -469,7 +475,7 @@
               </p>
               <div class="collapse" id="collapseCitationStuffing">
                 <div class="card card-body">
-                  <img style="width: 70%;" src="./CitationStuffingPattern.png">
+                  <img class="img-fluid" src="./CitationStuffingPattern.png">
                 </div>
               </div>
               <p>
@@ -480,12 +486,12 @@
               </p>
               <div class="collapse" id="collapseHighlyInfluenced">
                 <div class="card card-body">
-                  <img style="width: 70%;" src="./HighlyInfluencedAuthor.png">
+                  <img class="img-fluid" src="./HighlyInfluencedAuthor.png">
                   <p>Here one individual (purple) seems to be highly influenced by the author's work. Signs of this pattern are 1) citing
                     many different works of the author in their own papers (potential stacking) and 2) citing a single work of the author
                     many times in their papers (potential stuffing). These for any given author, these individuals can be detected merely
                     by using metadata provider APIs (e.g. Crossref, Scopus, OpenAlex). Further inspection can determine if the influence
-                    is undue (evidence of citation orchestration) or the result of legitimate academic dialogue.</p>
+                    is undue (evidence of citation orchestration) or the result of legitimate academic dialogue. One example of such dialogue is that scholarly books on the history of Albert Einstein's theory of relativity would not only cite many of Einstein's papers, but also may cite individual papers  many times. I am exploring ways to normalize repeat citations by the length of the citing scholarly work.</p>
                 </div>
               </div>
             
@@ -523,7 +529,7 @@
           <p>Replicating the best performing algorithm from <a
               href="https://doi.org/10.1016/j.jneumeth.2018.08.014">Lacourse et al.&nbsp;2018</a> and comparing to a
             replicated version of <a href="https://doi.org/10.1016/j.cub.2016.06.044">Lustenberger et al.&nbsp;2016</a>.
-            Adding fuzzy logic to the sliding window reduce false negatives on by-event analysis due to singular sample
+            Adding fuzzy logic to the sliding window reduced false negatives on by-event analysis due to singular sample
             outliers.</p>
         </section>
         <section id="cognitive-task-anti-cheating" class="level3">
@@ -534,6 +540,18 @@
             detecting a bias in performance on one side that would suggest participants are not attending to the center
             of their visual field, but rather ‘cheating’ to one side to improve their odds by minimizing the amount of
             information they must hold in their working memory.</p>
+            <p>
+              <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapsePosterThumbnail"
+                aria-expanded="false" aria-controls="collapsePosterThumbnail">
+                See Poster
+              </button>
+            </p>
+            <div class="collapse" id="collapsePosterThumbnail">
+              <div class="card card-body">
+                <img class="img-fluid" src="./WM_hemifield_bias_poster.png">
+              </div>
+            </div>
+            
 
 
         </section>
