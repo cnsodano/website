@@ -79,7 +79,7 @@ async function fetchCrossrefJournals(query) {
 
 
 
-function displayJournalQueryResults(query, data, iBreak=10, tableSelector){ 
+function displayJournalQueryResults(query, data, iBreak=10, tableSelector, showAll = false){ 
     query = cleanJournalName(query)
     queryAPI = query.toLowerCase().split(" ").join("+")
     let apiResponse = data
@@ -96,7 +96,7 @@ function displayJournalQueryResults(query, data, iBreak=10, tableSelector){
     let noClone = 0
     for (let i in journals) {;
         // _todo _test handle invalid inputs that return nothing
-        if (isClone(journals[i].title, query)) {
+        if (isClone(journals[i].title, query) || showAll) {
             noClone += 1
             console.log(journals[ i ])
             if (i > iBreak) { break }
@@ -130,7 +130,7 @@ $("#getRLJ").on("click", (event) => {
     dropdownItem.prepend(`<p id="RLJDisclaimer">The publisher "Science Research Society" has managed to register two journals with the same title, but differing ISSN metadata, as the journal that they hijacked. The real RLJ has both an electronic and print ISSN.</p>`)
     query = "russian+law+journal"
     fetchCrossrefJournals(query).then((data) => {
-        displayJournalQueryResults(query, data, 2, ".TablegetRLJ")
+        displayJournalQueryResults(query, data, 2, ".TablegetRLJ", showAll=true)
     })
 })
 //#endregion
