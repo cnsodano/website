@@ -447,6 +447,14 @@
 
             </form>
             <br>
+            <!-- _todo  -->
+            <!-- <label>Search for a publisher's member ID:</label>
+            <br>
+            <form id="memberSearchByQueryForm">
+              <input type="text" id="memberNameinput" placeholder="Science Research Society" value="Science Research Society">
+              <input type="submit" class="btn btn-light">
+            </form> -->
+            <p id="memberIDErrorMsg">
             <label>Input a valid Crossref Member ID to find all the journals it publishes (navigates to new page, may take a few seconds to load for high-volume publishers):</label>
             <br>
             <form id="CRapiForm">
@@ -1052,6 +1060,7 @@
   <script src="
   https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
   "></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script>
     $("#fn2 p a").on("click", () => {
       $("#collapseExample2").collapse("show")

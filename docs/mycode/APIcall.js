@@ -2,7 +2,22 @@
 
 // #region fetchCrossrefMember
 async function fetchCrossrefMember(prefix) {
-    const url = `https://api.crossref.org/prefixes/${prefix}`;
+    const url = `https://api.crossref.org/v1/prefixes/${prefix}&mailto=cnsodano@gmail.com`;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        return null;
+    }
+}
+
+async function fetchCrossrefMemberIDByQuery(query) {
+    const url = `https://api.crossref.org/v1/members?query=${query}&mailto=cnsodano@gmail.com`;
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -31,8 +46,9 @@ function getMemberId(doi) {
         resetMemberMessage();
         $("#failMemberFind").css("visibility","visible");
         throw new Error("Not a DOI, or does not have a valid prefix") }
-    prefix = prefix[0]
-    const url = `https://api.crossref.org/prefixes/${prefix}`
+    prefix = prefix[0] // _todo _audit for possible two match cases
+    prefix = encodeURIComponent(prefix)
+    const url = `https://api.crossref.org/v1/prefixes/${prefix}&mailto=cnsodano@gmail.com`
     fetch(url)
         .then(response => {
             response.json().then(data => {
@@ -64,7 +80,8 @@ let memberIDinput = $("#memberIDinput")[ 0 ]
 
 //#region fetchCrossrefJournals
 async function fetchCrossrefJournals(query) {
-    const url = `https://api.crossref.org/journals?query=${query}`; 
+    // debugger;
+    const url = `https://api.crossref.org/v1/journals?query=${query}&rows=30&mailto=cnsodano@gmail.com`; 
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -78,12 +95,12 @@ async function fetchCrossrefJournals(query) {
 }
 
 
-
-function displayJournalQueryResults(query, data, iBreak=10, tableSelector, showAll = false){ 
+async function displayJournalQueryResults(query, data, iBreak=30, tableSelector, showAll = false){ 
+    // _todo add option to click to fetch in addition all memberIDs for the publishers retrieved (slow)
     query = cleanJournalName(query)
     queryAPI = query.toLowerCase().split(" ").join("+")
     let apiResponse = data
-    console.log(apiResponse.message)
+    // console.log(apiResponse.message)
     let journals = apiResponse.message.items
     let $table = $(tableSelector)
     let body = `
@@ -94,16 +111,19 @@ function displayJournalQueryResults(query, data, iBreak=10, tableSelector, showA
                     <th>ISSN</th>
                     </tr>`
     let noClone = 0
+    let publisherCache = {}
+    let journalMemberID = "";
     for (let i in journals) {;
         // _todo _test handle invalid inputs that return nothing
         if (isClone(journals[i].title, query) || showAll) {
             noClone += 1
             console.log(journals[ i ])
             if (i > iBreak) { break }
-            body += `<tr><td>${journals[ i ].publisher}</td><td>${journals[ i ].title}</td><td>[ ${journals[ i ].ISSN.toString()} ]</td></tr>`
+            publisher = journals[ i ].publisher
+            body += `<tr><td>${publisher} </td><td>${journals[ i ].title}</td><td>[ ${journals[ i ].ISSN.toString()} ]</td></tr>`
         }
     };
-    let apiHeader = `<a href = "https://api.crossref.org/journals?query=${queryAPI}" > API request:</a><code>"https://api.crossref.org/journals?query=${queryAPI}"</code>`
+    let apiHeader = `<a href = "https://api.crossref.org/v1/journals?query=${queryAPI}&mailto=cnsodano@gmail.com" > API request:</a><code>"https://api.crossref.org/v1/journals?query=${queryAPI}"</code>`
     let result;
     if (noClone === 1){
         result = apiHeader + body + `</table>`+`<p>No duplicates found for ${query}`
@@ -138,7 +158,21 @@ $('#collapseExampleRLJ').on("hide.bs.collapse", () =>{
     
 });
 
+async function getMemberIdFromQuery(query){
+    let originalquery = query 
+    query = cleanJournalName(query)
+    queryAPI = query.toLowerCase().split(" ").join("+")
+    data = await fetchCrossrefMemberIDByQuery(queryAPI)
+    // let fuzzy = new Fuse(data.message.items, {keys:["primary-name"]}) _archive
+    let result = data.message.items.filter(x => x[ "primary-name" ] === originalquery)
+    if (result.length > 0) {
+        //_todo _audit Error, should only be one member with this name. Check for edge cases where possible to have >1
+    }
+    result = result[ 0 ].id
+    return result
+}
 
+getMemberIdFromQuery("Science Research Society")
 //#endregion
 //#region User-submit any journal query
 
@@ -169,10 +203,10 @@ $('#collapseExampleGenericJournal').on("show.bs.collapse", function () {
     let dropdownItem = $("#collapseExampleGenericJournal div.card")
     let query = $("#queryInput").val()
     if (query === "American Journal of Public Health") {
-        dropdownItem.prepend("<p id='aphaDisclaimer'>The publisher 'Springer Global Publications' (not to be confused with Springer Nature, which they <a href='https://retractionwatch.com/2024/11/25/exclusive-new-hijacking-scam-targets-elsevier-springer-nature-and-other-major-publishers/'>imitate</a>) has managed to hijack both the url (see the retraction watch <a href='https://docs.google.com/spreadsheets/d/1ak985WGOgGbJRJbZFanoktAN_UFeExpE/edit?gid=5255084#gid=5255084'>Hijacked Journal Checker</a>) and register a journal with the same title as the American Public Health Association's 'American Journal of Public Health'. See <a href='https://api.crossref.org/members/51526/works?query.container-title=american+journal+of+public+health'>this listing</a> for the hijacker's journal registry, compared to the <a href='https://api.crossref.org/members/844/works?query.container-title=american+journal+of+public+health&rows=10'>original</a>")
+        dropdownItem.prepend("<p id='aphaDisclaimer'>The publisher 'Springer Global Publications' (not to be confused with Springer Nature, which they <a href='https://retractionwatch.com/2024/11/25/exclusive-new-hijacking-scam-targets-elsevier-springer-nature-and-other-major-publishers/'>imitate</a>) has managed to hijack both the url (see the retraction watch <a href='https://docs.google.com/spreadsheets/d/1ak985WGOgGbJRJbZFanoktAN_UFeExpE/edit?gid=5255084#gid=5255084'>Hijacked Journal Checker</a>) and register a journal with the same title as the American Public Health Association's 'American Journal of Public Health'. See <a href='https://api.crossref.org/v1/members/51526/works?query.container-title=american+journal+of+public+health'>this listing</a> for the hijacker's journal registry, compared to the <a href='https://api.crossref.org/v1/members/844/works?query.container-title=american+journal+of+public+health&rows=10'>original</a>")
     }
     fetchCrossrefJournals(query).then((data) => {
-        displayJournalQueryResults(query, data, 10, ".TablegetJournalGeneric")
+        displayJournalQueryResults(query, data, 30, ".TablegetJournalGeneric")
     })
 
 });
@@ -209,7 +243,7 @@ $apiForm.on("submit", (event) => {
         $("#memberIDErrorMsg").text("Please try again with a valid Crossref Member ID")
         return
     }
-    let link = `https://api.crossref.org/members/${memberIDinput.value}/works?facet=container-title:*&rows=0`;
+    let link = `https://api.crossref.org/v1/members/${memberIDinput.value}/works?facet=container-title:*&rows=0&mailto=cnsodano@gmail.com`;
     window.location.href = link
 })
 //#endregion
