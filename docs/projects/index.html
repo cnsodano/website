@@ -181,8 +181,14 @@
       <header id="title-block-header" class="quarto-title-block"></header>
 
 
-
-
+      <noscript>
+      <div class="alert alert-danger" role="alert">
+        It seems like javascript is disabled in your browser. None of the interactive tools on this page will work with javascript disabled.
+        Here are the <a href="https://www.enable-javascript.com/">
+          instructions how to enable JavaScript in your web browser</a>, which will allow you to use the interactive tools
+          below. Note that you may need to adjust settings on javascript-blocking extensions you've downloaded to whitelist this page
+      </div>
+      </noscript>
       <section id="recent-projects" class="level1">
         <h1>Recent Projects</h1>
 
@@ -204,14 +210,17 @@
               </ul>
             </li>
           </ul>
-          <p>This project is still in development, and a full codebase will be released soon. A demo of the proof of concept can be found <a href="https://www.loom.com/share/8fb430cf039d49a1aa75a9609a1ded7a?sid=bc7a8621-5a48-4b80-8455-75f898e09202">here</a>, and you can try scanning a single file for yourself below (requires javascript to be <a
-              href="https://www.enable-javascript.com/">enabled</a>)</p>
-          <noscript>
-            It seems like javascript is disabled in your browser.
-            Here are the <a href="https://www.enable-javascript.com/">
-              instructions how to enable JavaScript in your web browser, which will allow you to test the file-scanning
-              script</a>.
+          <p>This project is still in development, and a full codebase will be released soon. A demo of the proof of concept can be found <a href="https://www.loom.com/share/8fb430cf039d49a1aa75a9609a1ded7a?sid=bc7a8621-5a48-4b80-8455-75f898e09202">here</a>, and you can try scanning a single file for yourself below (<strong>requires javascript to be <a
+              href="https://www.enable-javascript.com/">enabled</a></strong>)</p>
+          <!-- <noscript>
+            <div class="alert alert-danger" role="alert">
+              It seems like javascript is disabled in your browser.
+              Here are the <a href="https://www.enable-javascript.com/">
+                instructions how to enable JavaScript in your web browser, which will allow you to test the file-scanning
+                script</a>.
+            </div> -->
           </noscript>
+          <br>
           <input id="fileinput" type="file">
         </section>
         <br>
@@ -226,10 +235,18 @@
                 word retracted in it? Does the paper also cite a retraction notice?"). The  semi-manually annotated datasets that came from this prior work allowed me to instead take a machine learning approach that made no prior assumptions of which textual or metadata features would be meaningful. 
               </p>
             <p>
+              <div>
               <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample"
                 aria-expanded="false" aria-controls="collapseExample">
                 Main Results
-              </button>
+                
+              </button> 
+              <noscript>
+              <span style="color: #ff969f;">These interactive features require javascript to be <a href="https://www.enable-javascript.com/">enabled</a>
+              </span>
+              </noscript>
+              
+              </div>
             </p>
             <div class="collapse" id="collapseExample">
               <div class="card card-body">
@@ -264,10 +281,17 @@
             </div>
             <br>
                 <p>
+                  <div>
                   <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample2"
                     aria-expanded="false" aria-controls="collapseExample2">
                     Highly Predictive Features
                   </button>
+                  <noscript>
+                    <span style="color: #ff969f;">These interactive features require javascript to be <a
+                        href="https://www.enable-javascript.com/">enabled</a>
+                    </span>
+                  </noscript>
+                  </div>
                 </p>
                 <div class="collapse" id="collapseExample2">
                   <div class="card card-body">
@@ -357,15 +381,23 @@
               <label for="getRLJInput">Click here to see a publicly available record of a publisher spoofing the identity of a journal it
                 hijacked (using Crossref metadata):</label>
               </label>
+              <noscript>
+              <div class="alert alert-danger" role="alert">
+                It seems like javascript is disabled in your browser.
+                Here are the <a href="https://www.enable-javascript.com/">
+                  instructions how to enable JavaScript in your web browser, which will allow you to use the interactive tools below</a>.
+              </div>
+              </noscript>
+              
             <button class="btn btn-light" type="button" id="getRLJ" data-toggle="collapse" data-target="#collapseExampleRLJ"
-              aria-expanded="false" aria-controls="collapseExampleRLJ">
+              aria-expanded="" aria-controls="collapseExampleRLJ">
               Show Crossref metadata for known-hijacked "Russian Law Journal
             </button>
             </form>
             <div class="collapse" id="collapseExampleRLJ">
               <div class="card card-body">
                 <div class="TablegetRLJ">
-                  <p class='loadingsign'>Loading...</p>
+                 <p class='loadingsign'>Loading...</p>
                   <table>
                   </table>
                 </div>
@@ -376,7 +408,7 @@
             <p></p>In the process of investigating these hijackings, I found myself using a set of API calls and
             scripts often, and I am developing them into a browser extension to help other sleuths quickly check for
             signs of a journal hijacking. Here are some common API calls:</p>
-            <form>
+            <form id="queryFormid">
               <label for="queryInput">
                 Type a journal title search query to search for <strong>duplicate journal titles</strong> (often signs of hijacking) registered in Crossref's database. Only the first 10 duplicate listings will be shown (double click
                 submit to try a different query. May take a while to load, please don't try queries that would return hundreds of
@@ -384,11 +416,11 @@
               </label>
               <input style="width:40vw;" type="text" id="queryInput" placeholder="American Journal of Public Health" value="American Journal of Public Health">
               <button class="btn btn-light" type="button" id="queryInputSubmit" data-toggle="collapse"
-                data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                data-target="#collapseExampleGenericJournal" aria-expanded="false" aria-controls="collapseExampleGenericJournal">
                 Submit
               </button>
             </form>
-            <div class="collapse" id="collapseExample3">
+            <div class="collapse" id="collapseExampleGenericJournal">
               <div class="card card-body">
                 <div class="TablegetJournalGeneric">
                   <p class='loadingsign'>Loading...</p>
@@ -444,6 +476,14 @@
               href="https://english.elpais.com/science-tech/2024-03-20/the-aspiring-university-rector-who-wrote-a-four-paragraph-paper-and-cited-himself-100-times.html">reporting</a>
             on a case of extreme self-citation stacking among an esteemed computer scientist.</p>
             <p>Here are a few easily detectable ways in which the standard citing pattern can be manipulated: </p>
+            <noscript>
+              <div class="alert alert-danger" role="alert">
+                It seems like javascript is disabled in your browser.
+                Here are the <a href="https://www.enable-javascript.com/">
+                  instructions how to enable JavaScript in your web browser, which will allow you to use the interactive tools
+                  below</a>.
+              </div>
+            </noscript>
             <p>
               <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExampleStandardCitingPattern"
                 aria-expanded="false" aria-controls="collapseExampleStandardCitingPattern">
@@ -545,6 +585,11 @@
                 aria-expanded="false" aria-controls="collapsePosterThumbnail">
                 See Poster
               </button>
+              <noscript>
+                <span style="color: #ff969f;">These interactive features require javascript to be <a
+                    href="https://www.enable-javascript.com/">enabled</a>
+                </span>
+              </noscript>
             </p>
             <div class="collapse" id="collapsePosterThumbnail">
               <div class="card card-body">
@@ -1004,7 +1049,9 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="../mycode/fileHandling.js"></script>
   <script src="../mycode/APIcall.js"></script>
-  <script src="../mycode/dropdowns.js"></script>
+  <script src="
+  https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
+  "></script>
   <script>
     $("#fn2 p a").on("click", () => {
       $("#collapseExample2").collapse("show")

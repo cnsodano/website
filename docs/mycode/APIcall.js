@@ -103,7 +103,7 @@ function displayJournalQueryResults(query, data, iBreak=10, tableSelector, showA
             body += `<tr><td>${journals[ i ].publisher}</td><td>${journals[ i ].title}</td><td>[ ${journals[ i ].ISSN.toString()} ]</td></tr>`
         }
     };
-    let apiHeader = `<a href = "https://api.crossref.org/journals?query=russian+law+journal" > API request:</a><code>"https://api.crossref.org/journals?query=${queryAPI}"</code>`
+    let apiHeader = `<a href = "https://api.crossref.org/journals?query=${queryAPI}" > API request:</a><code>"https://api.crossref.org/journals?query=${queryAPI}"</code>`
     let result;
     if (noClone === 1){
         result = apiHeader + body + `</table>`+`<p>No duplicates found for ${query}`
@@ -124,34 +124,49 @@ function displayJournalQueryResults(query, data, iBreak=10, tableSelector, showA
 
 
 //#region Show Two RLJs
-$("#getRLJ").on("click", (event) => {
+$('#collapseExampleRLJ').on("show.bs.collapse", function () {
     let dropdownItem = $("#collapseExampleRLJ div.card")
-    if (dropdownItem.css("height") !== "0px") { $("#RLJDisclaimer").remove(); return }
     dropdownItem.prepend(`<p id="RLJDisclaimer">The publisher "Science Research Society" has managed to register two journals with the same title, but differing ISSN metadata, as the journal that they hijacked. The real RLJ has both an electronic and print ISSN.</p>`)
     query = "russian+law+journal"
     fetchCrossrefJournals(query).then((data) => {
-        displayJournalQueryResults(query, data, 2, ".TablegetRLJ", showAll=true)
+        displayJournalQueryResults(query, data, 2, ".TablegetRLJ", showAll = true)
     })
-})
-//#endregion
+});
+$('#collapseExampleRLJ').on("hide.bs.collapse", () =>{
+    resetDuplicateQueryDropdown(".TablegetRLJ")
+    return;
+    
+});
 
+
+//#endregion
 //#region User-submit any journal query
 
-function resetDuplicateQueryDropdown(){
-    if (("#aphaDisclaimer").length>0){
-        $("#aphaDisclaimer").remove()
-    }
-    $(".TablegetJournalGeneric").html(`<p class='loadingsign'>Loading...</p>`)
-}
-$("#myTextBox").on("input", function () {
-    // Updates the value from the default if user inputes new value in text
-    console.log($(this).val());
+// Fix refresh issue with text input. Solution from:
+// https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter/17984162
+$.each($("#queryFormid").find('input'), function () {
+    $(this).bind('keypress keydown keyup', function (e) {
+        if (e.keyCode == 13) { e.preventDefault();
+            $("#queryInputSubmit").click() 
+        }
+    });
 });
-$("#queryInputSubmit").on("click", (event) => {   
-    let dropdownItem = $("#collapseExample3 div.card")
-    if (dropdownItem.css("height") !== "0px") {
-        resetDuplicateQueryDropdown()
-        return };
+
+function resetDuplicateQueryDropdown(tableselector){
+    if (tableselector === ".TablegetRLJ"){
+        if (("#RLJDisclaimer").length > 0) {
+            $("#RLJDisclaimer").remove()
+        }
+    } else { 
+        if (("#aphaDisclaimer").length > 0) {
+            $("#aphaDisclaimer").remove()
+        }
+    }
+    $(tableselector).html(`<p class='loadingsign'>Loading...</p>`)
+}
+
+$('#collapseExampleGenericJournal').on("show.bs.collapse", function () {
+    let dropdownItem = $("#collapseExampleGenericJournal div.card")
     let query = $("#queryInput").val()
     if (query === "American Journal of Public Health") {
         dropdownItem.prepend("<p id='aphaDisclaimer'>The publisher 'Springer Global Publications' (not to be confused with Springer Nature, which they <a href='https://retractionwatch.com/2024/11/25/exclusive-new-hijacking-scam-targets-elsevier-springer-nature-and-other-major-publishers/'>imitate</a>) has managed to hijack both the url (see the retraction watch <a href='https://docs.google.com/spreadsheets/d/1ak985WGOgGbJRJbZFanoktAN_UFeExpE/edit?gid=5255084#gid=5255084'>Hijacked Journal Checker</a>) and register a journal with the same title as the American Public Health Association's 'American Journal of Public Health'. See <a href='https://api.crossref.org/members/51526/works?query.container-title=american+journal+of+public+health'>this listing</a> for the hijacker's journal registry, compared to the <a href='https://api.crossref.org/members/844/works?query.container-title=american+journal+of+public+health&rows=10'>original</a>")
@@ -159,7 +174,13 @@ $("#queryInputSubmit").on("click", (event) => {
     fetchCrossrefJournals(query).then((data) => {
         displayJournalQueryResults(query, data, 10, ".TablegetJournalGeneric")
     })
-})
+
+});
+$('#collapseExampleGenericJournal').on("hide.bs.collapse", () =>{
+    resetDuplicateQueryDropdown(".TablegetJournalGeneric")
+    return;
+    
+});
 //#endregion
 //#endregion
 
@@ -214,11 +235,22 @@ function isClone(queryJournalTitle, baseJournalTitle) {
      */;
     queryJournalTitle = cleanJournalName(queryJournalTitle)
     baseJournalTitle = cleanJournalName(baseJournalTitle) // If already cleaned, should do nothing _test that this is true
-    let escapedTitle = RegExp.escape(baseJournalTitle)
+    // Using lodash https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js for browser compatibility
+    let escapedTitle = _.escapeRegExp(baseJournalTitle)
     let pattern = "^" + escapedTitle + "\s?$"
     let regexPatternEscapedTitle = new RegExp(pattern, "i")
     let result = queryJournalTitle.match(regexPatternEscapedTitle)
     return result
+}
+
+function stringToBoolean(str) {
+    if (str.toLowerCase() === "true") {
+        return true;
+    } else if (str.toLowerCase() === "false") {
+        return false;
+    } else {
+        return false; // Or handle other cases as needed
+    }
 }
 //#endregion
 
