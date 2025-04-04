@@ -119,6 +119,11 @@
               <a class="nav-link active" href="../projects/index.html" aria-current="page">
                 <span class="menu-text">Research Projects</span></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../toolbox/index.html" aria-current="page">
+                <span class="menu-text">Hijacked
+                  Journal Detection Toolbox</span></a>
+            </li>
           </ul>
         </div> <!-- /navcollapse -->
         <div class="quarto-navbar-tools">
@@ -370,7 +375,7 @@
           <h2 class="anchored" data-anchor-id="hijacked-journal-detection-toolbox">Hijacked Journal Detection Toolbox
           </h2>
           <p>Inspired by Anna Abalkina’s <a
-              href="https://english.elpais.com/science-tech/2024-03-20/the-aspiring-university-rector-who-wrote-a-four-paragraph-paper-and-cited-himself-100-times.html">reporting</a>
+              href="https://retractionwatch.com/2023/05/26/three-journals-web-domains-expired-then-major-indexes-pointed-to-hijacked-versions/">reporting</a>
             on the hijacking of the Russian Law Journal, I used Crossref’s API to investigate how these paper mill
             articles were able to receive valid DOIs, and discovered a new method fraudsters are using to spoof the
             identity of journals they are hijacking. Rather than just buying the web-domain or typosquatting a similar
@@ -410,9 +415,8 @@
             signs of a journal hijacking. Here are some common API calls:</p>
             <form id="queryFormid">
               <label for="queryInput">
-                Type a journal title search query to search for <strong>duplicate journal titles</strong> (often signs of hijacking) registered in Crossref's database. Only the first 10 duplicate listings will be shown (double click
-                submit to try a different query. May take a while to load, please don't try queries that would return hundreds of
-                results ("e.g. 'Proceedings'"))
+                Type a journal title search query to search for <strong>duplicate journal titles</strong> (often signs of hijacking) registered in Crossref's database. The tool will show only up to the first 30 duplicate listings (double click
+                submit to try a different query. May take a while to load)
               </label>
               <input style="width:40vw;" type="text" id="queryInput" placeholder="American Journal of Public Health" value="American Journal of Public Health">
               <button class="btn btn-light" type="button" id="queryInputSubmit" data-toggle="collapse"
@@ -436,7 +440,7 @@
               <input type="text"  id="doiinput", placeholder="https://doi.org/10.52783/rlj.v11i5.2651" value ="https://doi.org/10.52783/rlj.v11i5.2651">
               <input id="CRdoiSubmit" class="btn btn-light" type="submit">
             <br>
-            <p id="failMemberFind">Failed to find member, either because the query you submitted was not a DOI or had an invalid prefix</p>
+            <p id="failMemberFind">Failed to find member, either because the query you submitted was not a DOI or had an invalid prefix. To check if the DOI is registered through crossref, try: <code>https://api.crossref.org/works/{doi}/agency</code></p>
             <div style="padding-left:5%">
             <p id="PmemberName">
             </p>  

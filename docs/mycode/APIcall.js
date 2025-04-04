@@ -60,8 +60,8 @@ function getMemberId(doi) {
                     $("#PmemberName").text(`Member name is ${data.message.name}`)
                     $("#PmemberID").text(`Member ID is ${memberID}`)
                 }
-        })
-        }).then(() => {return memberID})
+            }).catch(error => {$("#failMemberFind").css("visibility", "visible"); return })
+        }).then(() => { return memberID })
 }
 //#endregion
 
@@ -129,7 +129,7 @@ async function displayJournalQueryResults(query, data, iBreak=30, tableSelector,
         result = apiHeader + body + `</table>`+`<p>No duplicates found for ${query}`
     }
     if (noClone === 0) {
-        result = apiHeader + `<p> No journal found for query '${query}'.</p><p>Perhaps try another journal or double-check for typos?</p>`
+        result = apiHeader + `<p> No journal found for query '${query}'.</p><p>Perhaps try another journal or double-check for typos?</p><p>Keep in mind that this is not a comprehensive tool, and not all publishers/journals are registered with Crossref.</p>`
     }
     if (noClone > 1){
         result = apiHeader + body + `</table>`
@@ -203,7 +203,7 @@ $('#collapseExampleGenericJournal').on("show.bs.collapse", function () {
     let dropdownItem = $("#collapseExampleGenericJournal div.card")
     let query = $("#queryInput").val()
     if (query === "American Journal of Public Health") {
-        dropdownItem.prepend("<p id='aphaDisclaimer'>The publisher 'Springer Global Publications' (not to be confused with Springer Nature, which they <a href='https://retractionwatch.com/2024/11/25/exclusive-new-hijacking-scam-targets-elsevier-springer-nature-and-other-major-publishers/'>imitate</a>) has managed to hijack both the url (see the retraction watch <a href='https://docs.google.com/spreadsheets/d/1ak985WGOgGbJRJbZFanoktAN_UFeExpE/edit?gid=5255084#gid=5255084'>Hijacked Journal Checker</a>) and register a journal with the same title as the American Public Health Association's 'American Journal of Public Health'. See <a href='https://api.crossref.org/v1/members/51526/works?query.container-title=american+journal+of+public+health'>this listing</a> for the hijacker's journal registry, compared to the <a href='https://api.crossref.org/v1/members/844/works?query.container-title=american+journal+of+public+health&rows=10'>original</a>")
+        dropdownItem.prepend("<p id='aphaDisclaimer'>The publisher 'Springer Global Publications' (not to be confused with Springer Nature, which they <a href='https://retractionwatch.com/2024/11/25/exclusive-new-hijacking-scam-targets-elsevier-springer-nature-and-other-major-publishers/'>imitate</a>) has managed to register a journal with the same title as the American Public Health Association's 'American Journal of Public Health'. See <a href='https://api.crossref.org/v1/members/51526/works?query.container-title=american+journal+of+public+health'>this listing</a> for the hijacker's journal registry, compared to the <a href='https://api.crossref.org/v1/members/844/works?query.container-title=american+journal+of+public+health&rows=10'>original</a>. This journal has been listed on Retraction Watch's <a href='https://docs.google.com/spreadsheets/d/1ak985WGOgGbJRJbZFanoktAN_UFeExpE/edit?gid=5255084#gid=5255084'>Hijacked Journal Checker</a>) list")
     }
     fetchCrossrefJournals(query).then((data) => {
         displayJournalQueryResults(query, data, 30, ".TablegetJournalGeneric")
