@@ -459,20 +459,52 @@
               <input type="submit" class="btn btn-light">
             </form> -->
             <p id="memberIDErrorMsg">
-            <label>Input a valid Crossref Member ID to find all the journals it publishes (navigates to new page, may take a few seconds to load for high-volume publishers):</label>
-            <br>
+              <label>Input a valid Crossref Member ID to find all the journals it publishes. A maximum of 100 journals will be
+                displayed. (may take a few
+                seconds to load for high-volume publishers):</label>
+              <br>
+            
             <form id="CRapiForm">
-              <input type="text" id="memberIDinput" placeholder="30593"
-              value="30593">
-              <input type="submit" class="btn btn-light">
-            </form>
-            <p id="memberIDErrorMsg">
 
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="limitNumReturnedJournalsCheckbox">
+                <label class="form-check-label" style="margin-left:5%" for="limitNumReturnedJournalsCheckbox">
+                  Limit number of results for better performance?
+                </label>
+                
+              </div>
+              
+              
+              <input type="text" id="numJournalToLimitToInput" placeholder="10" value="10" style="display:none;">
+              <input type="text" id="memberIDinput" placeholder="30593" value="30593" list="memberIDlist">
+              <datalist id="memberIDlist">
+                <option value="30593"></option>
+                <option value="31492"></option>
+                <option value="51526"></option>
+              </datalist>
+            
+              <input type="submit" class="btn btn-light" id="memberIDforJournalsGetSubmit" data-toggle="collapse"
+                data-target="#collapsememberIDforJournalsGetSubmit" aria-expanded="false"
+                aria-controls="collapsememberIDforJournalsGetSubmit">
+            </form>
+            <div class="collapse" id="collapsememberIDforJournalsGetSubmit">
+              <div class="card card-body">
+                <div class="TablememberIDforJournalsGetSubmit">
+                  <p id="memberIDErrorMsg2" style="display:none;"></p>
+                  <p class='loadingsign' id="">Loading...this can sometimes take up to 10 seconds or more</p>
+                  <!-- _todo deal with loading sign on error _later -->
+                  <table>
+                  </table>
+                </div>
+              </div>
+            </div>
+            
+            
             </p>
             <label>Input a publisher ID and find all of its registered journals that have already been registered (possible hijacked
-            journals):</label>
+              journals):</label>
             <form id="findAllHijackedJournals">
-              <input type="text" id="findAllHijackedJournalsInput" placeholder="30593" value="30593">
+              <input type="text" id="findAllHijackedJournalsInput" placeholder="30593" value="">
               <button id="findAllHijackedJournalsSubmit" class="btn btn-light">Submit</button>
             </form>
             <br>
