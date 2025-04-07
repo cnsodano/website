@@ -216,7 +216,7 @@ function resetDuplicateQueryDropdown(tableselector){
     if (tableselector ===".TablememberIDforJournalsGetSubmit"){
         $(tableselector).html(`<p class='loadingsign'>Loading...this can sometimes take up to 10 seconds or more</p>`)
     } else { 
-    $(tableselector).html(`<p class='loadingsign'>Loading...</p>`)
+        $(tableselector).html(`<p class='loadingsign'>Loading...</p>`)
     }
 }
 
