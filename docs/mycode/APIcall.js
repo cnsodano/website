@@ -16,6 +16,22 @@ async function fetchCrossrefMember(prefix) {
     }
 }
 
+async function fetchCrossrefMemberName(id) {
+    const url = `https://api.crossref.org/v1/members/${id}`;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        debugger;
+        return null;
+    }
+}
+
 async function fetchCrossrefMemberIDByQuery(query) {
     const url = `https://api.crossref.org/v1/members?query=${query}&mailto=cnsodano@gmail.com`;
     try {
@@ -109,6 +125,7 @@ async function displayJournalQueryResults(query, data, iBreak=30, tableSelector,
                     <th> Publisher</th>
                     <th>Journal Title</th>
                     <th>ISSN</th>
+                    <th># of DOIs</th>
                     </tr>`
     let noClone = 0
     let publisherCache = {}
@@ -120,7 +137,7 @@ async function displayJournalQueryResults(query, data, iBreak=30, tableSelector,
             console.log(journals[ i ])
             if (i > iBreak) { break }
             publisher = journals[ i ].publisher
-            body += `<tr><td>${publisher} </td><td>${journals[ i ].title}</td><td>[ ${journals[ i ].ISSN.toString()} ]</td></tr>`
+            body += `<tr><td>${publisher} </td><td>${journals[ i ].title}</td><td>[ ${journals[ i ].ISSN.toString()} ]</td><td>${journals[i].counts["total-dois"]}</td></tr>`
         }
     };
     let apiHeader = `<a href = "https://api.crossref.org/v1/journals?query=${queryAPI}&mailto=cnsodano@gmail.com" > API request:</a><code>"https://api.crossref.org/v1/journals?query=${queryAPI}"</code>`
@@ -158,21 +175,21 @@ $('#collapseExampleRLJ').on("hide.bs.collapse", () =>{
     
 });
 
-async function getMemberIdFromQuery(query){
-    let originalquery = query 
-    query = cleanJournalName(query)
-    queryAPI = query.toLowerCase().split(" ").join("+")
-    data = await fetchCrossrefMemberIDByQuery(queryAPI)
-    // let fuzzy = new Fuse(data.message.items, {keys:["primary-name"]}) _archive
-    let result = data.message.items.filter(x => x[ "primary-name" ] === originalquery)
-    if (result.length > 0) {
-        //_todo _audit Error, should only be one member with this name. Check for edge cases where possible to have >1
-    }
-    result = result[ 0 ].id
-    return result
-}
+// async function getMemberIdFromQuery(query){
+//     let originalquery = query 
+//     query = cleanJournalName(query)
+//     queryAPI = query.toLowerCase().split(" ").join("+")
+//     data = await fetchCrossrefMemberIDByQuery(queryAPI)
+//     // let fuzzy = new Fuse(data.message.items, {keys:["primary-name"]}) _archive
+//     let result = data.message.items.filter(x => x[ "primary-name" ] === originalquery)
+//     if (result.length > 0) {
+//         //_todo _audit Error, should only be one member with this name. Check for edge cases where possible to have >1
+//     }
+//     result = result[ 0 ].id
+//     return result
+// }
 
-getMemberIdFromQuery("Science Research Society")
+// getMemberIdFromQuery("Science Research Society")
 //#endregion
 //#region User-submit any journal query
 
@@ -196,7 +213,11 @@ function resetDuplicateQueryDropdown(tableselector){
             $("#aphaDisclaimer").remove()
         }
     }
+    if (tableselector ===".TablememberIDforJournalsGetSubmit"){
+        $(tableselector).html(`<p class='loadingsign'>Loading...this can sometimes take up to 10 seconds or more</p>`)
+    } else { 
     $(tableselector).html(`<p class='loadingsign'>Loading...</p>`)
+    }
 }
 
 $('#collapseExampleGenericJournal').on("show.bs.collapse", function () {
@@ -237,15 +258,108 @@ $("#findAllHijackedJournals button").on("click", (event) =>{
 //#endregion
 
 //#region MemberID form submit
-$apiForm.on("submit", (event) => {
+
+
+async function getMemberName(memberID){
+    let name = await fetchCrossrefMemberName(memberID)
+    debugger
+    if (name === null) return null
+    name = name.message["primary-name"]
+    return name
+}
+function memberJournalsError($table){
+
+}
+
+$apiForm.on("submit", async (event) => {
     event.preventDefault()
-    if (memberIDinput.value === ""){
-        $("#memberIDErrorMsg").text("Please try again with a valid Crossref Member ID")
+    let $table = $(".TablememberIDforJournalsGetSubmit")
+    memberID = memberIDinput.value
+    if (memberID===""){
+        $table.html(`<p> query= "". Please try again with a valid Crossref Member ID</p>`)
         return
     }
-    let link = `https://api.crossref.org/v1/members/${memberIDinput.value}/works?facet=container-title:*&rows=0&mailto=cnsodano@gmail.com`;
-    window.location.href = link
+    let memberName = await getMemberName(memberID)
+    if (memberName===null){
+        $table.html(`That Member ID doesn't exist in Crossref's database. Please try again with a valid Crossref Member ID</p>`)
+        return
+    }
+    $("memberIDErrorMsg2").css("display","none")
+    
+    let maxNumJournals;
+    if ($("#numJournalToLimitToInput").data("num")!=="*"){
+        maxNumJournals = $("#numJournalToLimitToInput")[ 0 ].value;
+    } else{
+        maxNumJournals = "100"
+    }
+    if (memberIDinput.value == ""){
+        debugger;
+        $("#memberIDErrorMsg2").css("display","flex")
+        $("#memberIDErrorMsg2").text("Please try again with a valid Crossref Member ID")
+        return
+    }
+    //_todo add loading
+    let journalsObj = await getJournalsFromPublisher(memberID, maxNumJournals)
+    let ctJournals =  journalsObj.message.facets[ "container-title" ]["value-count"]
+    journalsObj = journalsObj.message.facets[ "container-title" ][ "values" ]
+    debugger;
+    let body = `
+        <p><strong>Publisher: </strong>${memberName}</p>
+        <table>
+                    <tr>
+                    <th> Journal Title</th>
+                    <th> DOIs Registered</th>
+                    </tr>`
+    let result;
+    if (ctJournals===0){
+        body+=`<tr><td>None found</td><td></td></tr></table>
+        `
+    } else {
+        for (let [journal, ctDOIs] of Object.entries(journalsObj)){
+            body +=`<tr><td>${journal}</td><td>${ctDOIs.toString()}</td></tr>`
+        }
+    }
+    result = body
+    debugger;
+    $table.html(result)
+    
+    // let link = `https://api.crossref.org/v1/members/${memberIDinput.value}/works?facet=container-title:*&rows=0&mailto=cnsodano@gmail.com`;
+    // window.location.href = link
 })
+$('#collapsememberIDforJournalsGetSubmit').on("hide.bs.collapse", () => {
+    resetDuplicateQueryDropdown(".TablememberIDforJournalsGetSubmit")
+    return;
+
+});
+
+async function getJournalsFromPublisher(memberID, maxNumJournals){
+    let url = `https://api.crossref.org/v1/members/${memberID}/works?facet=container-title:${maxNumJournals}&rows=0&mailto=cnsodano@gmail.com`;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+        return null;
+    }
+}
+$("#numJournalToLimitToInput").data("num", "*")
+
+$("#limitNumReturnedJournalsCheckbox").on("change", () => {
+    if ($("#limitNumReturnedJournalsCheckbox")[ 0 ].checked) {
+        debugger
+        $("#numJournalToLimitToInput").css("display", "flex")
+        $("#numJournalToLimitToInput").data("num", "10")
+    } else {
+        $("#numJournalToLimitToInput").css("display", "none")
+        $("#numJournalToLimitToInput").data("num", "*")
+    }
+}
+)
 //#endregion
 
 
