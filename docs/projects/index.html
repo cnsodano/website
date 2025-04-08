@@ -124,6 +124,10 @@
                 <span class="menu-text">Hijacked
                   Journal Detection Toolbox</span></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../blog/index.html">
+                <span class="menu-text">Blog</span></a>
+            </li>
           </ul>
         </div> <!-- /navcollapse -->
         <div class="quarto-navbar-tools">
@@ -416,7 +420,7 @@
             <form id="queryFormid">
               <label for="queryInput">
                 Type a journal title search query to search for <strong>duplicate journal titles</strong> (often signs of hijacking) registered in Crossref's database. The tool will show only up to the first 30 duplicate listings (double click
-                submit to try a different query. May take a while to load)
+                submit to try a different query. May take a while to load). If your query is overly broad ("Science", e.g.) it's possible it will fail to detect due to <code>technical reasons</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This will be solved soon.
               </label>
               <input style="width:40vw;" type="text" id="queryInput" placeholder="American Journal of Public Health" value="American Journal of Public Health">
               <button class="btn btn-light" type="button" id="queryInputSubmit" data-toggle="collapse"
@@ -652,8 +656,18 @@
         </section>
       </section>
 
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"
+  role="doc-endnotes">
+  <h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
-
+  <ol>
+    <li id="fn1">
+      <p>Currently I am not using <a href="https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/">cursors</a> as I expected users to have a particular journal in mind. If none of the first 30 results for the query match exactly, it will not (as of 4/8/25) search the next page of results. This will be fixed. The most up-to-date code will be available <a href="../toolbox/index.html">here</a><a href="#fnref1"
+          class="footnote-back" role="doc-backlink">↩︎</a></p>
+    </li>
+  </ol>
+  </section>
+</div>
     </main> <!-- /main -->
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {

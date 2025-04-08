@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Hijacked Journal Detection Toolbox</title>
+    <title> Blog - Christian N Sodano</title>
     <style>
         code {
             white-space: pre-wrap;
@@ -118,12 +118,12 @@
                                 <span class="menu-text">Research Projects</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="../toolbox/index.html" aria-current="page">
+                            <a class="nav-link " href="../toolbox/index.html">
                                 <span class="menu-text">Hijacked
-                                Journal Detection Toolbox</span></a>
+                                    Journal Detection Toolbox</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../blog/index.html">
+                            <a class="nav-link active" href="../blog/index.html" aria-current="page">
                                 <span class="menu-text">Blog</span></a>
                         </li>
                     </ul>
@@ -139,167 +139,27 @@
         <!-- margin-sidebar -->
         <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
             <nav id="TOC" role="doc-toc" class="toc-active">
-                <h2 id="toc-title">On this page</h2>
-
                 <ul>
-                    <li><a href="#hijacked-journal-detection-toolbox" id="toc-hijacked-journal-detection-toolbox"
-                            class="nav-link active" data-scroll-target="#hijacked-journal-detection-toolbox">Hijacked
-                            Journal Detection Toolbox</a></li>
+                    <li><a href="#Blog" id="toc-hijacked-journal-detection-toolbox"
+                            class="nav-link active" data-scroll-target="#Blog">Blog Posts</a></li>
                 </ul>
             </nav>
         </div>
         <!-- main -->
         <main class="content" id="quarto-document-content">
             <header id="title-block-header" class="quarto-title-block"></header>
-
-
-
-
-            <section id="hijacked-journal-detection-toolbox" class="level1">
-            <div class="alert alert-danger" role="alert">
-                The tools on this page are meant to help research integrity specialists and other sleuths do a quick spot-check of suspected hijacked journals. While they use the Crossref API to gather metadata about journals, publishers, and individual works, they <strong> are not</strong> a replacement for the API.  Please do not try to use this website for large-scale investigations; Crossref has many options for <a href="https://www.crossref.org/documentation/retrieve-metadata/">retrieving metadata</a> at scale
-            </div>
-            <div class="alert alert-secondary" role="alert">
-                <p>Click <a href="../projects/index.html#hijacked-journal-detection-toolbox">here</a> to learn more about the motivations for this project. If you are a research integrity specialist and have suggestions for how to improve these tools, please reach out to me on <a href="https://bsky.app/profile/cnsodano.bsky.social">bluesky</a> or by email cnsodano@gmail.com </p>
-                <p>If there are any bugs, let me know and I'll fix them</p>
-            </div>
-                <h1>Hijacked Journal Detection Toolbox</h1>
-                <noscript>
-                    <div class="alert alert-danger" role="alert">
-                        It seems like javascript is disabled in your browser.
-                        Here are the <a href="https://www.enable-javascript.com/">
-                            instructions how to enable JavaScript in your web browser, which will allow you to use the interactive
-                            tools below</a>.
-                    </div>
-                </noscript>
-                    <form id="queryFormid">
-                        <label for="queryInput">
-                            Type a journal title search query to search for <strong>duplicate journal titles</strong> (often signs of
-                            hijacking) registered in Crossref's database. The tool will show only up to the first 30 duplicate listings (double click
-                            submit to try a different query. May take a while to load). This is not a comprehensive tool. For example, not all journals register DOIs through Crossref. If your query is overly broad ("Science", e.g.) it's possible it will fail to detect due to
-                            <code>technical reasons</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This
-                            will be solved soon.
-                        </label>
-                        <input style="width:40vw;" type="text" id="queryInput" placeholder="American Journal of Public Health"
-                            value=""
-                            list="duplicatedJournalsList">
-                            <datalist id="duplicatedJournalsList">
-                                <option value="American Journal of Public Health">
-                                <option value="Turkish Online Journal of Qualitative Inquiry"></option>
-                                <option value="Russian Law Journal"></option>
-                            </datalist>
-                        <button class="btn btn-light" type="button" id="queryInputSubmit" data-toggle="collapse"
-                            data-target="#collapseExampleGenericJournal" aria-expanded="false"
-                            aria-controls="collapseExampleGenericJournal">
-                            Submit
-                        </button>
-                    </form>
-                    <div class="collapse" id="collapseExampleGenericJournal">
-                        <div class="card card-body">
-                            <div class="TablegetJournalGeneric">
-                                <p class='loadingsign'>Loading...</p>
-                                <table>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <form id="CRdoiForm">
-                        <div id="DOIinputDiv">
-                            <label>Input a DOI to find the Crossref Member that Submitted it:</label><br>
-                            <input type="text" id="doiinput" , placeholder="https://doi.org/10.52783/rlj.v11i5.2651"
-                                value=""
-                                list="doiOptionsList">
-                            <input id="CRdoiSubmit" class="btn btn-light" type="submit" >
-                            <datalist id="doiOptionsList">
-                                <option value="https://doi.org/10.52783/rlj.v11i5.2651"></option>
-                                <option value="https://doi.org/10.1016/j.psyneuen.2006.09.013"></option>
-                            </datalist>
-                            <br>
-                            <p id="failMemberFind">Failed to find member, either because the query you submitted was not a DOI or had an invalid
-                                prefix. To check if the DOI is registered through crossref, try:
-                                <code>https://api.crossref.org/works/{doi}/agency</code></p>
-                            <div style="padding-left:5%">
-                                <p id="PmemberName">
-                                </p>
-                                <p id="PmemberID">
-                                </p>
-                            </div>
-                        </div>
-                    
-                    </form>
-                    <br>
-                    <!-- _todo  -->
-                    <!-- <label>Search for a publisher's member ID:</label>
-                                <br>
-                                <form id="memberSearchByQueryForm">
-                                  <input type="text" id="memberNameinput" placeholder="Science Research Society" value="Science Research Society">
-                                  <input type="submit" class="btn btn-light">
-                                </form> -->
-                    <p id="memberIDErrorMsg">
-                        <label>Input a valid Crossref Member ID to find all the journals it publishes. A maximum of 100 journals will be displayed. (may take a few
-                            seconds to load for high-volume publishers):</label>
-                        <br>
-                    
-                    <form id="CRapiForm">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="limitNumReturnedJournalsCheckbox">
-                            <label class="form-check-label" for="limitNumReturnedJournalsCheckbox">
-                                Limit number of results for better performance?
-                            </label>
-                        </div>
-                        <input type="text" id="numJournalToLimitToInput" placeholder="10" value="10" style="display:none;">
-                        <input type="text" id="memberIDinput" placeholder="30593" value=""
-                        list="memberIDlist">
-                        <datalist id="memberIDlist">
-                            <option value="30593"></option>
-                            <option value="31492"></option>
-                            <option value="51526"></option>
-                        </datalist>
-
-                        <input type="submit" class="btn btn-light"
-                        id="memberIDforJournalsGetSubmit" data-toggle="collapse"
-                            data-target="#collapsememberIDforJournalsGetSubmit" aria-expanded="false" aria-controls="collapsememberIDforJournalsGetSubmit">
-                    </form>
-                        <div class="collapse" id="collapsememberIDforJournalsGetSubmit">
-                            <div class="card card-body">
-                                <div class="TablememberIDforJournalsGetSubmit">
-                                    <p id="memberIDErrorMsg2" style="display:none;"></p>
-                                    <p class='loadingsign' id="">Loading...this can sometimes take up to 10 seconds or more</p>
-                                    <!-- _todo deal with loading sign on error _later -->
-                                    <table>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    
-                    
-                    </p>
-                    <label>Input a publisher ID and find all of its registered journals that have already been registered (possible hijacked
-                        journals):</label>
-                    <form id="findAllHijackedJournals">
-                        <input type="text" id="findAllHijackedJournalsInput" placeholder="30593" value="">
-                        <button id="findAllHijackedJournalsSubmit" class="btn btn-light">Submit</button>
-                    </form>
-                    </section>
-                
+            <section id="Blog" class="level1">
+                <h1>Blog Posts</h1>
+                <h3>Upcoming Posts</h3>
+                <ul>
+                    <li>"Current research integrity systems are vulnerable to denial of service attacks"</li>
+                </ul>
+                <h3>IGDORE ReproducibiliTea Summaries</h3>
+                <ul>
+                    <li><a href="./IGDORE/index.html">March 26th: Open code for open science?</a></li>
+                </ul>
             </section>
-            <div id="quarto-appendix" class="default">
-                <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-                    <h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-            
-                    <ol>
-                        <li id="fn1">
-                            <p>Currently I am not using <a
-                                    href="https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/">cursors</a>
-                                as I expected users to have a particular journal in mind. If none of the first 30 results for the
-                                query match exactly, it will not (as of 4/8/25) search the next page of results. This will be fixed.
-                                The most up-to-date code will be available <a href="../toolbox/index.html">here</a><a href="#fnref1"
-                                    class="footnote-back" role="doc-backlink">↩︎</a></p>
-                        </li>
-                    </ol>
-                </section>
-            </div>
+
         </main> <!-- /main -->
         <script id="quarto-html-after-body" type="application/javascript">
             window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -736,21 +596,21 @@
     </footer>
 
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-<script src="../mycode/APIcall.js"></script>
-<script src="
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="../mycode/APIcall.js"></script>
+    <script src="
   https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
   "></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
 </body>
 
 </html>
