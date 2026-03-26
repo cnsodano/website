@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Christian N Sodano</title>
+<title>json – Christian N Sodano</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,29 +23,65 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-22b4aaf4c2978829df3684e8f2c068db.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-92fd76982d5e1762eba9c7ce824b50a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-f43ca2400f52f1e08d2bb5ae3760b819.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-92fd76982d5e1762eba9c7ce824b50a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-22b4aaf4c2978829df3684e8f2c068db.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-92fd76982d5e1762eba9c7ce824b50a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f43ca2400f52f1e08d2bb5ae3760b819.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-92fd76982d5e1762eba9c7ce824b50a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,9 +111,12 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="../css/code-blocks.css">
+<link rel="stylesheet" href="../css/jsoneditor_clear.css">
+<link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -246,25 +285,25 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Christian N Sodano</span>
     </a>
   </div>
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects/projects.html"> 
+    <a class="nav-link" href="../../projects/projects.html"> 
 <span class="menu-text">Research Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./toolbox/index.html"> 
+    <a class="nav-link" href="../../toolbox/index.html"> 
 <span class="menu-text">Hijacked Journal Toolbox</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog/blogindex.html"> 
+    <a class="nav-link" href="../../blog/blogindex.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -278,68 +317,133 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
 
-<div class="quarto-about-trestles">
-  <div class="about-entity">
-    <img src="cutout_avatar_f.PNG" class="about-image
-  rounded " style="width: 20em;">
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Christian N Sodano</h1>
+<p><strong>JSON</strong> is a flexible way of representing data that, despite the name (<strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation), is programming language-independent (meaning you don’t need to know Javascript, or any other programming language to read and understand it!).</p>
+<p>Here’s a very simple piece data about a journal article<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that is represented (also known as ‘encoded’) in JSON format, and could be saved as a file with the <code>.json</code> file extension:</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>metadata.json</strong></pre>
 </div>
-<div class="quarto-title-meta">
-  </div>
-</header>
-    <div class="about-links">
-  <a href="https://bsky.app/profile/cnsodano.bsky.social" class="about-link" rel="" target="">
-    <i class="bi bi-bluesky-brands-solid.svg"></i>
-     <span class="about-link-text">Bluesky</span>
-  </a>
-  <a href="https://github.com/cnsodano" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-  </div>
-  <div class="about-contents"><div id="hero-heading">
-<section id="summary" class="level2">
-<h2 data-anchor-id="summary">Summary</h2>
-<p>I’m an independent researcher currently working in the emerging field of forensic metascience<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and scientometrics<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, developing tools to detect and prevent breaches of research integrity including questionable research practices<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, statistical and methodological errors<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, and fraud<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Prior to working in metascience, I did my Bachelor’s in Computer Science with a minor specialization in Neuroscience at the <a href="https://cs.unc.edu/">University of North Carolina</a> where I researched automatic sleep spindle detection algorithms and the cognitive/clinical effects of non-invasive brain stimulation.</p>
-<p>My current projects in this area focus on <a href="./projects/projects.html#automating-reproducibility-checks-for-journal-submissions">automating reproducibility checks</a>, detecting so-called <a href="https://osf.io/mbcw5/">paper-mills</a> (businesses conducting for-profit research fraud at large-scale) and <a href="./projects/projects.html#hijacked-journal-detection-toolbox">journal hijackings</a>, as well as authors who <a href="./projects/projects.html#discovering-unreasonable-citation-stacking">game citations</a> for personal benefit and papers that are <a href="./projects/projects.html#detecting-post-retraction-citation-awareness">unknowingly citing discredited research</a>.</p>
-</section>
-<section id="collaborations" class="level2">
-<h2 data-anchor-id="collaborations">Collaborations</h2>
-<p>I’m openly exploring collaborations, so please reach out if are looking for collaborators to:</p>
+</div>
+<p>In the world of JSON, data is represented as “objects”, and every object begins with a <code>{</code>, ends with a <code>}</code> and contains a number of <code>"key": &lt;value&gt;</code> pairs that represent the information about that ‘object’ that you want to store and transfer.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Each key is a double-quoted string that describes what information the corresponding “value” represents, for example, the simple 1-line JSON object above described the title of a famously retracted journal article originally published in The Lancet(LINK). Each “value” can one of the following:</p>
 <ul>
-<li><p>Turn basic analysis scripts/forensic tools into interactive tools that can help the scientific community</p></li>
-<li><p>Aggregate scholarly fulltext and metadata for textual analyses or systematic reviews</p></li>
-<li><p>Explore metascientific questions that require natural language processing of scholarly text</p></li>
-<li><p>Write grant proposals for projects in the fields of scientific error detection or scientometrics</p></li>
+<li><code>Number</code>, for example, a count of articles published by a journal</li>
+<li><code>String</code>, for example, the DOI of a journal article</li>
+<li><code>Boolean</code> (true/false), for example, whether the ORCID listed for an article’s author has been authenticated</li>
+<li><code>Object</code>, for example, and object representing the first author of a paper</li>
+<li>an <code>Array</code> of any of the above, for example a list of objects representing a paper’s references, each of which having a “DOI” key, a “title” key, and so on
+<ul>
+<li>All <code>Array</code> objects will start and end with a <code>[</code>/<code>]</code> and have each element of the array separated by a comma</li>
+</ul></li>
 </ul>
-</section>
-<section id="jobs" class="level2">
-<h2 data-anchor-id="jobs">Jobs</h2>
-<p>I am <strong>currently on a job search</strong>. If you lead a research group and are looking for new research staff, or if you lead a research integrity team at an academic publisher, please reach out! I would love to talk more! (cnsodano@gmail.com).</p>
-</section>
-<section id="techniques" class="level2">
-<h2 data-anchor-id="techniques">Techniques</h2>
-<p>I use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g.&nbsp;PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks.</p>
-</section>
-<section id="technical-competencies" class="level2">
-<h2 data-anchor-id="technical-competencies">Technical Competencies</h2>
-<p>I mainly code in Python, using the open-source <a href="https://github.com/pandas-dev/pandas">pandas</a> library for data cleaning and <a href="https://github.com/numpy/numpy">numpy</a> and <a href="https://github.com/scikit-learn/scikit-learn">scikit-learn</a> for machine learning. I use <a href="https://github.com/explosion/spaCy">spaCy</a> for more advanced NLP applications. For scientometrics, I’ve used <a href="https://doi.org/10.1007/s11192-009-0146-3">VOSviewer</a>, and recently <a href="https://github.com/Valdecy/pybibx">pybibx</a><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. For demonstrating analysis pipelines in a portable and interactive format, I am favoring <a href="https://github.com/marimo-team/marimo">Marimo notebooks</a> over <a href="https://jupyter.org/">Jupyter notebooks</a>, and I try to use <a href="https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers">docker development containers</a> for reproducibility. For automated testing I use <a href="https://github.com/pytest-dev/pytest">pytest</a> and particularly the pytest plugin <a href="https://github.com/pytest-dev/pytest-bdd">pytest-BDD</a>. I have some coding experience in MATLAB, R, Java, and C.</p>
-</section>
-</div></div>
+<p>To see these in action, I’ve extended the data from above to add more of the information Crossref has available on this article:</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>metadata.json</strong></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode json code-annotation-code code-with-copy code-annotated"><code class="sourceCode json"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children"</span><span class="fu">,</span></span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"container-title"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"The Lancet"</span><span class="ot">]</span><span class="fu">,</span>           </span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"DOI"</span><span class="fu">:</span> <span class="st">"10.1016/s0140-6736(97)11096-0"</span><span class="fu">,</span>                                                                                               </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"updated-by"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span>                                        </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"type"</span><span class="fu">:</span><span class="st">"correction"</span><span class="fu">,</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"source"</span><span class="fu">:</span><span class="st">"retraction-watch"</span><span class="fu">,</span></span>
+<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"updated"</span><span class="fu">:{</span>                          </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-2-10" class="code-annotation-target"><a href="#annotated-cell-2-10" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"date-parts"</span><span class="fu">:</span><span class="ot">[</span><span class="dv">2004</span><span class="ot">,</span><span class="dv">3</span><span class="ot">,</span><span class="dv">6</span><span class="ot">]</span></span>
+<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
+<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="annotated-cell-2-14"><a href="#annotated-cell-2-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"type"</span><span class="fu">:</span><span class="st">"retraction"</span><span class="fu">,</span></span>
+<span id="annotated-cell-2-15"><a href="#annotated-cell-2-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"source"</span><span class="fu">:</span><span class="st">"retraction-watch"</span><span class="fu">,</span></span>
+<span id="annotated-cell-2-16"><a href="#annotated-cell-2-16" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"updated"</span><span class="fu">:{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-2-17" class="code-annotation-target"><a href="#annotated-cell-2-17" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"date-parts"</span><span class="fu">:</span><span class="ot">[</span><span class="dv">2010</span><span class="ot">,</span><span class="dv">2</span><span class="ot">,</span><span class="dv">6</span><span class="ot">]</span></span>
+<span id="annotated-cell-2-18"><a href="#annotated-cell-2-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
+<span id="annotated-cell-2-19"><a href="#annotated-cell-2-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="annotated-cell-2-20"><a href="#annotated-cell-2-20" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="annotated-cell-2-21"><a href="#annotated-cell-2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="1">This article received more than one update notice, as the <code>updated-by</code> field is an <code>Array</code> type beginning with <code>[</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="2">The first <code>update</code> was a correction</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="3">The metadata corresponding to this correction was provided to Crossref by <a href="https://retractionwatch.com/">Retraction Watch</a></span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="10" data-code-annotation="4">The date that the correction was issued (YYYY-MM-DD) was the 6th of March, 2004<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="17" data-code-annotation="5">We can see that the article had more than one update, a “correction” in 2004 and a “retraction” in 2010</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>Note that this is not the full record of metadata that Crossref has for this article, in fact the <code>.json</code> file returned by Crossref includes 10x more information (~10Kb compared to ~1Kb) than this illustrative example, so to save you from endlessly scrolling I will show all JSON data from here out using a handy <a href="https://github.com/josdejong/jsoneditor">widget</a><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> like so:</p>
+<div class="{=html}">
+<div id="JSON_tutorial_json_editor_container" style="width: 100%; height: 40vh;">
 
-
+</div>
+<script type="module">
+    import {createJSONEditor} from "https://cdn.jsdelivr.net/npm/vanilla-jsoneditor@3.11.0/standalone.min.js"
+    const JSON_tutorial_json_editor =createJSONEditor({ target: document.getElementById('JSON_tutorial_json_editor_container'),
+        props: {
+            content: null,
+            onChange: (updatedContent,previousContent,{contentErrors,patchResult}) => {
+                // content is an object { json: unknown } | { text: string }
+                console.log('onChange',{updatedContent,previousContent,contentErrors,patchResult})
+                content=updatedContent
+            }
+        }
+    })
+     const initialJson={
+            "title": "RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children",
+            "container-title": ["The Lancet"],
+            "DOI": "10.1016/s0140-6736(97)11096-0",
+            "updated-by": [
+                {
+                    "type":"correction",
+                    "source":"retraction-watch",
+                    "updated":{
+                        "date-parts":[[2004,3,6]]
+                    }
+                },
+                {
+                    "type":"retraction",
+                    "source":"retraction-watch",
+                    "updated":{
+                        "date-parts":[[2010,2,6]]
+                    }
+                }
+            ]
+        }
+    JSON_tutorial_json_editor.set({"text":undefined, "json": initialJson})
+    </script>
+</div>
 
 
 
@@ -347,12 +451,10 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>More on <a href="https://doi.org/10.5281/zenodo.14871843">Forensic Metascience</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>More on <a href="https://doi.org/10.48550/arXiv.2404.00478">Forensic Scientometrics</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>A <a href="https://replicationindex.com/2015/01/24/qrps/">survey</a> of such practices<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Like <a href="https://doi.org/10.7554/eLife.48175">these</a>, for example<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Really any of the topics mentioned on the wikipedia article on <a href="https://en.wikipedia.org/wiki/Scientific_misconduct">Scientific Misconduct</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>PEREIRA, V.; BASILIO, M.P.; SANTOS, C.H.T. (2025). PyBibX: A Python Library for Bibliometric and Scientometric Analysis Powered with Artificial Intelligence Tools. Data Technologies and Applications. Vol. 59, Iss. 2, pp.&nbsp;302-337. doi: https://doi.org/10.1108/DTA-08-2023-0461<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The article can be found <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(97)11096-0/fulltext">here</a>, with retraction notice <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)60175-4/abstract">here</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>You may also hear these “keys” informally called attributes, fields, or properties.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Note that this is not actually how this date-parts field is presented by the current version of the REST API, but I’ve changed it for clarity<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>To put credit where it’s due, I got the idea to use this library as an education tool by reading <a href="https://orcid.org/0000-0002-7079-6775">Luis M. Montilla’s</a> article in the Crossref Learning Hub <a href="https://crossref.gitlab.io/tutorials/get-rw-metadata/">here</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -370,6 +472,13 @@ ul.task-list li input[type="checkbox"] {
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

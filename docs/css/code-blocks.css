@@ -1,0 +1,21 @@
+ pre.plaintext_json_block code {
+     background-color: lightgray !important;
+     text-wrap: wrap !important;
+     overflow-y: auto !important;
+     max-height: 30vh !important;
+ }
+
+ pre.code-margin-output code {
+     /* overflow-y: auto !important;
+     max-height: 20vh !important;
+     text-wrap: wrap !important; */
+     white-space: pre-wrap !important;
+     /* wraps long lines */
+     word-break: break-word !important;
+     /* breaks long words/strings if needed */
+     overflow-x: hidden !important;
+     /* no horizontal scroll */
+     overflow-y: auto !important;
+     /* vertical scroll when content is tall */
+     display: block !important;
+ }
