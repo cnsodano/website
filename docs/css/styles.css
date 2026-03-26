@@ -98,3 +98,7 @@ nav#TOC {
 ._exclamation {
     color: red !important;
 }
+
+div.jse-tree-mode {
+    background-color: #f9f5ff !important;
+}
