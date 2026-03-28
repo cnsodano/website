@@ -198,14 +198,14 @@
     "search-label": "Search"
   }
 }</script>
-
-
   <link rel="stylesheet" href="../../css/code-blocks.css">
   <link rel="stylesheet" href="../../css/jsoneditor_clear.css">
   <link rel="stylesheet" href="../../css/styles.css">
+
+
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
   <script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -408,71 +408,92 @@
   <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
     <!-- sidebar -->
     <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 
-    </div>
     <!-- main -->
     <main class="content" id="quarto-document-content">
-      <header id="title-block-header" class="quarto-title-block"></header>
+
+
+      <header id="title-block-header" class="quarto-title-block default">
+        <div class="quarto-title">
+          <h1 class="title">Understanding the JSON data format</h1>
+        </div>
 
 
 
-      <h2>What's JSON?</h2>
+        <div class="quarto-title-meta">
 
-      <p><strong>JSON</strong> is a flexible way of representing data that, despite the name
-        (<strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation), is programming
-        language-independent (meaning you don’t need to know Javascript, or any other programming language to read and
-        understand it!).</p>
-      <p>Here’s a very simple piece of data about a journal article<a href="#fn1" class="footnote-ref" id="fnref1"
-          role="doc-noteref"><sup>1</sup></a> that is represented (also known as ‘encoded’) in JSON format, and could be
-        saved as a file with the <code>.json</code> file extension:</p>
-      <div class="cell">
-        <div class="code-with-filename">
-          <div class="code-with-filename-file">
-            <pre><strong>metadata.json</strong></pre>
-          </div>
-          <div class="code-copy-outer-scaffold">
-            <div class="sourceCode cell-code" id="cb1">
-              <pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children"</span><span class="fu">,</span></span>
+
+
+
+        </div>
+
+
+
+      </header>
+
+
+      <p>This article is one part of a series of tutorials that will teach you how to begin collecting and analyzing
+        scholarly metadata using the <a
+          href="https://www.crossref.org/documentation/retrieve-metadata/rest-api/">Crossref REST API</a>. If you don’t
+        have a technical background, one of the earliest obstacles you may face while learning this technology is
+        understanding the format this data is returned to you in. If you are already familiar with the JSON data format
+        but are having trouble viewing it in your browser, stay tuned for the next article in this series.</p>
+      <section id="whats-json" class="level2">
+        <h2 class="anchored" data-anchor-id="whats-json">What’s JSON?</h2>
+        <p><strong>JSON</strong> is a flexible way of representing data that, despite the name
+          (<strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation), is
+          programming language-independent (meaning you don’t need to know Javascript, or any other programming language
+          to read and understand it!).</p>
+        <p>Here’s a very simple piece of data about a journal article<a href="#fn1" class="footnote-ref" id="fnref1"
+            role="doc-noteref"><sup>1</sup></a> that is represented (also known as ‘encoded’) in JSON format, and could
+          be saved as a file with the <code>.json</code> file extension:</p>
+        <div class="cell">
+          <div class="code-with-filename">
+            <div class="code-with-filename-file">
+              <pre><strong>metadata.json</strong></pre>
+            </div>
+            <div class="code-copy-outer-scaffold">
+              <div class="sourceCode cell-code" id="cb1">
+                <pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre>
-            </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+              </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+            </div>
           </div>
         </div>
-      </div>
-      <p>In the world of JSON, data is represented as “objects”, and every object begins with a <code>{</code>, ends
-        with a <code>}</code>, and contains a number of <code>"key": &lt;value&gt;</code> pairs that represent the
-        information about that ‘object’ that you want to store and transfer.<a href="#fn2" class="footnote-ref"
-          id="fnref2" role="doc-noteref"><sup>2</sup></a> Each key is a double-quoted string that describes what
-        information the corresponding “value” represents, for example, the simple 1-line JSON object above described the
-        title of a famously retracted journal article originally published in <a
-          href="https://doi.org/10.1016/S0140-6736(97)11096-0">The Lancet</a>. Each “value” can be one of the following:
-      </p>
-      <ul>
-        <li><code>Number</code>, for example, a count of articles published by a journal</li>
-        <li><code>String</code>, for example, the DOI of a journal article</li>
-        <li><code>Boolean</code> (true/false), for example, whether the ORCID listed for an article’s author has been
-          authenticated</li>
-        <li><code>Object</code>, for example, and object representing the first author of a paper</li>
-        <li>an <code>Array</code> of any of the above, for example a list of objects representing a paper’s references,
-          each of which having a “DOI” key, a “title” key, and so on
-          <ul>
-            <li>All <code>Array</code> objects will start and end with a <code>[</code>/<code>]</code> and have each
-              element of the array separated by a comma</li>
-          </ul>
-        </li>
-      </ul>
-      <p>To see these in action, I’ve extended the data from above to add more of the information Crossref has available
-        on this article:</p>
-      <div class="cell">
-        <div class="code-with-filename">
-          <div class="code-with-filename-file">
-            <pre><strong>metadata.json</strong></pre>
-          </div>
-          <div class="code-copy-outer-scaffold">
-            <div class="sourceCode cell-code" id="annotated-cell-2">
-              <pre
-                class="sourceCode json code-annotation-code code-with-copy code-annotated"><code class="sourceCode json"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+        <p>In the world of JSON, data is represented as “objects”, and every object begins with a <code>{</code>, ends
+          with a <code>}</code>, and contains a number of <code>"key": &lt;value&gt;</code> pairs that represent the
+          information about that ‘object’ that you want to store and transfer.<a href="#fn2" class="footnote-ref"
+            id="fnref2" role="doc-noteref"><sup>2</sup></a> Each key is a double-quoted string that describes what
+          information the corresponding “value” represents, for example, the simple 1-line JSON object above described
+          the title of a famously retracted journal article originally published in <a
+            href="https://doi.org/10.1016/S0140-6736(10)60175-4">The Lancet</a>. Each “value” can
+          be one of the following:</p>
+        <ul>
+          <li><code>Number</code>, for example, a count of articles published by a journal</li>
+          <li><code>String</code>, for example, the DOI of a journal article</li>
+          <li><code>Boolean</code> (true/false), for example, whether the ORCID listed for an article’s author has been
+            authenticated</li>
+          <li><code>Object</code>, for example, an object representing the first author of a paper</li>
+          <li>an <code>Array</code> of any of the above. For example, an array of objects representing a paper’s
+            references, each of which having a “DOI” key, a “title” key, and so on
+            <ul>
+              <li>All <code>Array</code> objects will start and end with a <code>[</code>/<code>]</code> and have each
+                element of the array separated by a comma</li>
+            </ul>
+          </li>
+        </ul>
+        <p>To see these in action, I’ve extended the data from above to add more of the information Crossref has
+          available on this article:</p>
+        <div class="cell">
+          <div class="code-with-filename">
+            <div class="code-with-filename-file">
+              <pre><strong>metadata.json</strong></pre>
+            </div>
+            <div class="code-copy-outer-scaffold">
+              <div class="sourceCode cell-code" id="annotated-cell-2">
+                <pre
+                  class="sourceCode json code-annotation-code code-with-copy code-annotated"><code class="sourceCode json"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children"</span><span class="fu">,</span></span>
 <span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"container-title"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"The Lancet"</span><span class="ot">]</span><span class="fu">,</span>           </span>
 <span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"DOI"</span><span class="fu">:</span> <span class="st">"10.1016/s0140-6736(97)11096-0"</span><span class="fu">,</span>                                                                                               </span>
@@ -491,90 +512,79 @@
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-2-17" class="code-annotation-target"><a href="#annotated-cell-2-17" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"date-parts"</span><span class="fu">:</span><span class="ot">[</span><span class="dv">2010</span><span class="ot">,</span><span class="dv">2</span><span class="ot">,</span><span class="dv">6</span><span class="ot">]</span></span>
 <span id="annotated-cell-2-18"><a href="#annotated-cell-2-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
 <span id="annotated-cell-2-19"><a href="#annotated-cell-2-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="annotated-cell-2-20"><a href="#annotated-cell-2-20" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-2-20" class="code-annotation-target"><a href="#annotated-cell-2-20" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
 <span id="annotated-cell-2-21"><a href="#annotated-cell-2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre>
-            </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+              </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+            </div>
+          </div>
+          <div class="cell-annotation">
+            <dl class="code-annotation-container-grid">
+              <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+              <dd>
+                <span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="1">This article
+                  received more than one update notice, as the <code>updated-by</code> field is an <code>Array</code>
+                  type beginning with <code>[</code></span>
+              </dd>
+              <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+              <dd>
+                <span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="2">The first update
+                  was a correction</span>
+              </dd>
+              <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+              <dd>
+                <span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="3">The metadata
+                  corresponding to this correction was provided to Crossref by <a
+                    href="https://retractionwatch.com/">Retraction Watch</a></span>
+              </dd>
+              <dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
+              <dd>
+                <span data-code-cell="annotated-cell-2" data-code-lines="10" data-code-annotation="4">The date that the
+                  correction was issued (YYYY-MM-DD) was the 6th of March, 2004<a href="#fn3" class="footnote-ref"
+                    id="fnref3" role="doc-noteref"><sup>3</sup></a></span>
+              </dd>
+              <dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
+              <dd>
+                <span data-code-cell="annotated-cell-2" data-code-lines="17" data-code-annotation="5">We can see that in
+                  addition to the 2004 correction, there was a retraction update issued in 2010</span>
+              </dd>
+              <dt data-target-cell="annotated-cell-2" data-target-annotation="6">6</dt>
+              <dd>
+                <span data-code-cell="annotated-cell-2" data-code-lines="20" data-code-annotation="6">This
+                  <code>]</code> closes the <code>"updated-by"</code> array, indicating that there have been no more
+                  updates since the 2010 retraction</span>
+              </dd>
+            </dl>
           </div>
         </div>
-        <div class="cell-annotation">
-          <dl class="code-annotation-container-grid">
-            <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
-            <dd>
-              <span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="1">This article received
-                more than one update notice, as the <code>updated-by</code> field is an <code>Array</code> type
-                beginning with <code>[</code></span>
-            </dd>
-            <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
-            <dd>
-              <span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="2">The first
-                <code>update</code> was a correction</span>
-            </dd>
-            <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
-            <dd>
-              <span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="3">The metadata
-                corresponding to this correction was provided to Crossref by <a
-                  href="https://retractionwatch.com/">Retraction Watch</a></span>
-            </dd>
-            <dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
-            <dd>
-              <span data-code-cell="annotated-cell-2" data-code-lines="10" data-code-annotation="4">The date that the
-                correction was issued (YYYY-MM-DD) was the 6th of March, 2004<a href="#fn3" class="footnote-ref"
-                  id="fnref3" role="doc-noteref"><sup>3</sup></a></span>
-            </dd>
-            <dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
-            <dd>
-              <span data-code-cell="annotated-cell-2" data-code-lines="17" data-code-annotation="5">We can see that the
-                article had more than one update, a “correction” in 2004 and a “retraction” in 2010</span>
-            </dd>
-          </dl>
-        </div>
-      </div>
-      <p>Note that this is not the full record of metadata that Crossref has for this article, in fact the
-        <code>.json</code> file returned by Crossref includes 10x more information (~10Kb compared to ~1Kb) than this
-        illustrative example. If you want to see the full metadata record, check it out below:
-      <div class="{=html}">
-        <div id="JSON_tutorial_json_editor_container" style="width: 100%; height: 90vh;">
+        <p>Note that this is not the full record of metadata that Crossref has for this article, in fact the
+          <code>.json</code> file returned by Crossref includes 10x more information (~10Kb compared to ~1Kb) than this
+          illustrative example. If you want to see the full metadata record, check it out below:
+        </p>
+        <div class="{=html}">
+          <div id="JSON_tutorial_json_editor_container" style="width: 100%; height: 40vh;">
 
-        </div>
-        <script type="module">
-          import { createJSONEditor } from "https://cdn.jsdelivr.net/npm/vanilla-jsoneditor@3.11.0/standalone.min.js"
-          const JSON_tutorial_json_editor = createJSONEditor({
-            target: document.getElementById('JSON_tutorial_json_editor_container'),
-            props: {
-              content: null,
-              onChange: (updatedContent, previousContent, { contentErrors, patchResult }) => {
-                // content is an object { json: unknown } | { text: string }
-                console.log('onChange', { updatedContent, previousContent, contentErrors, patchResult })
-                content = updatedContent
-              }
-            }
-          })
-          const initialJson = {
-            "title": "RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children",
-            "container-title": [ "The Lancet" ],
-            "DOI": "10.1016/s0140-6736(97)11096-0",
-            "updated-by": [
-              {
-                "type": "correction",
-                "source": "retraction-watch",
-                "updated": {
-                  "date-parts": [ [ 2004, 3, 6 ] ]
-                }
-              },
-              {
-                "type": "retraction",
-                "source": "retraction-watch",
-                "updated": {
-                  "date-parts": [ [ 2010, 2, 6 ] ]
+          </div>
+          <script type="module">
+            import { createJSONEditor } from "https://cdn.jsdelivr.net/npm/vanilla-jsoneditor@3.11.0/standalone.min.js"
+            const JSON_tutorial_json_editor = createJSONEditor({
+              target: document.getElementById('JSON_tutorial_json_editor_container'),
+              props: {
+                content: null,
+                onChange: (updatedContent, previousContent, { contentErrors, patchResult }) => {
+                  // content is an object { json: unknown } | { text: string }
+                  console.log('onChange', { updatedContent, previousContent, contentErrors, patchResult })
+                  content = updatedContent
                 }
               }
-            ]
-          }
-          JSON_tutorial_json_editor.set({ "text": undefined, "json": initialJson })
-        </script>
-      </div>
+            })
+            const initialJson = { "status": "ok", "message-type": "work", "message-version": "1.0.0", "message": { "indexed": { "date-parts": [ [ 2026, 3, 21 ] ], "date-time": "2026-03-21T11:41:58Z", "timestamp": 1774093318343, "version": "3.50.1" }, "reference-count": 26, "publisher": "Elsevier BV", "issue": "9103", "license": [ { "start": { "date-parts": [ [ 1998, 2, 1 ] ], "date-time": "1998-02-01T00:00:00Z", "timestamp": 886291200000 }, "content-version": "tdm", "delay-in-days": 0, "URL": "https:\/\/www.elsevier.com\/tdm\/userlicense\/1.0\/" } ], "content-domain": { "domain": [], "crossmark-restriction": false }, "short-container-title": [ "The Lancet" ], "published-print": { "date-parts": [ [ 1998, 2 ] ] }, "DOI": "10.1016\/s0140-6736(97)11096-0", "type": "journal-article", "created": { "date-parts": [ [ 2002, 7, 25 ] ], "date-time": "2002-07-25T12:19:56Z", "timestamp": 1027599596000 }, "page": "637-641", "source": "Crossref", "is-referenced-by-count": 1972, "title": [ "RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children" ], "prefix": "10.1016", "volume": "351", "author": [ { "given": "AJ", "family": "Wakefield", "sequence": "first", "affiliation": [] }, { "given": "SH", "family": "Murch", "sequence": "additional", "affiliation": [] }, { "given": "A", "family": "Anthony", "sequence": "additional", "affiliation": [] }, { "given": "J", "family": "Linnell", "sequence": "additional", "affiliation": [] }, { "given": "DM", "family": "Casson", "sequence": "additional", "affiliation": [] }, { "given": "M", "family": "Malik", "sequence": "additional", "affiliation": [] }, { "given": "M", "family": "Berelowitz", "sequence": "additional", "affiliation": [] }, { "given": "AP", "family": "Dhillon", "sequence": "additional", "affiliation": [] }, { "given": "MA", "family": "Thomson", "sequence": "additional", "affiliation": [] }, { "given": "P", "family": "Harvey", "sequence": "additional", "affiliation": [] }, { "given": "A", "family": "Valentine", "sequence": "additional", "affiliation": [] }, { "given": "SE", "family": "Davies", "sequence": "additional", "affiliation": [] }, { "given": "JA", "family": "Walker-Smith", "sequence": "additional", "affiliation": [] } ], "member": "78", "reference": [ { "key": "10.1016\/S0140-6736(97)11096-0_bib1", "series-title": "Diagnostic and Statistical Manual of Mental Disorders (DSM-IV)", "year": "1994" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib2", "doi-asserted-by": "crossref", "first-page": "311", "DOI": "10.1016\/0009-8981(82)90018-3", "article-title": "A sensitive micromethod for the routine estimations of methylmalonic acid in body fluids and tissues using thin-layer chromatography.", "volume": "118", "author": "Bhatt", "year": "1982", "journal-title": "Clin Chem Acta" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib3", "doi-asserted-by": "crossref", "first-page": "724", "DOI": "10.1136\/gut.38.5.724", "article-title": "Pathogenesis of aphthoid ulcers in Crohn's disease: correlative findings by magnifying colonoscopy, electromicroscopy, and immunohistochemistry.", "volume": "38", "author": "Fujimura", "year": "1996", "journal-title": "Gut" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib4", "first-page": "146", "article-title": "Die Psychopathologie des coeliakakranken kindes.", "volume": "197", "author": "Asperger", "year": "1961", "journal-title": "Ann Paediatr" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib5", "doi-asserted-by": "crossref", "first-page": "883", "DOI": "10.1016\/S0140-6736(72)92258-1", "article-title": "Alpha-1 antitrypsin, autism and coeliac disease.", "volume": "ii", "author": "Walker-Smith", "year": "1972", "journal-title": "Lancet" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib6", "doi-asserted-by": "crossref", "first-page": "1076", "DOI": "10.1111\/j.1651-2227.1996.tb14220.x", "article-title": "Abnormal intestinal permeability in children with autism.", "volume": "85", "author": "D'Eufemia", "year": "1996", "journal-title": "Acta Paediatrica" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib7", "doi-asserted-by": "crossref", "first-page": "174", "DOI": "10.1016\/0166-2236(79)90071-7", "article-title": "A neurochemical theory of autism.", "volume": "2", "author": "Panksepp", "year": "1979", "journal-title": "Trends Neurosci" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib8", "first-page": "627", "article-title": "Biologically active peptide-containing fractions in schizophrenia and childhood autism.", "volume": "28", "author": "Reichelt", "year": "1993", "journal-title": "Adv Biochem Psychopharmacol" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib9", "first-page": "328", "article-title": "Role of neuropeptides in autism and their relationships with classical neurotransmitters.", "volume": "3", "author": "Shattock", "year": "1991", "journal-title": "Brain Dysfunction" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib10", "unstructured": "Waring RH, Ngong JM. Sulphate metabolism in allergy induced autism: relevance to disease aetiology, conference proceedings, biological perspectives in autism, University of Durham, NAS 35\u201344." }, { "key": "10.1016\/S0140-6736(97)11096-0_bib11", "doi-asserted-by": "crossref", "first-page": "711", "DOI": "10.1016\/0140-6736(93)90485-Y", "article-title": "Disruption of sulphated glycosaminoglycans in intestinal inflammation.", "volume": "341", "author": "Murch", "year": "1993", "journal-title": "Lancet" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib12", "doi-asserted-by": "crossref", "first-page": "72", "DOI": "10.1159\/000119295", "article-title": "Elevated serotonin levels in autism: association with the major histocompatibility complex.", "volume": "34", "author": "Warren", "year": "1996", "journal-title": "Neuropsychobiology" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib13", "first-page": "137", "article-title": "Food allergy and infantile autism.", "volume": "37", "author": "Lucarelli", "year": "1995", "journal-title": "Panminerva Med" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib14", "unstructured": "Rutter M, Taylor E, Hersor L. In: Child and adolescent psychiatry. 3rd edn. London: Blackwells Scientific Publications: 581\u201382." }, { "key": "10.1016\/S0140-6736(97)11096-0_bib15", "series-title": "The Autistic Spectrum.", "first-page": "68", "author": "Wing", "year": "1996" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib16", "doi-asserted-by": "crossref", "first-page": "13", "DOI": "10.1007\/BF02628672", "article-title": "Dialysable lymphocyte extract (DLyE) in infantile onset autism: a pilot study.", "volume": "9", "author": "Fudenberg", "year": "1996", "journal-title": "Biotherapy" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib17", "first-page": "455", "article-title": "Immunology and immunologic treatment of autism", "author": "Gupta", "year": "1996", "journal-title": "Proc Natl Autism Assn Chicago" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib18", "doi-asserted-by": "crossref", "first-page": "28", "DOI": "10.1007\/BF01211371", "article-title": "Detection of immunoreactive antigen with monoclonal antibody tomeasles virus in tissue from patients with Crohn's disease.", "volume": "30", "author": "Miyamoto", "year": "1995", "journal-title": "J Gastroenterol" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib19", "doi-asserted-by": "crossref", "first-page": "508", "DOI": "10.1016\/S0140-6736(94)91898-8", "article-title": "Crohn's disease following early measles exposure.", "volume": "344", "author": "Ekbom", "year": "1994", "journal-title": "Lancet" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib20", "doi-asserted-by": "crossref", "first-page": "1071", "DOI": "10.1016\/S0140-6736(95)90816-1", "article-title": "Is measles vaccination a risk factor for inflammatory bowel diseases?", "volume": "345", "author": "Thompson", "year": "1995", "journal-title": "Lancet" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib21", "doi-asserted-by": "crossref", "first-page": "877", "DOI": "10.1007\/BF01718162", "article-title": "Polymerase chain reaction detection of the haemagglutinin gene from an attenuated measles vaccines strain in the peripheral mononuclear cells of children with autoimmune hepatitis.", "volume": "141", "author": "Kawashima", "year": "1996", "journal-title": "Arch Virol" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib22", "doi-asserted-by": "crossref", "first-page": "327", "DOI": "10.1136\/bmj.312.7027.327", "article-title": "Autism spectrum disorders: no evidence for or against an increase in prevalence.", "volume": "312", "author": "Wing", "year": "1996", "journal-title": "BMJ" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib23", "doi-asserted-by": "crossref", "first-page": "730", "DOI": "10.1016\/S0140-6736(05)60171-7", "article-title": "Measles vaccination and neurological events.", "volume": "349", "author": "Miller", "year": "1997", "journal-title": "Lancet" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib24", "doi-asserted-by": "crossref", "first-page": "438", "DOI": "10.1111\/j.1365-2249.1991.tb05657.x", "article-title": "Increased frequency of the null allele at the complement C4B locus in autism.", "volume": "83", "author": "Warren", "year": "1991", "journal-title": "Clin Exp Immunol" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib25", "doi-asserted-by": "crossref", "first-page": "1072", "DOI": "10.1016\/S0140-6736(80)92287-4", "article-title": "Problems with the serum vitamin B12 assay.", "volume": "ii", "author": "England", "year": "1980", "journal-title": "Lancet" }, { "key": "10.1016\/S0140-6736(97)11096-0_bib26", "first-page": "43", "article-title": "Mental retardation, megaloblastic anaemic, homocysteine metabolism due to an error in B12 metabolism.", "volume": "47", "author": "Dillon", "year": "1974", "journal-title": "Clin Sci Mol Med" } ], "updated-by": [ { "DOI": "10.1016\/s0140-6736(04)15715-2", "type": "correction", "label": "Correction", "source": "retraction-watch", "updated": { "date-parts": [ [ 2004, 3, 6 ] ], "date-time": "2004-03-06T00:00:00Z", "timestamp": 1078531200000 }, "record-id": "17269" }, { "DOI": "10.1016\/s0140-6736(10)60175-4", "type": "retraction", "label": "Retraction", "source": "retraction-watch", "updated": { "date-parts": [ [ 2010, 2, 6 ] ], "date-time": "2010-02-06T00:00:00Z", "timestamp": 1265414400000 }, "record-id": "4036" } ], "container-title": [ "The Lancet" ], "original-title": [], "language": "en", "link": [ { "URL": "https:\/\/api.elsevier.com\/content\/article\/PII:S0140673697110960?httpAccept=text\/xml", "content-type": "text\/xml", "content-version": "vor", "intended-application": "text-mining" }, { "URL": "https:\/\/api.elsevier.com\/content\/article\/PII:S0140673697110960?httpAccept=text\/plain", "content-type": "text\/plain", "content-version": "vor", "intended-application": "text-mining" } ], "deposited": { "date-parts": [ [ 2019, 5, 1 ] ], "date-time": "2019-05-01T12:43:25Z", "timestamp": 1556714605000 }, "score": 1, "resource": { "primary": { "URL": "https:\/\/linkinghub.elsevier.com\/retrieve\/pii\/S0140673697110960" } }, "subtitle": [], "short-title": [], "issued": { "date-parts": [ [ 1998, 2 ] ] }, "references-count": 26, "journal-issue": { "issue": "9103", "published-print": { "date-parts": [ [ 1998, 2 ] ] } }, "alternative-id": [ "S0140673697110960" ], "URL": "https:\/\/doi.org\/10.1016\/s0140-6736(97)11096-0", "relation": {}, "ISSN": [ "0140-6736" ], "issn-type": [ { "value": "0140-6736", "type": "print" } ], "subject": [], "published": { "date-parts": [ [ 1998, 2 ] ] } } }
+            JSON_tutorial_json_editor.set({ "text": undefined, "json": initialJson })
+            document.getElementById("JSON_tutorial_json_editor_container").style.height = "60vh"
+          </script>
+        </div>
 
 
+      </section>
 
 
       <div id="quarto-appendix" class="default">
@@ -583,11 +593,9 @@
 
           <ol>
             <li id="fn1">
-              <p>The article can be found <a
-                  href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(97)11096-0/fulltext">here</a>,
-                with retraction notice <a
-                  href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)60175-4/abstract">here</a><a
-                  href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p>
+              <p>The article can be found <a href="https://doi.org/10.1016/S0140-6736(97)11096-0">here</a>,
+                with retraction notice <a href="https://doi.org/10.1016/S0140-6736(10)60175-4">here</a><a href="#fnref1"
+                  class="footnote-back" role="doc-backlink">↩︎</a></p>
             </li>
             <li id="fn2">
               <p>You may also hear these “keys” informally called attributes, fields, or properties.<a href="#fnref2"
@@ -598,6 +606,7 @@
                 REST API, but I’ve changed it for clarity<a href="#fnref3" class="footnote-back"
                   role="doc-backlink">↩︎</a></p>
             </li>
+          </ol>
         </section>
       </div>
     </main> <!-- /main -->

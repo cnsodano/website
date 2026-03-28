@@ -102,3 +102,12 @@ nav#TOC {
 div.jse-tree-mode {
     background-color: #f9f5ff !important;
 }
+
+#code-annotation-line-highlight {
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+.light-font {
+    font-weight: lighter
+}
