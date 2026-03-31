@@ -1,0 +1,108 @@
+---
+title: "Open code for open science?"
+---
+
+Article discussed: Easterbrook, S. Open code for open science?. Nature Geosci 7, 779–781 (2014). <https://doi.org/10.1038/ngeo2283> 
+[Shareable Link to full text](https://rdcu.be/egvyj)
+
+### Paper Summary
+
+::: {.callout-note collapse="false" appearance="minimal"}
+## tl;dr^[1 *tl;dr* $\equiv$ too long; didn't read]
+
+Easterbrook is hopeful that journal mandates for open code submissions can improve code quality in the short term but lists a number of logistical reasons that explain why merely making code available to read will not alone improve the reproducibility of published computational research. He argues that the challenges of making scientific software open source (which differ across fields and labs) must be understood and managed in order for the many benefits it offers–of which greater reproducibility is only one–to be realized.
+
+This article is quite short (\~1800 words, [estimated](https://wordcounter.net/) 6.5min reading time, 10 minute speaking time) and worth reading in its entirety. Still, I have summarized the main points below.
+
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## About the Author
+Steve Easterbrook
+    -   As of April 7th, 2025 Easterbrook is identified by [recent publications](https://www.sciencedirect.com/science/article/pii/S0013935125000969) as an affiliate of the School of the Environment at the University of Toronto in Ontario, Canada. His university [website](https://www.environment.utoronto.ca/people/directories/all-faculty/steve-easterbrook) and personal [website](https://www.cs.toronto.edu/~sme/) mention he is a professor in the Department of Computer Science and Director of the School of Environment. He describes his areas of interest as "climate informatics" and " the applications of computer science and software engineering to the challenge posed by global climate change". His [google scholar](https://scholar.google.com/citations?user=bD8DWiEAAAAJ&hl=en) account shows he has been publishing highly cited papers on software engineering topics since the 1990's
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Definitions
+
+-   Open Source
+    -   In a literal sense, an 'open source' program is one with the source code freely available to be read. However, the term "open source" generally refers to software that adheres to a [set of criteria](https://opensource.org/definition-annotated) surrounding its redistribution that further promotes its use as a free, unrestricted, and accessible resource for all to benefit from. In addition to transparent source code, open source projects often build a[community of contributors](www.redhat.com/en/blog/open-source-culture-9-core-principles-and-values) that [maintain](https://en.wikipedia.org/wiki/Software_maintenance) the software over time and ensure it is accessible to users across platforms
+-   Reproducibility
+    -   A much [debated](https://doi.org/10.3389/fninf.2017.00076) term. Here Easterbrook gives his own definition^[See "Paraphrased Points" for context. Easterbrook defines "repeatability" as the ability to *"re-run the same code at a later time or on a different machine"* and reproducibility as the ability *"to recreate the results, whether by re-running the same code, or by writing a new program"*]
+-   Computational Research
+    -   [Computational](https://en.wikipedia.org/wiki/Computational_science) research relies on computers to study the world. If you're not familiar with this definition then you likely will not ever have run into any of the problems mentioned in this article. If you are a computational researcher, you likely will have run into every problem mentioned in this article. Easterbrook draws examples mainly from his experience in climate science research, mentioning computaional tasks like running "numerical simulations of chaotic phenomena, such as weather".
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Paraphrased Points
+
+-   Most code written for cutting edge research applications is "quick and dirty" to allow rapid prototyping and exploratory analysis; however, this incurs [technical debt](https://en.wikipedia.org/wiki/Technical_debt). Open source policies enforced by journals may nudge scientists into managing this technical debt more carefully, but some barriers are harder to overcome
+
+-   Some of the barriers to code re-use (even when openly available) that Easterbook mentions are:
+
+    -   [Portability](en.wikipedia.org/wiki/Software_portability): for example, *"Complex models are often carefully optimized so that they run in reasonable time on one specific platform"*.
+
+    -   [Configurability](https://en.wikipedia.org/wiki/Configure_script): for example, code dependencies or model starting configurations are rarely described adequately enough to repeat the published results
+
+    -   Model-Data Blur: *"\[C\]omputational models are continually fed observational data in various forms, to correct biases, to parameterize processes that cannot be computed explicitly or to set boundary conditions."* Poor [data provenance](https://en.wikipedia.org/wiki/Data_lineage) then becomes another barrier to reproducibility
+
+-   Repeatability vs Reproducibility:
+
+    -   Easterbrook defines "repeatability" as the ability to *"re-run the same code at a later time or on a different machine"* and reproducibility as the ability *"to recreate the results, whether by re-running the same code, or by writing a new program"*
+    -   Exact repeatability is hard to maintain due to [deprecation](https://en.wikipedia.org/wiki/Deprecation#Software) and, in Easterbrook's field of complex climate simulations, rounding errors that propagate through steps of a simulation.
+    -   Easterbook claims that "*Reproducibility without repeatability — the confirmation of results using different code — is the computational equivalent of a replicated experiment*"[^2]
+
+-   Making code open-source is not the same as uploading a codebase to a place like the [Open Science Framework](https://osf.io/). The kinds of open-source projects that ensure cross-platform portability and promote reproducibility require a variety of contributors and an amount of effort that often goes far beyond the demand for the code used for any single publication.
+
+-   Easterbrook claims that the "*vast majority of software released as open source fails to attract any kind of community at all*". If the goal of open code requirements is to facilitate growth of scientific communities through sharing mutually beneficial tools, merely requiring reserachers to post their code is likely not going to achieve it[^3]
+
+-   In the case that code is made openly available, "*A science institution usually does not have the support staff to help resolve queries, if attempts to re-run the code fail.*". Easterbrook argues that scientists subject to politically motivated attacks experience barriers to sharing as "*minor weaknesses in code*" could result in scientists being overwhelmed by queries in a kind of [denial of service](https://en.wikipedia.org/wiki/Denial-of-service_attack) attack.^[In the future, I will post a blog about denial of service attacks. Given the scale which scientific-ecosystem crime organizations like papermills operate at and the policy implications of controlling a scientific narrative, it's not so strange to think that this is a concern to prepare for. Already, research integrity staff at publishers spend a lot of their time tracing down, verifying, and barring papermill products from their journals--time they could spend doing reproducibility checks or expediting the investigation of a paper with inconsistencies noted on [pubpeer](https://en.wikipedia.org/wiki/PubPeer)]
+
+-   Easterbrook believes that scientists being confronted with the possibility that someone may read their code (by being mandated to upload it by journals) may motivate them to make it more readable
+:::
+
+[^2]: The mixing of R-words here can be quite confusing. I believe what Easterbrook means is that the confidence we should have in the robustness of an effect reported by one group should be higher if re-analyses of the same dataset using different analysis approaches (e.g. different in-house pipelines that generally are considered valid approaches) result in the same effect. This is the general concept of [many/multi-analyst studies](https://forrt.org/glossary/english/multi_analyst_studies/). This is not what I would put value on as a researcher. Rather, I'd prefer to see that effects which have a large impact on scientific discourse be shown foremostly to have code that is a reflection of best practice (according to the current best theories of how to analyze those data), error-free (passing a suite of test cases, possibly including [forensic metascience](https://doi.org/10.5281/zenodo.14871843) tests), and capable of running on any machine. If experts in that field of study agree that this method of analysis is appropriate, and the code is shown to be a valid translation of that method, then I'd think it be better to define a "replication"/verification of that effect as "the same, previously shown-to-be-valid code produces results that continue to support the initially tested hypothesis when ran on new, preferably more generalizable, data". 
+
+[^3]: However, I think it is a serious mistake to assume the reason journals encourage code-posting is to stimulate the scientific software sharing ecosystem. It could be that librarians negotiating contracts with publishers begin to put pressure on code availability as a criterion they use to decide to subscribe or not, or that scientists begin to treat open-code journals as more credible, or that more highly cited scientists begin to opt to submit to journals that have code availability requirements (none of these reasons are mutually exclusive). A glaring omission in this article is that, from a research integrity perspective, the posting of code, **regardless of how portable, configurable, readable, etc** the code is, is a crucial first step to evaluating the integrity of the results reported. On multiple occasions I've tried to replicate a paper and found that the codebase posted includes an analysis step that is different than what is reported in the methods section of the paper. 
+
+### Journal Club Discussion
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Summary 
+*Note on terminology*^[
+In this section I use the terms 'repeatability' and 'reproducibility' not as they are defined in the paper, but as we used them in discussion; namely, that "repeatable" code is code that a researcher can reproduce the output (figures, summary statistics, results of statistical tests) on their machine, and "reproducible" code is code which another researcher can use to reproduce the paper's outputs on their (different) machine using the same data and source code files. Both terms would be considered "repeatability" by Easterbrook, but the distinction was important for explaining the work of a journal editor trying to reproduce the results before agreeing to publish the code submitted alongside a manuscript]
+
+An abridged summary of some of our discussion points (To be expanded upon:)
+
+- At [Meta-Psychology](https://open.lnu.se/index.php/metapsychology/index)^[According to the editor], most bottlenecks in computational reproducibility checks are very simple fixes
+
+    - The most common errors experienced when doing reproducibility checks were:
+
+        1. Absolute paths to files instead of relative paths (e.g. "C:/Users/ScientistName/data.csv") 
+        2. Missing files
+        3. Missing declarations of requirements (failing to explicitly import [libraries](https://en.wikipedia.org/wiki/Library_computing), omitting version numbers and later versions deprecating and breaking the code)^[When writing this post, I came across the term "[Dependency Hell](https://en.wikipedia.org/wiki/Dependency_hell)" which I think accurately describes this situation]
+
+    - Some of these issues are simple enough to automate. I came up with a tool to automate solving the first two problems (can be found [here](../../projects/projects.qmd#automating-reproducibility-checks-for-journal-submissions))
+
+- However, computational reproducibility checks take up a LOT of time 
+
+    - There is room for specialization; it takes someone with a computer science background much less time to figure out a messy codebase, and
+    - it can be unhelpful to expect non-computationally trained scientists to shoulder the burden of ensuring reproducibility. More advanced concepts that are part of a Computer Scientist's training ([unit testing](https://en.wikipedia.org/wiki/Unit_testing)^[I plan a future post describing the cases where unit tests can make or break an analysis script, if you're unfamiliar with this concept stay tuned], defining functionality and building to an [interface](https://en.wikipedia.org/wiki/Interface_(object-oriented_programming)) are not taught to, e.g., psychology students. Silent errors can easily go undetected.
+    - Leveraging specialization may help: like "methodological" peer reviewers, peer communities and journals can draw on "computational" specialists to ensure software is error-free and future-proof prior to publication. Added benefits of specialization are, for example, quicker analysis turnarounds and fewer computational resources required during analysis, as qualified research support staff can optimize code^[There have been times where I have been able to reduce the runtime of a analysis script by tenfold merely by implementing [parallelism](https://en.wikipedia.org/wiki/Parallel_computing)]
+
+- Although some bemoan the use of point-and-click platforms like SPSS and Jamovi, it can be much easier to check for reproducibility when these tools were used because these platforms can perfectly translate every action taken into a single script (Jamovi, for example, [translates into R](https://docs.jamovi.org/_pages/um_6_syntax_mode.html)). There is then a "provenance" of actions that you do not have when researcher submit their own R files.
+
+- With the improvement of large language model (LLM) coding assistants, one may expect code quality to improve, but it is not so simple. In my experience, colleagues of mine who were most eager to adopt LLM programming copilots were also most overconfident in the code it wrote for them, and may have actually lost productivity by not knowing how to troubleshoot when their code inevitably broke. For programmers who are not familiar with basic concepts like [sanity checks](https://en.wikipedia.org/wiki/Smoke_testing_(software)), unit tests, and prowling for silent errors^[Silent errors are errors that do not throw an exception (In [compiled languages](https://en.wikipedia.org/wiki/Compiled_language), the program will be able to compile, or in [interpreted languages](https://en.wikipedia.org/wiki/Interpreter_(computing)), the code will continue to run even though the error has occured. This may mean, e.g., one step of your data analysis pipeline isn't performed and you do not have any error message alerting you to that fact, resulting in a disconnect between your stated methods and the actual methods that produced your figures, statistical test results, etc.)], copilots may entrench the attitude of "click around until it runs and then don't change anything".
+
+- As LLM copilots improve, it may be more beneficial to focus undergraduate and graduate level programming training for non-computational trainees (e.g. in the psychological sciences) on higher level concepts instead of spending time teaching the syntax of any specific language. As LLMs get better at translating prompts and [pseudocode](https://en.wikipedia.org/wiki/Pseudocode) into [low level code](https://en.wikipedia.org/wiki/Low-level_programming_language), it may make more sense to teach programming courses entirely in pseudocode, focusing instead on developing conceptual understanding 
+
+:::
+
+
+### Further Thoughts
+- Alex Byrnes (ReproTea attendee) suggested discussing the implications of the [Black Spatula Project](https://amistrongeryet.substack.com/p/the-black-spatula-project) for LLMs in research integrity checks. I think this is a good idea, and I hope to open a forum/comment feature on this blog to continue these conversations. More to come...
+
+
+#### Attendees
+
+[Redacted Redacted]{style="background-color:black;"}, Christian Sodano, [Redacted Redacted]{style="background-color:black;"}^[redacting until I know they are okay with me posting]

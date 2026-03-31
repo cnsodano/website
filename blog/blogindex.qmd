@@ -1,0 +1,10 @@
+---
+title: "Blog Posts"
+---
+ 
+## Crossref API Tutorials
+* [March 26th 2026: Introduction to the JSON API response format](/blog/CR_API_Tutorials/JSON.qmd)
+* [March 30th 2026: Troubleshooting JSON browser viewing issues](/blog/CR_API_Tutorials/troubleshooting-browser-JSON-view.qmd)
+
+## IGDORE ReproDucibilitea Summaries
+* [March 5th 2025: Open code for open science?](/blog/IGDORE/openCodeForOpenScience.qmd)

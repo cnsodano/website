@@ -1,0 +1,70 @@
+/* Touching up the presentation of the jsoneditor*/
+.jse-message {
+    display: none !important;
+}
+
+.jse-status-bar {
+    display: none !important;
+}
+
+.cm-gutters {
+    display: none !important;
+}
+
+.cm-lintPoint {
+    display: none !important;
+}
+
+.jse-button.jse-first {
+    display: none !important;
+}
+
+.jse-group-button {
+    display: none !important;
+}
+
+.jse-sort {
+    display: none !important;
+}
+
+.jse-transform {
+    display: none !important;
+}
+
+.jse-contextmenu {
+    display: none !important;
+}
+
+.jse-context-menu-pointer {
+    display: none !important;
+}
+
+.jse-undo {
+    display: none !important;
+}
+
+.jse-redo {
+    display: none !important;
+}
+
+div.jsonedit:has(div.jse-main div.jse-text-mode) {
+    max-height: 250px !important;
+    /*_return change this to vh?*/
+}
+
+div.jse-text-mode div.jse-menu {
+    display: none !important;
+    /*_return change this to vh?*/
+}
+
+.jsoneditor-field {
+    white-space: nowrap !important;
+}
+
+.jse-navigation-bar {
+    display: none !important;
+}
+
+.jse-json-node {
+    margin-bottom: 0.2em !important;
+}

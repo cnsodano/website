@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./images/favicon-32x32.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -43,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-92fd76982d5e1762eba9c7ce824b50a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-f43ca2400f52f1e08d2bb5ae3760b819.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-92fd76982d5e1762eba9c7ce824b50a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7c824f2b9d37ecf84e568eb69aa803f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-cc57edd66fb86c3792b528d63cc055c9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-7c824f2b9d37ecf84e568eb69aa803f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,11 +74,28 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Privacy-friendly analytics by Plausible -->
+
+<script async="" src="https://plausible.io/js/pa-nThGDMHeE3kpydbHY2C0i.js"></script>
+
+<script>
+
+    window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments) }, plausible.init = plausible.init || function (i) { plausible.o = i || {} };
+
+    plausible.init()
+
+</script>
+<script src="js/initializePopOvers.js"></script>
 
 
+<link rel="stylesheet" href="css/popovers.css">
+<link rel="stylesheet" href="css/modal-ext.css">
+<link rel="stylesheet" href="css/top-level-styles.css">
+<link rel="stylesheet" href="css/code-blocks.css">
+<link rel="stylesheet" href="css/jse.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -243,14 +261,13 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Christian N Sodano</span>
-    </a>
-  </div>
-          <ul class="navbar-nav navbar-nav-scroll me-auto">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
@@ -268,7 +285,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-          <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -278,7 +296,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#collaborations" id="toc-collaborations" class="nav-link" data-scroll-target="#collaborations">Collaborations</a></li>
+  <li><a href="#techniques" id="toc-techniques" class="nav-link" data-scroll-target="#techniques">Techniques</a></li>
+  <li><a href="#some-more-techie-stuff" id="toc-some-more-techie-stuff" class="nav-link" data-scroll-target="#some-more-techie-stuff">Some more techie stuff</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -286,9 +315,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>I am <strong>currently on a job search</strong>. If you’re looking to work with someone who has the technical chops to answer tough questions about the scientific record, please reach out! I would love to talk more! (cnsodano@gmail.com).</p>
+</div>
+</div>
+</div>
 <div class="quarto-about-trestles">
   <div class="about-entity">
-    <img src="cutout_avatar_f.PNG" class="about-image
+    <img src="images/cutout_avatar_f.PNG" class="about-image
   rounded " style="width: 20em;">
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -314,6 +353,9 @@ ul.task-list li input[type="checkbox"] {
 <p>I’m an independent researcher currently working in the emerging field of forensic metascience<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and scientometrics<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, developing tools to detect and prevent breaches of research integrity including questionable research practices<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, statistical and methodological errors<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, and fraud<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Prior to working in metascience, I did my Bachelor’s in Computer Science with a minor specialization in Neuroscience at the <a href="https://cs.unc.edu/">University of North Carolina</a> where I researched automatic sleep spindle detection algorithms and the cognitive/clinical effects of non-invasive brain stimulation.</p>
 <p>My current projects in this area focus on <a href="./projects/projects.html#automating-reproducibility-checks-for-journal-submissions">automating reproducibility checks</a>, detecting so-called <a href="https://osf.io/mbcw5/">paper-mills</a> (businesses conducting for-profit research fraud at large-scale) and <a href="./projects/projects.html#hijacked-journal-detection-toolbox">journal hijackings</a>, as well as authors who <a href="./projects/projects.html#discovering-unreasonable-citation-stacking">game citations</a> for personal benefit and papers that are <a href="./projects/projects.html#detecting-post-retraction-citation-awareness">unknowingly citing discredited research</a>.</p>
 </section>
+</div></div>
+</div>
+
 <section id="collaborations" class="level2">
 <h2 data-anchor-id="collaborations">Collaborations</h2>
 <p>I’m openly exploring collaborations, so please reach out if are looking for collaborators to:</p>
@@ -324,24 +366,17 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Write grant proposals for projects in the fields of scientific error detection or scientometrics</p></li>
 </ul>
 </section>
-<section id="jobs" class="level2">
-<h2 data-anchor-id="jobs">Jobs</h2>
-<p>I am <strong>currently on a job search</strong>. If you lead a research group and are looking for new research staff, or if you lead a research integrity team at an academic publisher, please reach out! I would love to talk more! (cnsodano@gmail.com).</p>
-</section>
 <section id="techniques" class="level2">
 <h2 data-anchor-id="techniques">Techniques</h2>
 <p>I use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g.&nbsp;PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks.</p>
 </section>
-<section id="technical-competencies" class="level2">
-<h2 data-anchor-id="technical-competencies">Technical Competencies</h2>
-<p>I mainly code in Python, using the open-source <a href="https://github.com/pandas-dev/pandas">pandas</a> library for data cleaning and <a href="https://github.com/numpy/numpy">numpy</a> and <a href="https://github.com/scikit-learn/scikit-learn">scikit-learn</a> for machine learning. I use <a href="https://github.com/explosion/spaCy">spaCy</a> for more advanced NLP applications. For scientometrics, I’ve used <a href="https://doi.org/10.1007/s11192-009-0146-3">VOSviewer</a>, and recently <a href="https://github.com/Valdecy/pybibx">pybibx</a><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. For demonstrating analysis pipelines in a portable and interactive format, I am favoring <a href="https://github.com/marimo-team/marimo">Marimo notebooks</a> over <a href="https://jupyter.org/">Jupyter notebooks</a>, and I try to use <a href="https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers">docker development containers</a> for reproducibility. For automated testing I use <a href="https://github.com/pytest-dev/pytest">pytest</a> and particularly the pytest plugin <a href="https://github.com/pytest-dev/pytest-bdd">pytest-BDD</a>. I have some coding experience in MATLAB, R, Java, and C.</p>
+<section id="some-more-techie-stuff" class="level2">
+<h2 data-anchor-id="some-more-techie-stuff">Some more techie stuff</h2>
+<p>I mainly code in Python, using the open-source <a href="https://github.com/pandas-dev/pandas">pandas</a> library for data cleaning and <a href="https://github.com/numpy/numpy">numpy</a> and <a href="https://github.com/scikit-learn/scikit-learn">scikit-learn</a> for machine learning. I use <a href="https://github.com/explosion/spaCy">spaCy</a> for more advanced NLP applications. For scientometrics, I’ve used <a href="https://doi.org/10.1007/s11192-009-0146-3">VOSviewer</a>, and recently <a href="https://github.com/Valdecy/pybibx">pybibx</a><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. For demonstrating analysis pipelines in a portable and interactive format, I am favoring <a href="https://github.com/marimo-team/marimo">Marimo notebooks</a> over <a href="https://jupyter.org/">Jupyter notebooks</a>, and I try to use <a href="https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers">docker development containers</a> for reproducibility. For automated testing I use <a href="https://github.com/pytest-dev/pytest">pytest</a> and particularly the pytest plugin <a href="https://github.com/pytest-dev/pytest-bdd">pytest-BDD</a>. I have some coding experience in JavaScript, MATLAB, R, Java, and C.</p>
+
+
+
 </section>
-</div></div>
-</div>
-
-
-
-
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
@@ -771,10 +806,207 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+<p>This page is built with ❤️ and <a hre="https://quarto.org">Quarto</a></p>
 </div>
   </div>
 </footer>
+<style>
+
+    @keyframes footnote-flash {
+
+        0% {
+
+            background-color: rgba(255, 200, 50, 0.35);
+
+            box-shadow: 0 0 0 4px rgba(255, 200, 50, 0.35);
+
+        }
+
+
+
+        60% {
+
+            background-color: rgba(255, 200, 50, 0.35);
+
+            box-shadow: 0 0 0 4px rgba(255, 200, 50, 0.35);
+
+        }
+
+
+
+        100% {
+
+            background-color: transparent;
+
+            box-shadow: 0 0 0 4px transparent;
+
+        }
+
+    }
+
+
+
+    .footnote-highlight {
+
+        border-radius: 3px;
+
+        animation: footnote-flash 2s ease-out forwards;
+
+    }
+
+</style>
+
+
+
+<script>
+
+    function fnrefToFn(str) {
+
+        return str.replace('fnref', 'fn');
+
+    }
+
+
+
+    function applyFlash(link) {
+
+        const clickElId = link.id
+
+        const isRef = /^fnref\d/.test(clickElId)
+
+        let targetId = null
+
+        if (isRef) {
+
+            targetId = fnrefToFn(clickElId)
+
+        } else {
+
+            // Is backref
+
+            debugger;
+
+            targetId = `${link.href.split("#").slice(-1)[ 0 ]}`
+
+        }
+
+        target = document.getElementById(targetId)
+
+        if (!target) return;
+
+
+
+        // Remove the class first in case it's already animating
+
+        target.classList.remove('footnote-highlight');
+
+
+
+        // Force a reflow so re-adding the class restarts the animation
+
+        void target.offsetWidth;
+
+
+
+        target.classList.add('footnote-highlight');
+
+
+
+        target.addEventListener(
+
+            'animationend',
+
+            () => target.classList.remove('footnote-highlight'),
+
+            { once: true }
+
+        );
+
+
+
+    }
+
+    document.addEventListener('click', (e) => {
+
+        let link = e.target.closest("a.footnote-ref[href*='#fn']");
+
+        if (!link) {
+
+            link = e.target.closest("a.footnote-back[href*='#fnref']")
+
+        }
+
+        if (!link) return;
+
+
+
+        applyFlash(link)
+
+    });
+
+
+
+    //     document.addEventListener('load', () => {
+
+    //         function addHighlightOnClickListener(selector) {
+
+    //             document.querySelectorAll(selector).forEach(link => {
+
+    //                 link.addEventListener('click', () => {
+
+    //
+
+    //                     const targetId = link.getAttribute("href").split('/').slice(-1)[ 0 ].slice(1);
+
+    //
+
+    //                     const target = document.getElementById(targetId);
+
+    //                     if (!target) return;
+
+    //
+
+    //                     // Remove the class first in case it's already animating
+
+    //                     target.classList.remove('footnote-highlight');
+
+    //
+
+    //                     // Force a reflow so re-adding the class restarts the animation
+
+    //                     void target.offsetWidth;
+
+    //
+
+    //                     target.classList.add('footnote-highlight');
+
+    //
+
+    //                     target.addEventListener(
+
+    //                         'animationend',
+
+    //                         () => target.classList.remove('footnote-highlight'),
+
+    //                         { once: true }
+
+    //                     );
+
+    //                 });
+
+    //             });
+
+    //         }
+
+    //
+
+    //         addHighlightOnClickListener("a.footnote-ref[href*='#fn']")
+
+    //         addHighlightOnClickListener("a.footnote-back[href*='#fnref']")
+
+    // });
+
+</script>
 
 
 

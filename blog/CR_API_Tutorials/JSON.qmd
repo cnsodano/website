@@ -1,0 +1,239 @@
+---
+title: Understanding the JSON data format
+execute:
+  echo: true
+engine: knitr
+format:
+  html:
+    toc: false
+    grid:
+        body-width: 600px # Max width of center column
+---
+
+This article is one part of a series of tutorials that will teach you how to begin collecting and analyzing scholarly metadata using the [Crossref REST API^{{< fa external-link >}}^](https://www.crossref.org/documentation/retrieve-metadata/rest-api/). If you don't have a technical background, one of the earliest obstacles you may face while learning this technology is understanding the format this data is returned to you in. If you are already familiar with the JSON data format but are having trouble viewing it in your browser, follow [my guide here^{{< fa external-link >}}^](troubleshooting-browser-JSON-view.qmd)
+
+## What's JSON?
+
+**JSON** is a flexible way of representing data that, despite the name (**J**ava**S**cript **O**bject **N**otation), is programming language-independent (meaning you don't need to know [JavaScript^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#JS-definition"}, or any other programming language to read and understand it!). 
+
+
+Here's a very simple piece of data about a journal article[^1] that is represented (also known as 'encoded') in JSON format, and could be saved as a file with the [.json]{.inline-code} file extension: 
+
+
+[^1]: The article can be found [here^{{< fa external-link >}}^](https://doi.org/10.1016/S0140-6736(97)11096-0), with retraction notice [here^{{< fa external-link >}}^](https://doi.org/10.1016/S0140-6736(10)60175-4)
+
+
+```{json filename="metadata.json"}
+#| echo: true
+{
+    "title": "RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children"
+}
+```
+
+In the world of JSON, data is represented as "objects", and every object begins with a [{]{.inline-code}, ends with a [}]{.inline-code}, and contains a number of ["key": value]{.inline-code} pairs that represent the information about that object that you want to store and transfer.[^longnote] 
+
+Each key is a double-quoted string that describes what information the corresponding [value]{.inline-code} represents, for example, the simple 1-line JSON object above described the title of a famously retracted journal article originally published in [The Lancet^{{< fa external-link >}}^](https://doi.org/10.1016/S0140-6736(97)11096-0). A [value]{.inline-code} can be one of the following types: 
+
+[^longnote]: You may also hear these "keys" informally called attributes, fields, or properties. While these terms are more descriptive and more frequently used in conversation, it can sometimes be unclear whether you're referring to the key or its corresponding value. For example, if someone tells you:
+
+    >I checked if the title property was null before adding the article
+
+    ...then that means they were checking if the [**value**]{.monospace} associated with the key [**title**]{.monospace} was null
+
+* [Number]{.inline-code}, for example, a count of articles published by a journal
+* [String]{.inline-code}, for example, the DOI of a journal article
+* [Boolean]{.inline-code} (true/false), for example, whether a publisher deposits abstracts to Crossref in addition to metadata  
+* [Object]{#obj-note-aside-anchor .inline-code}, for example, an object representing the first author of a paper who has a First Name, Last Name, an ORCID, etc. [An [Object]{.inline-code} can have another [Object]{.inline-code} within it, making it easy to represent complex nested data structures with JSON]{.aside data-align-to="obj-note-aside-anchor"}
+* [null]{.inline-code}, representing a missing or empty value^[When working with scholarly APIs like Crossref's REST API, you will likely not get any keys which have [null]{.inline-code} values; if a piece of metadata is missing, the returned JSON object will either not include a key for that field or, if the field is an [Array]{.inline-code} or [Object]{.inline-code} type, an empty [Array]{.inline-code}/[Object]{.inline-code}]
+* an [Array]{.inline-code} of any of the above. For example, an array of objects representing a paper's references, each of which having a "DOI" key, a "title" key, and so on
+  + All [Array]{.inline-code} objects will start and end with a [\[]{.inline-code}/[\]]{.inline-code} and have each element of the array separated by a comma
+
+
+To see these in action, I've extended the data from above to add more of the information Crossref has available on this article:
+```{json filename="metadata.json"}
+#| echo: true
+{
+    "title": "RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children",
+    "container-title": ["The Lancet"],           
+    "DOI": "10.1016/s0140-6736(97)11096-0",                                                                                               
+    "updated-by": [                              //<1>
+        {                                        
+            "type":"correction",                 //<2>
+            "source":"retraction-watch",         //<3>
+            "updated":{                          
+                "date-parts":[2004,3,6]          //<4>
+            }
+        },
+        {
+            "type":"retraction",
+            "source":"retraction-watch",
+            "updated":{
+                "date-parts":[2010,2,6]          //<5>
+            }
+        }
+    ]                                           //<6>
+}
+```
+1. This article received more than one update notice, as the [updated-by]{.inline-code} field is an [Array]{.inline-code} type beginning with a [\[]{.inline-code},
+2. The first update was a correction
+3. The metadata corresponding to this correction was provided to Crossref by [Retraction Watch^{{< fa external-link >}}^](https://retractionwatch.com/)
+4. The date that the correction was issued (YYYY-MM-DD) was the 6th of March, 2004^[Note that this is not actually how this date-parts field is presented by the current version of the REST API, but I've changed it for clarity]
+5. We can see that in addition to the 2004 correction, there was a retraction update issued in 2010
+6. This [\]]{.inline-code} closes the ["updated-by"]{.inline-code} array, indicating that there have been no more updates since the 2010 retraction
+
+Note that this is not the full record of metadata that Crossref has for this article, in fact the [.json]{.inline-code} file returned by Crossref includes 10x more information (~10KB compared to ~1[KB^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#KB-definition"}) than this illustrative example. If you want to see the full metadata record, check it out below:
+
+```{=html}
+<details class="light">
+<summary>
+  Some details about this visualization tool
+</summary>
+```
+
+* [This interactive JSON viewing widget is based on the excellent [JSON Editor JavaScript project^{{< fa external-link >}}^](https://github.com/josdejong/svelte-jsoneditor) which by convention displays [values]{.inline-code} of type [String]{.inline-code} without double quotes. Instead, data-types are distinguished by color. For example, [["status"]{.json-key-span}: ["ok"]{.json-string-value-span}]{.inline-code} is displayed as [[status]{.json-key-span}: [ok]{.json-string-value-span }]{.inline-code}. Values which are of Number data-type such as ["reference-count": 26]{.inline-code} are displayed as [reference-count: [26]{.json-number}]{.inline-code}.]{.light}
+
+* [Note that "props" stands for "properties which is another way of referring to ["key":value]{.inline-code} pairs. For example, [40 props]{.jse-tag style="background: transparent"} means the object has 40 keys.]{.light}
+
+```{=html}
+</details>
+````
+
+```{=html}
+<div id="JSON_tutorial_json_editor_container" style="width: 100%; height: 40vh;"></div>
+ <script type="module">
+    import {createJSONEditor} from "https://cdn.jsdelivr.net/npm/vanilla-jsoneditor@3.11.0/standalone.min.js"
+    const JSON_tutorial_json_editor =createJSONEditor({ target: document.getElementById('JSON_tutorial_json_editor_container'),
+        props: {
+            content: null,
+            onChange: (updatedContent,previousContent,{contentErrors,patchResult}) => {
+                // content is an object { json: unknown } | { text: string }
+                console.log('onChange',{updatedContent,previousContent,contentErrors,patchResult})
+                content=updatedContent
+            }
+        }
+    })
+    const response = await fetch("../../data/lancet-metadata-record-example.json")
+    const initialJson = await response.json()
+    JSON_tutorial_json_editor.set({"text":undefined, "json": initialJson})
+    document.getElementById("JSON_tutorial_json_editor_container").style.height="60vh"
+    </script>
+```
+<br>
+You can also <a href="../../data/lancet-metadata-record-example.json" download>download the file here {{<fa file-arrow-down >}}</a>. 
+
+# Working with JSON files
+
+If you tried downloading and opening the [.json]{.inline-code} file above and found a messy wall of techno-gibberish instead of structured, human-readable text, then you need to enable JSON formatting, so take a look at [my walkthrough ^{{< fa external-link >}}^](troubleshooting-browser-JSON-view.qmd) for guidance. I encourage you to look at that guide before moving on, because in the next articles in this tutorial series we will look at JSON data that comes from Crossref's REST API, and while I will continue to offer interactive viewers on this site, it will be very convenient to be able to view the data directly in your browser in a new tab. 
+
+[Next article! {{< fa arrow-right-long >}}]{.modal-ref data-bs-toggle="modal" data-bs-target="#coming-soon-details"} 
+
+
+
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="JS-definition" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" >JavaScript</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+JavaScript is a user-friendly programming language used to make webpages interactive---JavaScript is what made the "pop-up" behavior for this definiton link possible.
+
+While you can use JavaScript to fetch and manipulate JSON data, on this site I prefer to show code examples in Python.
+
+ ```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+ 
+
+
+
+
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="KB-definition"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" >Kilobyte (KB)</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+
+A Kilobyte is a measure of digital information storage costs. A Kilobyte is equal to 1,000 bytes of storage. A byte is the amount of space that a single character of text^[When talking about [ASCII^{{< fa external-link >}}^](https://en.wikipedia.org/wiki/ASCII) characters, that is] uses. 1Kb is enough space store to about this much text:
+
+{{< dstart summary="See text" >}}
+
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consectetur, magna quis interdum feugiat, sapien nisi vestibulum risus, in elementum nulla sem sit amet libero. Integer tristique eleifend eros quis pulvinar. Aliquam quam lorem, rhoncus ac turpis vitae, molestie sodales magna. Duis in scelerisque libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc sit amet posuere eros. Morbi sagittis leo et porta luctus. Vestibulum pretium arcu vel leo cursus hendrerit. Phasellus at justo ac nisl eleifend mollis. Nam interdum nisi vitae molestie pellentesque. In vulputate ligula non ligula condimentum pretium. Sed neque quam, rhoncus in orci et, lacinia egestas purus. Pellentesque nec libero vestibulum, rutrum justo ac, aliquam nisl.
+
+Fusce mattis dolor vel risus elementum elementum. Donec id arcu eu enim congue mollis sed vel nunc. Integer dapibus nam. 
+
+{{< dstop >}}
+
+
+
+ ```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+
+
+
+```{=html}
+<script>
+window.addEventListener('load', () => {
+  function alignAsides() {
+    document.querySelectorAll('.aside[data-align-to]').forEach(aside => {
+      const target = document.getElementById(aside.dataset.alignTo);
+      if (!target) return;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY;
+      const asideTop = aside.getBoundingClientRect().top + window.scrollY;
+      aside.style.marginTop = `calc(${aside.style.marginTop || '0px'} + ${targetTop - asideTop}px)`;
+    });
+  }
+
+  alignAsides();
+  window.addEventListener('resize', alignAsides);
+});
+</script>
+```
+
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="coming-soon-details" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-5" >Coming soon</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+Stay tuned for the next article in this series, explaining how to request, receive, and analyze public scholarly metadata made available by Crossref!
+
+```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```

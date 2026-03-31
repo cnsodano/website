@@ -1,0 +1,61 @@
+/* a:not("nav-bar") {
+    color: Dodgerblue !important;
+    text-decoration: none !important;
+}
+
+a:not("navbar-brand") {
+    color: Dodgerblue !important;
+    text-decoration: none !important;
+} */
+
+summary h1,
+summary h2,
+summary h3,
+h4,
+summary h5,
+summary h6 {
+    display: inline !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+
+a sup {
+    margin-left: 0.1em !important;
+    text-decoration: none !important;
+}
+
+a.footnote-back {
+    text-decoration: none !important;
+}
+
+html {
+    scroll-padding-top: 20vh !important;
+    /* to fix scroll clipping out the header issue */
+}
+
+ul li,
+ol li {
+    margin-bottom: 0.5rem !important;
+}
+
+.modal-ref {
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+
+.monospace {
+    font-family: monospace !important;
+}
+
+
+.scrollable-div {
+    overflow-y: auto !important;
+    max-height: 40vh !important;
+}
+
+input {
+    max-width: 100% !important;
+}

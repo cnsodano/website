@@ -1,0 +1,227 @@
+/*-- scss:uses --*/
+@use "sass:color";
+
+/*-- scss:defaults --*/
+$themeprimary1: #F9F5FF; // changed
+$theme-contrast-primary: #a4d1f0;
+$themeprimary2: #98C1D9;
+$themeprimary3: #E0FBFC;
+$themewhite: rgb(61, 90, 128); // changed
+$themedarkprimary: rgb(46, 64, 87);
+$themeaccent1: #D4C2fC;
+$themeaccent1dark: #998FC7;
+$themegrayedout: #8895B3;
+
+$themebuttonbackground: $themegrayedout;
+$themebuttontext: $themedarkprimary;
+
+
+
+$themeaccent1darker: darken($themeaccent1dark, 0.5); // _test
+
+$body-color: $themeprimary1;
+$body-bg: $themewhite;
+// $link-color: rgb(52, 233, 252);
+$link-color: $theme-contrast-primary;
+$navbar-bg: $themeprimary1;
+$navbar-fg: $themewhite;
+$footer-fg: $themewhite;
+$footer-bg: $themeprimary1;
+$pink: #ffd8d8;
+$red: #ae0000;
+// $themecodeaccentforetext: #7d12ba;
+$themecodeaccentforetext: $pink;
+$themecodeaccentbacktext: #decbfc;
+
+//Inline code
+
+// $code-bg: color.adjust($themewhite, $lightness: -2%);
+// $code-block-bg: $themecodeaccentbacktext;
+// $code-fg: $themecodeaccentforetext;
+$code-bg: rgba(255, 253, 253, 0.1);
+$code-color: $pink;
+
+
+/*-- scss:rules --*/
+summary {
+    color: $themeprimary1;
+}
+
+.light {
+    font-weight: lighter
+}
+
+a {
+    // font-weight: 550;
+    // text-decoration-thickness: 0.09em;
+    text-decoration-skip-ink: none;
+    color: $link-color;
+}
+
+.btn-light {
+
+    background-color: $themewhite !important;
+    border: 1px solid $themeprimary1 !important;
+    border-radius: 4px !important;
+    color: $themeprimary1 !important;
+}
+
+
+// JSE dark styles
+.jse-menu {
+    background-color: $themeprimary1 !important;
+}
+
+.jse-button:hover {
+    background-color: $themeprimary2 !important;
+}
+
+.jse-button svg {
+    color: $themewhite !important;
+}
+
+.jse-tree-mode {
+    background-color: $themewhite !important;
+}
+
+.jse-key,
+.jse-bracket,
+.jse-separator {
+    color: $themeprimary1 !important;
+}
+
+.jse-tag {
+    background-color: $themegrayedout !important;
+}
+
+.jse-expand svg {
+    color: $themeprimary2 !important
+}
+
+.jse-value.jse-string {
+    color: $themeprimary2 !important;
+}
+
+.jse-value.jse-number {
+    color: $pink !important;
+}
+
+.json-number {
+    color: $pink !important;
+}
+
+.jse-index {
+    color: $themegrayedout !important
+}
+
+.jse-selected-key .jse-key {
+    color: $red !important;
+}
+
+
+.jse-selected-value .jse-value {
+    color: $red !important;
+}
+
+// JSON
+code.sourceCode.json span.dt {
+    color: $themeprimary1;
+}
+
+.code-with-filename-file pre strong {
+    color: $themeprimary1 !important;
+}
+
+
+// 
+// div.code-copy-outer-scaffold>div.sourceCode {
+//     border: 2px $themeprimary1 solid;
+//     border-radius: 4px;
+// }
+
+code.sourceCode.json span.st {
+    // Strings
+    color: $theme-contrast-primary;
+}
+
+.json-key-span {
+    color: $themeprimary1;
+}
+
+.json-string-value-span {
+    color: $theme-contrast-primary;
+}
+
+.column-margin {
+    color: $themeprimary1;
+}
+
+.gray {
+    color: $themegrayedout;
+}
+
+code.sourceCode.json span.ot {
+    // Strings
+    color: $themeprimary1;
+}
+
+code.sourceCode.json span.fu {
+    // Strings
+    color: $themeprimary1;
+}
+
+code.sourceCode.json span.dv {
+    // Strings
+    color: $pink;
+}
+
+dl.code-annotation-container-grid dt {
+    color: $themeprimary1;
+    border: solid $themeprimary1 1px;
+    border-top-color: $themeprimary1;
+    border-right-color: $themeprimary1;
+    border-bottom-color: $themeprimary1;
+    border-left-color: $themeprimary1;
+}
+
+strong {
+    font-weight: bold;
+    text-shadow: 2px 4px 4px rgba(46, 64, 87, 1);
+}
+
+
+a sup {
+    margin-left: 0.1em !important;
+    text-decoration: none !important;
+}
+
+a.footnote-back {
+    text-decoration: none !important;
+}
+
+.inline-code {
+    color: $themeprimary1;
+    background-color: rgba(136, 149, 179, 0.2);
+}
+
+.jse-tag {
+    background-color: transparent !important;
+    color: rgb(136, 149, 179);
+}
+
+details summary {
+    color: $themeprimary1;
+}
+
+blockquote {
+    color: $themeprimary1 !important;
+}
+
+pre.plaintext_json_block code {
+    background-color: black !important;
+}
+
+input {
+    border: 1px solid $themeprimary1 !important;
+    color: $themeprimary1 !important;
+}

@@ -1,0 +1,55 @@
+---
+title: "Christian N Sodano"
+image: images/cutout_avatar_f.PNG
+about:
+  id: hero-heading
+  template: trestles
+  image-shape: rounded
+  links:
+    - icon: bluesky-brands-solid.svg
+      text: Bluesky
+      href: https://bsky.app/profile/cnsodano.bsky.social
+    - icon: github
+      text: Github
+      href: https://github.com/cnsodano
+---
+
+::: {.callout-important appearance="minimal"}
+I am **currently on a job search**. If you're looking to work with someone who has the technical chops to answer tough questions about the scientific record, please reach out! I would love to talk more! (cnsodano@gmail.com). 
+::::
+
+::: {#hero-heading}
+## Summary
+I'm an independent researcher currently working in the emerging field of forensic metascience[^1] and scientometrics[^2], developing tools to detect and prevent breaches of research integrity including questionable research practices[^3], statistical and methodological errors[^4], and fraud[^5]. Prior to working in metascience, I did my Bachelor's in Computer Science with a minor specialization in Neuroscience at the [University of North Carolina](https://cs.unc.edu/) where I researched automatic sleep spindle detection algorithms and the cognitive/clinical effects of non-invasive brain stimulation. 
+
+My current projects in this area focus on [automating reproducibility checks](/projects/projects.qmd#automating-reproducibility-checks-for-journal-submissions), detecting so-called [paper-mills](https://osf.io/mbcw5/) (businesses conducting for-profit research fraud at large-scale) and [journal hijackings](/projects/projects.qmd#hijacked-journal-detection-toolbox), as well as authors who [game citations](/projects/projects.qmd#discovering-unreasonable-citation-stacking) for personal benefit and papers that are [unknowingly citing discredited research](/projects/projects.qmd#detecting-post-retraction-citation-awareness).
+:::
+
+## Collaborations
+I'm openly exploring collaborations, so please reach out if are looking for collaborators to:
+
+- Turn basic analysis scripts/forensic tools into interactive tools that can help the scientific community
+
+- Aggregate scholarly fulltext and metadata for textual analyses or systematic reviews
+
+- Explore metascientific questions that require natural language processing of scholarly text
+
+- Write grant proposals for projects in the fields of scientific error detection or scientometrics
+
+
+
+## Techniques
+
+I use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g. PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks.
+
+## Some more techie stuff
+
+I mainly code in Python, using the open-source [pandas](https://github.com/pandas-dev/pandas) library for data cleaning and [numpy](https://github.com/numpy/numpy) and [scikit-learn](https://github.com/scikit-learn/scikit-learn) for machine learning. I use [spaCy](https://github.com/explosion/spaCy) for more advanced NLP applications. For scientometrics, I've used [VOSviewer](https://doi.org/10.1007/s11192-009-0146-3), and recently [pybibx](https://github.com/Valdecy/pybibx)[^6]. For demonstrating analysis pipelines in a portable and interactive format, I am favoring [Marimo notebooks](https://github.com/marimo-team/marimo) over [Jupyter notebooks](https://jupyter.org/), and I try to use [docker development containers](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) for reproducibility. For automated testing I use [pytest](https://github.com/pytest-dev/pytest) and particularly the pytest plugin [pytest-BDD](https://github.com/pytest-dev/pytest-bdd). I have some coding experience in JavaScript, MATLAB, R, Java, and C.   
+
+
+[^1]: More on [Forensic Metascience](https://doi.org/10.5281/zenodo.14871843)
+[^2]: More on [Forensic Scientometrics](https://doi.org/10.48550/arXiv.2404.00478)
+[^3]: A [survey](https://replicationindex.com/2015/01/24/qrps/) of such practices
+[^4]: Like [these](https://doi.org/10.7554/eLife.48175), for example
+[^5]: Really any of the topics mentioned on the wikipedia article on [Scientific Misconduct](https://en.wikipedia.org/wiki/Scientific_misconduct)
+[^6]: PEREIRA, V.; BASILIO, M.P.; SANTOS, C.H.T. (2025). PyBibX: A Python Library for Bibliometric and Scientometric Analysis Powered with Artificial Intelligence Tools. Data Technologies and Applications. Vol. 59, Iss. 2, pp. 302-337. doi: https://doi.org/10.1108/DTA-08-2023-0461

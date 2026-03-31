@@ -1,0 +1,99 @@
+<style>
+    @keyframes footnote-flash {
+        0% {
+            background-color: rgba(255, 200, 50, 0.35);
+            box-shadow: 0 0 0 4px rgba(255, 200, 50, 0.35);
+        }
+
+        60% {
+            background-color: rgba(255, 200, 50, 0.35);
+            box-shadow: 0 0 0 4px rgba(255, 200, 50, 0.35);
+        }
+
+        100% {
+            background-color: transparent;
+            box-shadow: 0 0 0 4px transparent;
+        }
+    }
+
+    .footnote-highlight {
+        border-radius: 3px;
+        animation: footnote-flash 2s ease-out forwards;
+    }
+</style>
+
+<script>
+    function fnrefToFn(str) {
+        return str.replace('fnref', 'fn');
+    }
+
+    function applyFlash(link) {
+        const clickElId = link.id
+        const isRef = /^fnref\d/.test(clickElId)
+        let targetId = null
+        if (isRef) {
+            targetId = fnrefToFn(clickElId)
+        } else {
+            // Is backref
+            debugger;
+            targetId = `${link.href.split("#").slice(-1)[ 0 ]}`
+        }
+        target = document.getElementById(targetId)
+        if (!target) return;
+
+        // Remove the class first in case it's already animating
+        target.classList.remove('footnote-highlight');
+
+        // Force a reflow so re-adding the class restarts the animation
+        void target.offsetWidth;
+
+        target.classList.add('footnote-highlight');
+
+        target.addEventListener(
+            'animationend',
+            () => target.classList.remove('footnote-highlight'),
+            { once: true }
+        );
+
+    }
+    document.addEventListener('click', (e) => {
+        let link = e.target.closest("a.footnote-ref[href*='#fn']");
+        if (!link) {
+            link = e.target.closest("a.footnote-back[href*='#fnref']")
+        }
+        if (!link) return;
+
+        applyFlash(link)
+    });
+
+    //     document.addEventListener('load', () => {
+    //         function addHighlightOnClickListener(selector) {
+    //             document.querySelectorAll(selector).forEach(link => {
+    //                 link.addEventListener('click', () => {
+    //
+    //                     const targetId = link.getAttribute("href").split('/').slice(-1)[ 0 ].slice(1);
+    //
+    //                     const target = document.getElementById(targetId);
+    //                     if (!target) return;
+    //
+    //                     // Remove the class first in case it's already animating
+    //                     target.classList.remove('footnote-highlight');
+    //
+    //                     // Force a reflow so re-adding the class restarts the animation
+    //                     void target.offsetWidth;
+    //
+    //                     target.classList.add('footnote-highlight');
+    //
+    //                     target.addEventListener(
+    //                         'animationend',
+    //                         () => target.classList.remove('footnote-highlight'),
+    //                         { once: true }
+    //                     );
+    //                 });
+    //             });
+    //         }
+    //
+    //         addHighlightOnClickListener("a.footnote-ref[href*='#fn']")
+    //         addHighlightOnClickListener("a.footnote-back[href*='#fnref']")
+    // });
+</script>

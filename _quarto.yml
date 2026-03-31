@@ -1,0 +1,58 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - css/*
+    - js/*
+    - data/*
+    - images/*
+  preview:
+    port: 4200
+    browser: false
+
+website:
+  favicon: images/favicon-32x32.png
+  plausible-analytics:
+    path: js/plausibleAnalyticsSnippet.html
+  page-navigation: true
+  # title: "Christian N Sodano"
+  page-footer:
+    left: "Website template provided by <a href='https://github.com/andreaczhang/qtwAcademic'>Chi Zhang</a>"
+    right: "This page is built with ❤️ and <a hre='https://quarto.org'>Quarto</a>"
+  navbar:
+      search: false
+      collapse-below: "sm" 
+      left:
+        - href: index.qmd
+          text: Home
+        - href: projects/projects.qmd
+          text: Research Projects
+        - href: toolbox/index.qmd
+          text: Hijacked Journal Toolbox
+        - href: blog/blogindex.qmd
+          text: Blog
+
+format:
+  html:
+    theme: 
+      light: [cosmo, css/scss/styles.scss]
+      dark : [darkly, css/scss/dark_styles.scss]
+    css: 
+      - css/popovers.css
+      - css/modal-ext.css
+      - css/top-level-styles.css
+      - css/code-blocks.css
+      - css/jse.css
+    toc: true
+    grid:
+        body-width: 600px # Max width of center column
+    include-in-header:
+      - text: |
+         <script src="js/initializePopOvers.js"></script>
+    include-after-body:
+      - file: js/footnote-highlight-animation.html
+      
+
+
+
+

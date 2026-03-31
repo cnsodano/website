@@ -1,2 +1,4 @@
-new/
-docs_old/
+/.quarto/
+**/*.quarto_ipynb
+.notes/
+.vscode/

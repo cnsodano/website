@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>blogindex – Christian N Sodano</title>
+<title>Blog Posts</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../images/favicon-32x32.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -44,9 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-92fd76982d5e1762eba9c7ce824b50a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f43ca2400f52f1e08d2bb5ae3760b819.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-92fd76982d5e1762eba9c7ce824b50a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7c824f2b9d37ecf84e568eb69aa803f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-cc57edd66fb86c3792b528d63cc055c9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-7c824f2b9d37ecf84e568eb69aa803f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,8 +75,25 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Privacy-friendly analytics by Plausible -->
+
+<script async="" src="https://plausible.io/js/pa-nThGDMHeE3kpydbHY2C0i.js"></script>
+
+<script>
+
+    window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments) }, plausible.init = plausible.init || function (i) { plausible.o = i || {} };
+
+    plausible.init()
+
+</script>
+<script src="js/initializePopOvers.js"></script>
 
 
+<link rel="stylesheet" href="css/popovers.css">
+<link rel="stylesheet" href="../css/modal-ext.css">
+<link rel="stylesheet" href="../css/top-level-styles.css">
+<link rel="stylesheet" href="../css/code-blocks.css">
+<link rel="stylesheet" href="../css/jse.css">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -244,14 +262,13 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Christian N Sodano</span>
-    </a>
-  </div>
-          <ul class="navbar-nav navbar-nav-scroll me-auto">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
@@ -265,11 +282,12 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Hijacked Journal Toolbox</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog/blogindex.html"> 
+    <a class="nav-link active" href="../blog/blogindex.html" aria-current="page"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-          <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -284,37 +302,48 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#blog-posts" id="toc-blog-posts" class="nav-link active" data-scroll-target="#blog-posts">Blog Posts</a>
-  <ul class="collapse">
-  <li><a href="#crossref-api-tutorials" id="toc-crossref-api-tutorials" class="nav-link" data-scroll-target="#crossref-api-tutorials">Crossref API Tutorials</a></li>
-  <li><a href="#igdore-reproducibilitea-summaries" id="toc-igdore-reproducibilitea-summaries" class="nav-link" data-scroll-target="#igdore-reproducibilitea-summaries">IGDORE ReproducibiliTea Summaries</a></li>
-  </ul></li>
+  <li><a href="#crossref-api-tutorials" id="toc-crossref-api-tutorials" class="nav-link active" data-scroll-target="#crossref-api-tutorials">Crossref API Tutorials</a></li>
+  <li><a href="#igdore-reproducibilitea-summaries" id="toc-igdore-reproducibilitea-summaries" class="nav-link" data-scroll-target="#igdore-reproducibilitea-summaries">IGDORE ReproDucibilitea Summaries</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Blog Posts</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="blog-posts" class="level1">
-<h1>Blog Posts</h1>
+</header>
+
+
 <section id="crossref-api-tutorials" class="level2">
 <h2 class="anchored" data-anchor-id="crossref-api-tutorials">Crossref API Tutorials</h2>
 <ul>
-<li><a href="..\blog/CR_API_Tutorials/JSON.html">March 26th 2026: Introduction to the JSON API response format</a></li>
+<li><a href="../blog/CR_API_Tutorials/JSON.html">March 26th 2026: Introduction to the JSON API response format</a></li>
+<li><a href="../blog/CR_API_Tutorials/troubleshooting-browser-JSON-view.html">March 30th 2026: Troubleshooting JSON browser viewing issues</a></li>
 </ul>
 </section>
 <section id="igdore-reproducibilitea-summaries" class="level2">
 <h2 class="anchored" data-anchor-id="igdore-reproducibilitea-summaries">IGDORE ReproDucibilitea Summaries</h2>
 <ul>
-<li><a href="..\blog/IGDORE/openCodeForOpenScience.html">March 5th 2025: Open code for open science?</a></li>
+<li><a href="../blog/IGDORE/openCodeForOpenScience.html">March 5th 2025: Open code for open science?</a></li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -741,10 +770,207 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+<p>This page is built with ❤️ and <a hre="https://quarto.org">Quarto</a></p>
 </div>
   </div>
 </footer>
+<style>
+
+    @keyframes footnote-flash {
+
+        0% {
+
+            background-color: rgba(255, 200, 50, 0.35);
+
+            box-shadow: 0 0 0 4px rgba(255, 200, 50, 0.35);
+
+        }
+
+
+
+        60% {
+
+            background-color: rgba(255, 200, 50, 0.35);
+
+            box-shadow: 0 0 0 4px rgba(255, 200, 50, 0.35);
+
+        }
+
+
+
+        100% {
+
+            background-color: transparent;
+
+            box-shadow: 0 0 0 4px transparent;
+
+        }
+
+    }
+
+
+
+    .footnote-highlight {
+
+        border-radius: 3px;
+
+        animation: footnote-flash 2s ease-out forwards;
+
+    }
+
+</style>
+
+
+
+<script>
+
+    function fnrefToFn(str) {
+
+        return str.replace('fnref', 'fn');
+
+    }
+
+
+
+    function applyFlash(link) {
+
+        const clickElId = link.id
+
+        const isRef = /^fnref\d/.test(clickElId)
+
+        let targetId = null
+
+        if (isRef) {
+
+            targetId = fnrefToFn(clickElId)
+
+        } else {
+
+            // Is backref
+
+            debugger;
+
+            targetId = `${link.href.split("#").slice(-1)[ 0 ]}`
+
+        }
+
+        target = document.getElementById(targetId)
+
+        if (!target) return;
+
+
+
+        // Remove the class first in case it's already animating
+
+        target.classList.remove('footnote-highlight');
+
+
+
+        // Force a reflow so re-adding the class restarts the animation
+
+        void target.offsetWidth;
+
+
+
+        target.classList.add('footnote-highlight');
+
+
+
+        target.addEventListener(
+
+            'animationend',
+
+            () => target.classList.remove('footnote-highlight'),
+
+            { once: true }
+
+        );
+
+
+
+    }
+
+    document.addEventListener('click', (e) => {
+
+        let link = e.target.closest("a.footnote-ref[href*='#fn']");
+
+        if (!link) {
+
+            link = e.target.closest("a.footnote-back[href*='#fnref']")
+
+        }
+
+        if (!link) return;
+
+
+
+        applyFlash(link)
+
+    });
+
+
+
+    //     document.addEventListener('load', () => {
+
+    //         function addHighlightOnClickListener(selector) {
+
+    //             document.querySelectorAll(selector).forEach(link => {
+
+    //                 link.addEventListener('click', () => {
+
+    //
+
+    //                     const targetId = link.getAttribute("href").split('/').slice(-1)[ 0 ].slice(1);
+
+    //
+
+    //                     const target = document.getElementById(targetId);
+
+    //                     if (!target) return;
+
+    //
+
+    //                     // Remove the class first in case it's already animating
+
+    //                     target.classList.remove('footnote-highlight');
+
+    //
+
+    //                     // Force a reflow so re-adding the class restarts the animation
+
+    //                     void target.offsetWidth;
+
+    //
+
+    //                     target.classList.add('footnote-highlight');
+
+    //
+
+    //                     target.addEventListener(
+
+    //                         'animationend',
+
+    //                         () => target.classList.remove('footnote-highlight'),
+
+    //                         { once: true }
+
+    //                     );
+
+    //                 });
+
+    //             });
+
+    //         }
+
+    //
+
+    //         addHighlightOnClickListener("a.footnote-ref[href*='#fn']")
+
+    //         addHighlightOnClickListener("a.footnote-back[href*='#fnref']")
+
+    // });
+
+</script>
 
 
 
