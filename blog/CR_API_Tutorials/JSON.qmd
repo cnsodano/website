@@ -10,7 +10,7 @@ format:
         body-width: 600px # Max width of center column
 ---
 
-This article is one part of a series of tutorials that will teach you how to begin collecting and analyzing scholarly metadata using the [Crossref REST API^{{< fa external-link >}}^](https://www.crossref.org/documentation/retrieve-metadata/rest-api/). If you don't have a technical background, one of the earliest obstacles you may face while learning this technology is understanding the format this data is returned to you in. If you are already familiar with the JSON data format but are having trouble viewing it in your browser, follow [my guide here^{{< fa external-link >}}^](troubleshooting-browser-JSON-view.qmd)
+This article is one part of a series of tutorials that will teach you how to begin collecting and analyzing scholarly metadata using the [Crossref REST API^{{< fa external-link >}}^](https://www.crossref.org/documentation/retrieve-metadata/rest-api/) check out the introduction to the series [here^{{< fa arrow-turn-up >}}^](/blog/CR_API_Tutorials/introduction_to_tutorial.qmd). If you don't have a technical background, one of the earliest obstacles you may face while learning this technology is understanding the format this data is returned to you in. If you are already familiar with the JSON data format but are having trouble viewing it in your browser, follow [my guide here^{{< fa arrow-turn-up >}}^](troubleshooting-browser-JSON-view.qmd)
 
 ## What's JSON?
 
@@ -90,9 +90,12 @@ Note that this is not the full record of metadata that Crossref has for this art
 </summary>
 ```
 
-* [This interactive JSON viewing widget is based on the excellent [JSON Editor JavaScript project^{{< fa external-link >}}^](https://github.com/josdejong/svelte-jsoneditor) which by convention displays [values]{.inline-code} of type [String]{.inline-code} without double quotes. Instead, data-types are distinguished by color. For example, [["status"]{.json-key-span}: ["ok"]{.json-string-value-span}]{.inline-code} is displayed as [[status]{.json-key-span}: [ok]{.json-string-value-span }]{.inline-code}. Values which are of Number data-type such as ["reference-count": 26]{.inline-code} are displayed as [reference-count: [26]{.json-number}]{.inline-code}.]{.light}
+* [This interactive JSON viewing widget is based on the excellent [JSON Editor JavaScript project^{{< fa external-link >}}^](https://github.com/josdejong/svelte-jsoneditor) which by convention displays [values]{.inline-code} of type [String]{.inline-code} without double quotes. Instead, data-types are distinguished by color. For example, ["status": "ok"]{.inline-code} is displayed as [[status]{.json-key-span}: [ok]{.json-string-value-span }]{.inline-code}. Values which are of [Number]{.inline-code} data-type such as ["reference-count": 26]{.inline-code} are displayed as [reference-count: [26]{.json-number}]{.inline-code}.]{.light}
 
-* [Note that "props" stands for "properties which is another way of referring to ["key":value]{.inline-code} pairs. For example, [40 props]{.jse-tag style="background: transparent"} means the object has 40 keys.]{.light}
+* [Note that "props" stands for "properties which is another way of referring to ["key":value]{.inline-code} pairs. For example, [4 props]{.jse-tag style="background: transparent"} means the object has 4 keys.]{.light}
+
+* [[timestamp]{.inline-code} keys are of type [Number]{.inline-code}. They correspond to [UNIX timestamps^{{< fa external-link >}}^](https://en.wikipedia.org/wiki/Unix_time) (in milliseconds) and will have a [{{< fa clock >}}]{style="color: #f06455;"} icon next to that will allow you to translate the UNIX timestamp into a human-readable date/time combination. This merely a convenience produced by the viewer, **not** a feature of JSON; there is no 'datetime' [value]{.inline-code} type]{.light}
+
 
 ```{=html}
 </details>
@@ -123,9 +126,9 @@ You can also <a href="../../data/lancet-metadata-record-example.json" download>d
 
 # Working with JSON files
 
-If you tried downloading and opening the [.json]{.inline-code} file above and found a messy wall of techno-gibberish instead of structured, human-readable text, then you need to enable JSON formatting, so take a look at [my walkthrough ^{{< fa external-link >}}^](troubleshooting-browser-JSON-view.qmd) for guidance. I encourage you to look at that guide before moving on, because in the next articles in this tutorial series we will look at JSON data that comes from Crossref's REST API, and while I will continue to offer interactive viewers on this site, it will be very convenient to be able to view the data directly in your browser in a new tab. 
+If you tried downloading and opening the [.json]{.inline-code} file above and found a messy wall of techno-gibberish instead of structured, human-readable text, then you need to enable JSON formatting, so take a look at [my walkthrough ^{{< fa arrow-turn-up >}}^](troubleshooting-browser-JSON-view.qmd) for guidance. I encourage you to look at that guide before moving on, because in the next articles in this tutorial series we will look at JSON data that comes from Crossref's REST API, and while I will continue to offer interactive viewers on this site, it will be very convenient to be able to view the data directly in your browser in a new tab. 
 
-[Next article! {{< fa arrow-right-long >}}]{.modal-ref data-bs-toggle="modal" data-bs-target="#coming-soon-details"} 
+[Next article! {{< fa arrow-right-long >}}]{.modal-ref .btn .btn-secondary data-bs-toggle="modal" data-bs-target="#coming-soon-details"} 
 
 
 

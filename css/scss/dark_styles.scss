@@ -5,9 +5,12 @@
 $themeprimary1: #F9F5FF; // changed
 $theme-contrast-primary: #a4d1f0;
 $themeprimary2: #98C1D9;
+$primary: $themeprimary1;
+
 $themeprimary3: #E0FBFC;
 $themewhite: rgb(61, 90, 128); // changed
 $themedarkprimary: rgb(46, 64, 87);
+$secondary: $themedarkprimary;
 $themeaccent1: #D4C2fC;
 $themeaccent1dark: #998FC7;
 $themegrayedout: #8895B3;
@@ -224,4 +227,21 @@ pre.plaintext_json_block code {
 input {
     border: 1px solid $themeprimary1 !important;
     color: $themeprimary1 !important;
+}
+
+.modal-ref {
+    color: $link-color;
+}
+
+span.btn-secondary {
+    color: $themeprimary1 !important;
+}
+
+.jse-search-input {
+    color: $themeprimary1 !important;
+}
+
+.jse-highlight {
+    background-color: $themegrayedout;
+    outline: $themegrayedout;
 }

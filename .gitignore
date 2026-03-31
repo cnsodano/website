@@ -2,3 +2,6 @@
 **/*.quarto_ipynb
 .notes/
 .vscode/
+# drafts/
+# docs/drafts/
+archive/

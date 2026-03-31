@@ -1,0 +1,123 @@
+---
+title: "Collecting and Analyzing Scholarly Metadata from Scratch with the Crossref REST API _(for absolute beginners)_ (Part 1)"
+title-block-banner: true
+format:
+  html:
+    toc: false
+---
+
+## What's Crossref?
+
+Crossref is a not-for-profit membership organization that connects the global scholarly research community by **collecting, enhancing, storing, and freely sharing** the [metadata^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#metadata-definition"} deposited by over 24,000 research-work-producing member organizations (academic publishers, universities, funders, museums, libraries, hospitals, etc). 
+
+**It's the organization that's responsible behind-the-scenes for 95% of all the world's [DOI^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#DOI-definition"} activity.** Their records (about 180 million of them as of March 2026) include metadata about individual research works (articles, datasets, books, grants, preprints, peer-reviews), as well as journals, funders, and even their own member organizations. 
+
+That means if you've ever clicked on a DOI to read an article, look up a grant, or cite a dataset, it's pretty likely Crossref has a metadata record for whatever it was you were interested in. Whether you want to know more about a single article or you're interested in conducting metaresearch at scale, Crossref's records can help you get a start on answering practically any question you can come up with. 
+
+While it's true that Crossref provides **free, open access** to these records as a service to the scholarly community, some of the more useful ways of accessing that data have pretty technical-sounding names like [API]{.inline-code .daunting-tech-term} and can feel arcane and unapproachable. In this series of articles, I hope to dispell that apprehension by focusing on the bare necessities needed to get started doing meta-research. **Along the way, you'll learn how Crossref makes their metadata records available to the public and how to write simple-to-intermediate programs that engage responsibly with that service to be able to answer the following types of questions:**
+
+* What grants have recently been awarded in my field of study?
+* Who funded this clinical trial I am reading?  
+* How many retractions has a journal/publisher issued in the past year?
+* What's the copyright license for this book chapter? Or, what's the most common copyright license this journal/publisher issues?
+* Are publishers publishing fewer books on my topic of interest now than in the past?
+* Have the average number of references provided by authors in my area of interest changed over time?
+
+
+[Next article: What's an API? {{< fa arrow-right-long >}}]{.modal-ref .btn .btn-secondary data-bs-toggle="modal" data-bs-target="#coming-soon-details"} 
+
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="coming-soon-details"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-1" >Coming soon!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+The next article in this series which explains what an 'API' is will come out soon. These articles are actually being released out of order of how I've written them, so if you're interested in learning more about retrieving metadata from Crossref you can look at [my article on the JSON data format^{{< fa arrow-turn-up >}}^](/blog/CR_API_Tutorials/JSON.qmd), but it may be unclear what that acronym has to do with the API acronym at the moment. My apologies!
+```{=html}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+```
+
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="metadata-definition"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-1" >Scholarly Metadata</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+Metadata can be thought of as data _about_ some other piece of data. Or in other words, metadata is information that describes the data it's attached to. 
+
+In the case of a scholarly work, such as a journal article, the 'data' is the article, and the metadata includes all the little pieces of information you may need to identify it. For example. if you wanted to cite that article, you'd need:
+
+* Title
+* Authors
+* Publisher
+* Date of Publication
+
+ ...etc---all metadata. But metadata can include much more---for example, the digital object identifier (DOI), or the exact time that that identifier was registered online, or the copyright license the publisher has assigned to it. 
+
+A particularly important piece of metadata in the digital age is "where is the digital location of this data?" Or, similarly, "What website do I need to go to so that I can view or download this data?"
+
+Other pieces of metadata may include Relationships:
+
+* Who funded this work? 
+* Which paper(s) cited this book?
+* Does this medical diagnostic guidance document update a prior guidance document?
+* Which hospital was this author affiliated with when she wrote this article?
+
+
+ ```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="DOI-definition"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-1" >Digital Object Identifier (DOI)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+DOIs are an internationally standardized system of identifying 'digital objects', which in practice are mostly research works such as journal articles, in such a way that the identifier never has to change, even if the object moves location or transfers ownership. The international standard is facilitated by the [DOI foundation^{{< fa external-link >}}^](https://www.doi.org/) which governs multiple Registry Agencies who work with publishers to assign DOIs. Crossref is one of these agencies. 
+
+Because there are many agencies, and agencies may come and go, DOIs are minted with the domain of the DOI foundation, and look like this: https://doi.org/10.1162/qss_a_00022 and always start with `https://doi.org/` (older DOIs may also start with `https://dx.doi.org/`), even though this DOI was registered by Crossref, whose domain is `https://crossref.org`
+
+Here's some more information on the background of DOIs and why they are needed (from the [DOI Foundation{{< fa external-link >}}^](https://www.doi.org/the-identifier/what-is-a-doi/))
+
+You can see the full list of registry agencies including those other than Crossref [here^{{< fa external-link >}}^](https://www.doi.org/the-community/existing-registration-agencies/).
+
+```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+
+

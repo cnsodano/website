@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Open code for open science?</title>
+<title>Collecting and Analyzing Scholarly Metadata from Scratch with the Crossref REST API (for absolute beginners) (Part 1)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -48,6 +48,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-c776de297521c6a545951e96c11dd522.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-20cbeeb9b8463f22f9ff718abbd816fa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-c776de297521c6a545951e96c11dd522.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -88,35 +90,6 @@ ul.task-list li input[type="checkbox"] {
 </script>
 <script src="js/initializePopOvers.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="css/popovers.css">
 <link rel="stylesheet" href="../../css/modal-ext.css">
@@ -125,7 +98,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../css/jse.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -290,7 +263,7 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -323,215 +296,125 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Collecting and Analyzing Scholarly Metadata from Scratch with the Crossref REST API <em>(for absolute beginners)</em> (Part 1)</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#paper-summary" id="toc-paper-summary" class="nav-link active" data-scroll-target="#paper-summary">Paper Summary</a></li>
-  <li><a href="#journal-club-discussion" id="toc-journal-club-discussion" class="nav-link" data-scroll-target="#journal-club-discussion">Journal Club Discussion</a></li>
-  <li><a href="#further-thoughts" id="toc-further-thoughts" class="nav-link" data-scroll-target="#further-thoughts">Further Thoughts</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Open code for open science?</h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
+
+
+<section id="whats-crossref" class="level2">
+<h2 class="anchored" data-anchor-id="whats-crossref">What’s Crossref?</h2>
+<p>Crossref is a not-for-profit membership organization that connects the global scholarly research community by <strong>collecting, enhancing, storing, and freely sharing</strong> the <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#metadata-definition">metadata<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> deposited by over 24,000 research-work-producing member organizations (academic publishers, universities, funders, museums, libraries, hospitals, etc).</p>
+<p><strong>It’s the organization that’s responsible behind-the-scenes for 95% of all the world’s <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#DOI-definition">DOI<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> activity.</strong> Their records (about 180 million of them as of March 2026) include metadata about individual research works (articles, datasets, books, grants, preprints, peer-reviews), as well as journals, funders, and even their own member organizations.</p>
+<p>That means if you’ve ever clicked on a DOI to read an article, look up a grant, or cite a dataset, it’s pretty likely Crossref has a metadata record for whatever it was you were interested in. Whether you want to know more about a single article or you’re interested in conducting metaresearch at scale, Crossref’s records can help you get a start on answering practically any question you can come up with.</p>
+<p>While it’s true that Crossref provides <strong>free, open access</strong> to these records as a service to the scholarly community, some of the more useful ways of accessing that data have pretty technical-sounding names like <span class="inline-code daunting-tech-term">API</span> and can feel arcane and unapproachable. In this series of articles, I hope to dispell that apprehension by focusing on the bare necessities needed to get started doing meta-research. <strong>Along the way, you’ll learn how Crossref makes their metadata records available to the public and how to write simple-to-intermediate programs that engage responsibly with that service to be able to answer the following types of questions:</strong></p>
+<ul>
+<li>What grants have recently been awarded in my field of study?</li>
+<li>Who funded this clinical trial I am reading?<br>
+</li>
+<li>How many retractions has a journal/publisher issued in the past year?</li>
+<li>What’s the copyright license for this book chapter? Or, what’s the most common copyright license this journal/publisher issues?</li>
+<li>Are publishers publishing fewer books on my topic of interest now than in the past?</li>
+<li>Have the average number of references provided by authors in my area of interest changed over time?</li>
+</ul>
+<p><span class="modal-ref btn btn-secondary" data-bs-toggle="modal" data-bs-target="#coming-soon-details">Next article: What’s an API? <i class="fa-solid fa-arrow-right-long" aria-label="arrow-right-long"></i></span></p>
+<!-- Modal -->
+<div class="modal fade" id="coming-soon-details" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-1 anchored">Coming soon!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>The next article in this series which explains what an ‘API’ is will come out soon. These articles are actually being released out of order of how I’ve written them, so if you’re interested in learning more about retrieving metadata from Crossref you can look at <a href="../../blog/CR_API_Tutorials/JSON.html">my article on the JSON data format<sup><i class="fa-solid fa-arrow-turn-up" aria-label="arrow-turn-up"></i></sup></a>, but it may be unclear what that acronym has to do with the API acronym at the moment. My apologies!</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
   </div>
-  
-
-
-</header>
-
-
-<p>Article discussed: Easterbrook, S. Open code for open science?. Nature Geosci 7, 779–781 (2014). <a href="https://doi.org/10.1038/ngeo2283" class="uri">https://doi.org/10.1038/ngeo2283</a> <a href="https://rdcu.be/egvyj">Shareable Link to full text</a></p>
-<section id="paper-summary" class="level3">
-<h3 class="anchored" data-anchor-id="paper-summary">Paper Summary</h3>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>tl;dr<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p>Easterbrook is hopeful that journal mandates for open code submissions can improve code quality in the short term but lists a number of logistical reasons that explain why merely making code available to read will not alone improve the reproducibility of published computational research. He argues that the challenges of making scientific software open source (which differ across fields and labs) must be understood and managed in order for the many benefits it offers–of which greater reproducibility is only one–to be realized.</p>
-<p>This article is quite short (~1800 words, <a href="https://wordcounter.net/">estimated</a> 6.5min reading time, 10 minute speaking time) and worth reading in its entirety. Still, I have summarized the main points below.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>About the Author
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Steve Easterbrook - As of April 7th, 2025 Easterbrook is identified by <a href="https://www.sciencedirect.com/science/article/pii/S0013935125000969">recent publications</a> as an affiliate of the School of the Environment at the University of Toronto in Ontario, Canada. His university <a href="https://www.environment.utoronto.ca/people/directories/all-faculty/steve-easterbrook">website</a> and personal <a href="https://www.cs.toronto.edu/~sme/">website</a> mention he is a professor in the Department of Computer Science and Director of the School of Environment. He describes his areas of interest as “climate informatics” and ” the applications of computer science and software engineering to the challenge posed by global climate change”. His <a href="https://scholar.google.com/citations?user=bD8DWiEAAAAJ&amp;hl=en">google scholar</a> account shows he has been publishing highly cited papers on software engineering topics since the 1990’s</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definitions
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<!-- Modal -->
+<div class="modal fade" id="metadata-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-1 anchored">Scholarly Metadata</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>Metadata can be thought of as data <em>about</em> some other piece of data. Or in other words, metadata is information that describes the data it’s attached to.</p>
+<p>In the case of a scholarly work, such as a journal article, the ‘data’ is the article, and the metadata includes all the little pieces of information you may need to identify it. For example. if you wanted to cite that article, you’d need:</p>
 <ul>
-<li>Open Source
-<ul>
-<li>In a literal sense, an ‘open source’ program is one with the source code freely available to be read. However, the term “open source” generally refers to software that adheres to a <a href="https://opensource.org/definition-annotated">set of criteria</a> surrounding its redistribution that further promotes its use as a free, unrestricted, and accessible resource for all to benefit from. In addition to transparent source code, open source projects often build a<a href="www.redhat.com/en/blog/open-source-culture-9-core-principles-and-values">community of contributors</a> that <a href="https://en.wikipedia.org/wiki/Software_maintenance">maintain</a> the software over time and ensure it is accessible to users across platforms</li>
-</ul></li>
-<li>Reproducibility
-<ul>
-<li>A much <a href="https://doi.org/10.3389/fninf.2017.00076">debated</a> term. Here Easterbrook gives his own definition<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
-</ul></li>
-<li>Computational Research
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Computational_science">Computational</a> research relies on computers to study the world. If you’re not familiar with this definition then you likely will not ever have run into any of the problems mentioned in this article. If you are a computational researcher, you likely will have run into every problem mentioned in this article. Easterbrook draws examples mainly from his experience in climate science research, mentioning computaional tasks like running “numerical simulations of chaotic phenomena, such as weather”.</li>
-</ul></li>
+<li>Title</li>
+<li>Authors</li>
+<li>Publisher</li>
+<li>Date of Publication</li>
 </ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Paraphrased Points
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p>…etc—all metadata. But metadata can include much more—for example, the digital object identifier (DOI), or the exact time that that identifier was registered online, or the copyright license the publisher has assigned to it.</p>
+<p>A particularly important piece of metadata in the digital age is “where is the digital location of this data?” Or, similarly, “What website do I need to go to so that I can view or download this data?”</p>
+<p>Other pieces of metadata may include Relationships:</p>
 <ul>
-<li><p>Most code written for cutting edge research applications is “quick and dirty” to allow rapid prototyping and exploratory analysis; however, this incurs <a href="https://en.wikipedia.org/wiki/Technical_debt">technical debt</a>. Open source policies enforced by journals may nudge scientists into managing this technical debt more carefully, but some barriers are harder to overcome</p></li>
-<li><p>Some of the barriers to code re-use (even when openly available) that Easterbook mentions are:</p>
-<ul>
-<li><p><a href="en.wikipedia.org/wiki/Software_portability">Portability</a>: for example, <em>“Complex models are often carefully optimized so that they run in reasonable time on one specific platform”</em>.</p></li>
-<li><p><a href="https://en.wikipedia.org/wiki/Configure_script">Configurability</a>: for example, code dependencies or model starting configurations are rarely described adequately enough to repeat the published results</p></li>
-<li><p>Model-Data Blur: <em>“[C]omputational models are continually fed observational data in various forms, to correct biases, to parameterize processes that cannot be computed explicitly or to set boundary conditions.”</em> Poor <a href="https://en.wikipedia.org/wiki/Data_lineage">data provenance</a> then becomes another barrier to reproducibility</p></li>
-</ul></li>
-<li><p>Repeatability vs Reproducibility:</p>
-<ul>
-<li>Easterbrook defines “repeatability” as the ability to <em>“re-run the same code at a later time or on a different machine”</em> and reproducibility as the ability <em>“to recreate the results, whether by re-running the same code, or by writing a new program”</em></li>
-<li>Exact repeatability is hard to maintain due to <a href="https://en.wikipedia.org/wiki/Deprecation#Software">deprecation</a> and, in Easterbrook’s field of complex climate simulations, rounding errors that propagate through steps of a simulation.</li>
-<li>Easterbook claims that “<em>Reproducibility without repeatability — the confirmation of results using different code — is the computational equivalent of a replicated experiment</em>”<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
-</ul></li>
-<li><p>Making code open-source is not the same as uploading a codebase to a place like the <a href="https://osf.io/">Open Science Framework</a>. The kinds of open-source projects that ensure cross-platform portability and promote reproducibility require a variety of contributors and an amount of effort that often goes far beyond the demand for the code used for any single publication.</p></li>
-<li><p>Easterbrook claims that the “<em>vast majority of software released as open source fails to attract any kind of community at all</em>”. If the goal of open code requirements is to facilitate growth of scientific communities through sharing mutually beneficial tools, merely requiring reserachers to post their code is likely not going to achieve it<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
-<li><p>In the case that code is made openly available, “<em>A science institution usually does not have the support staff to help resolve queries, if attempts to re-run the code fail.</em>”. Easterbrook argues that scientists subject to politically motivated attacks experience barriers to sharing as “<em>minor weaknesses in code</em>” could result in scientists being overwhelmed by queries in a kind of <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack">denial of service</a> attack.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p></li>
-<li><p>Easterbrook believes that scientists being confronted with the possibility that someone may read their code (by being mandated to upload it by journals) may motivate them to make it more readable</p></li>
+<li>Who funded this work?</li>
+<li>Which paper(s) cited this book?</li>
+<li>Does this medical diagnostic guidance document update a prior guidance document?</li>
+<li>Which hospital was this author affiliated with when she wrote this article?</li>
 </ul>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+     </div>
+   </div>
+ </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="DOI-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-1 anchored">Digital Object Identifier (DOI)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>DOIs are an internationally standardized system of identifying ‘digital objects’, which in practice are mostly research works such as journal articles, in such a way that the identifier never has to change, even if the object moves location or transfers ownership. The international standard is facilitated by the <a href="https://www.doi.org/">DOI foundation<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a> which governs multiple Registry Agencies who work with publishers to assign DOIs. Crossref is one of these agencies.</p>
+<p>Because there are many agencies, and agencies may come and go, DOIs are minted with the domain of the DOI foundation, and look like this: https://doi.org/10.1162/qss_a_00022 and always start with <code>https://doi.org/</code> (older DOIs may also start with <code>https://dx.doi.org/</code>), even though this DOI was registered by Crossref, whose domain is <code>https://crossref.org</code></p>
+<p>Here’s some more information on the background of DOIs and why they are needed (from the <a href="https://www.doi.org/the-identifier/what-is-a-doi/">DOI Foundation<i class="fa-solid fa-external-link" aria-label="external-link"></i>^</a>)</p>
+<p>You can see the full list of registry agencies including those other than Crossref <a href="https://www.doi.org/the-community/existing-registration-agencies/">here<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a>.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</section>
-<section id="journal-club-discussion" class="level3">
-<h3 class="anchored" data-anchor-id="journal-club-discussion">Journal Club Discussion</h3>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Summary
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><em>Note on terminology</em><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-<p>An abridged summary of some of our discussion points (To be expanded upon:)</p>
-<ul>
-<li><p>At <a href="https://open.lnu.se/index.php/metapsychology/index">Meta-Psychology</a><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, most bottlenecks in computational reproducibility checks are very simple fixes</p>
-<ul>
-<li><p>The most common errors experienced when doing reproducibility checks were:</p>
-<ol type="1">
-<li>Absolute paths to files instead of relative paths (e.g.&nbsp;“C:/Users/ScientistName/data.csv”)</li>
-<li>Missing files</li>
-<li>Missing declarations of requirements (failing to explicitly import <a href="https://en.wikipedia.org/wiki/Library_computing">libraries</a>, omitting version numbers and later versions deprecating and breaking the code)<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
-</ol></li>
-<li><p>Some of these issues are simple enough to automate. I came up with a tool to automate solving the first two problems (can be found <a href="../../projects/projects.html#automating-reproducibility-checks-for-journal-submissions">here</a>)</p></li>
-</ul></li>
-<li><p>However, computational reproducibility checks take up a LOT of time</p>
-<ul>
-<li>There is room for specialization; it takes someone with a computer science background much less time to figure out a messy codebase, and</li>
-<li>it can be unhelpful to expect non-computationally trained scientists to shoulder the burden of ensuring reproducibility. More advanced concepts that are part of a Computer Scientist’s training (<a href="https://en.wikipedia.org/wiki/Unit_testing">unit testing</a><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>, defining functionality and building to an <a href="https://en.wikipedia.org/wiki/Interface_(object-oriented_programming)">interface</a> are not taught to, e.g., psychology students. Silent errors can easily go undetected.</li>
-<li>Leveraging specialization may help: like “methodological” peer reviewers, peer communities and journals can draw on “computational” specialists to ensure software is error-free and future-proof prior to publication. Added benefits of specialization are, for example, quicker analysis turnarounds and fewer computational resources required during analysis, as qualified research support staff can optimize code<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></li>
-</ul></li>
-<li><p>Although some bemoan the use of point-and-click platforms like SPSS and Jamovi, it can be much easier to check for reproducibility when these tools were used because these platforms can perfectly translate every action taken into a single script (Jamovi, for example, <a href="https://docs.jamovi.org/_pages/um_6_syntax_mode.html">translates into R</a>). There is then a “provenance” of actions that you do not have when researcher submit their own R files.</p></li>
-<li><p>With the improvement of large language model (LLM) coding assistants, one may expect code quality to improve, but it is not so simple. In my experience, colleagues of mine who were most eager to adopt LLM programming copilots were also most overconfident in the code it wrote for them, and may have actually lost productivity by not knowing how to troubleshoot when their code inevitably broke. For programmers who are not familiar with basic concepts like <a href="https://en.wikipedia.org/wiki/Smoke_testing_(software)">sanity checks</a>, unit tests, and prowling for silent errors<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>, copilots may entrench the attitude of “click around until it runs and then don’t change anything”.</p></li>
-<li><p>As LLM copilots improve, it may be more beneficial to focus undergraduate and graduate level programming training for non-computational trainees (e.g.&nbsp;in the psychological sciences) on higher level concepts instead of spending time teaching the syntax of any specific language. As LLMs get better at translating prompts and <a href="https://en.wikipedia.org/wiki/Pseudocode">pseudocode</a> into <a href="https://en.wikipedia.org/wiki/Low-level_programming_language">low level code</a>, it may make more sense to teach programming courses entirely in pseudocode, focusing instead on developing conceptual understanding</p></li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="further-thoughts" class="level3">
-<h3 class="anchored" data-anchor-id="further-thoughts">Further Thoughts</h3>
-<ul>
-<li>Alex Byrnes (ReproTea attendee) suggested discussing the implications of the <a href="https://amistrongeryet.substack.com/p/the-black-spatula-project">Black Spatula Project</a> for LLMs in research integrity checks. I think this is a good idea, and I hope to open a forum/comment feature on this blog to continue these conversations. More to come…</li>
-</ul>
-<section id="attendees" class="level4">
-<h4 class="anchored" data-anchor-id="attendees">Attendees</h4>
-<p><span style="background-color:black;">Redacted Redacted</span>, Christian Sodano, <span style="background-color:black;">Redacted Redacted</span><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
 
 
 </section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>1 <em>tl;dr</em> <span class="math inline">\(\equiv\)</span> too long; didn’t read<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>See “Paraphrased Points” for context. Easterbrook defines “repeatability” as the ability to <em>“re-run the same code at a later time or on a different machine”</em> and reproducibility as the ability <em>“to recreate the results, whether by re-running the same code, or by writing a new program”</em><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>The mixing of R-words here can be quite confusing. I believe what Easterbrook means is that the confidence we should have in the robustness of an effect reported by one group should be higher if re-analyses of the same dataset using different analysis approaches (e.g.&nbsp;different in-house pipelines that generally are considered valid approaches) result in the same effect. This is the general concept of <a href="https://forrt.org/glossary/english/multi_analyst_studies/">many/multi-analyst studies</a>. This is not what I would put value on as a researcher. Rather, I’d prefer to see that effects which have a large impact on scientific discourse be shown foremostly to have code that is a reflection of best practice (according to the current best theories of how to analyze those data), error-free (passing a suite of test cases, possibly including <a href="https://doi.org/10.5281/zenodo.14871843">forensic metascience</a> tests), and capable of running on any machine. If experts in that field of study agree that this method of analysis is appropriate, and the code is shown to be a valid translation of that method, then I’d think it be better to define a “replication”/verification of that effect as “the same, previously shown-to-be-valid code produces results that continue to support the initially tested hypothesis when ran on new, preferably more generalizable, data”.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>However, I think it is a serious mistake to assume the reason journals encourage code-posting is to stimulate the scientific software sharing ecosystem. It could be that librarians negotiating contracts with publishers begin to put pressure on code availability as a criterion they use to decide to subscribe or not, or that scientists begin to treat open-code journals as more credible, or that more highly cited scientists begin to opt to submit to journals that have code availability requirements (none of these reasons are mutually exclusive). A glaring omission in this article is that, from a research integrity perspective, the posting of code, <strong>regardless of how portable, configurable, readable, etc</strong> the code is, is a crucial first step to evaluating the integrity of the results reported. On multiple occasions I’ve tried to replicate a paper and found that the codebase posted includes an analysis step that is different than what is reported in the methods section of the paper.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>In the future, I will post a blog about denial of service attacks. Given the scale which scientific-ecosystem crime organizations like papermills operate at and the policy implications of controlling a scientific narrative, it’s not so strange to think that this is a concern to prepare for. Already, research integrity staff at publishers spend a lot of their time tracing down, verifying, and barring papermill products from their journals–time they could spend doing reproducibility checks or expediting the investigation of a paper with inconsistencies noted on <a href="https://en.wikipedia.org/wiki/PubPeer">pubpeer</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p> In this section I use the terms ‘repeatability’ and ‘reproducibility’ not as they are defined in the paper, but as we used them in discussion; namely, that “repeatable” code is code that a researcher can reproduce the output (figures, summary statistics, results of statistical tests) on their machine, and “reproducible” code is code which another researcher can use to reproduce the paper’s outputs on their (different) machine using the same data and source code files. Both terms would be considered “repeatability” by Easterbrook, but the distinction was important for explaining the work of a journal editor trying to reproduce the results before agreeing to publish the code submitted alongside a manuscript<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>According to the editor<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>When writing this post, I came across the term “<a href="https://en.wikipedia.org/wiki/Dependency_hell">Dependency Hell</a>” which I think accurately describes this situation<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>I plan a future post describing the cases where unit tests can make or break an analysis script, if you’re unfamiliar with this concept stay tuned<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>There have been times where I have been able to reduce the runtime of a analysis script by tenfold merely by implementing <a href="https://en.wikipedia.org/wiki/Parallel_computing">parallelism</a><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>Silent errors are errors that do not throw an exception (In <a href="https://en.wikipedia.org/wiki/Compiled_language">compiled languages</a>, the program will be able to compile, or in <a href="https://en.wikipedia.org/wiki/Interpreter_(computing)">interpreted languages</a>, the code will continue to run even though the error has occured. This may mean, e.g., one step of your data analysis pipeline isn’t performed and you do not have any error message alerting you to that fact, resulting in a disconnect between your stated methods and the actual methods that produced your figures, statistical test results, etc.)<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p>redacting until I know they are okay with me posting<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
