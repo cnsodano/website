@@ -1,0 +1,37 @@
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="HTTP-definition"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">HTTP</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+**HTTP** (**H**yper**T**ext **T**ransfer **P**rotocol) is a _transfer protocol_, that is, a set of agreed-upon rules and standards for computers to transfer information between each other over the internet. HTTP (or the encrypted HTTPS) is likely how you are accessing this site right now.^[While most of the time browsing the web you will be using HTTP to receive webpage files (\*.html files), the Crossref REST API uses the same technology but returns JSON (\*.json) files instead]
+
+The protocol is built on a 'client-server' model which describes the client (us) sending a request to the server (Crossref, in our case) for some information. The server will read that information (which we sent in a very specific format called an HTTP request) and respond in kind. There are many different kinds of requests a user can make, but the one that is used in Crossref's REST API is the GET request. When we send our request we will be telling Crossref's servers that we want to "GET" the metadata corresponding to our query. You may also hear this be called informally a "fetch" request^[In python, the popular [requests]{.inline-code} library uses [requests.get()]{.inline-code} and in javascript the corresponding function is [fetch]{.inline-code}, but the HTTP "method" is formally called "GET"]
+
+The server responds to these GET requests with a HTTP Response which is made up of three parts: a status line, headers, and a message body. In most cases you'll only ever need to worry about the status line ("Did my request result in an error? Did I type in my query wrong? Is there no article in Crossref's database matching that DOI?") and the message body (the returned JSON content). 
+
+{{< dstart summary="What a raw HTTP response looks like" >}}
+The libraries you will use to interact with Crossref's REST API will handle converting HTTP responses into familiar datatypes like python and R objects, but if you're wondering what they receive it looks something like this: 
+![](/images/HTTP_response_example.png)
+{{< dstop >}}
+
+When sending a request, we actually send headers too. This is where information about us, the client, lives. Importantly, this is where you can add contact information in order to be put into the [polite pool^{{< fa arrow-right-to-bracket >}}^](/blog/CR_API_Tutorials/glossary.qmd#polite-pool) is. If you are using the [crossrefapi python library](https://github.com/fabiobatalha/crossrefapi) these headers are set by using the [etiquette]{.inline-code} option (see [examples](https://github.com/fabiobatalha/crossrefapi?tab=readme-ov-file#support-for-polite-requests-etiquette)). If you are using the standard [requests]{.inline-code} module instead then you will have to add contact information using the optional [headers]{.inline-code} parameter of the [requests.get()]{.inline-code} method like so:
+```{.python}
+import requests
+requests.get("https://api.crossref.org/works", headers={"user-agent": "mailto=myname@email.com"})
+```
+
+```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```

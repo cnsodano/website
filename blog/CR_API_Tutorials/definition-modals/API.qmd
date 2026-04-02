@@ -1,0 +1,44 @@
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="API-definition"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">API</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+[Overview from Wikipedia](https://en.wikipedia.org/wiki/API) (my emphasis)
+<div class="scroll-def">
+>An application programming interface (API) is a connection between computers or between computer programs. It is a type of software interface, offering a service to other pieces of software. A document or standard that describes how to build such a connection or interface is called an API specification. **A computer system that meets this standard is said to implement or expose an API. The term API may refer either to the specification or to the implementation.**
+><br>
+><br>
+>In contrast to a user interface, which connects a computer to a person, an application programming interface connects computers or pieces of software to each other. It is not intended to be used directly by a person (the end user) other than a computer programmer who is incorporating it into software. An API is often made up of different parts which act as tools or services that are available to the programmer. A program or a programmer that uses one of these parts is said to call that portion of the API. The calls that make up the API are also known as subroutines, methods, requests, or endpoints. An API specification defines these calls, meaning that it explains how to use or implement them.
+
+><br>
+><br>
+>One purpose of APIs is to hide the internal details of how a system works, exposing only those parts a programmer will find useful and keeping them consistent even if the internal details later change. An API may be custom-built for a particular pair of systems, or it may be a shared standard allowing interoperability among many systems.
+><br>
+><br>
+>The term API is often used to refer to web APIs, which allow communication between computers that are joined by the internet. There are also APIs for programming languages, software libraries, computer operating systems, and computer hardware. APIs originated in the 1940s, though the term did not emerge until the 1960s and 70s.
+<br>
+<br>
+</div>
+**Other Resources:** 
+<br>
+It is specificially useful, as a user an an API, to know that: ([from IBM](https://www.ibm.com/think/topics/api))
+<div class="scroll-def">
+>APIs are predefined interfaces that share only the necessary data and functions for specific queries. Servers do not have to fully expose data—APIs enable the sharing of small packets of data, relevant to the specific request. They keep other internal system details hidden, which helps preserve the integrity of system security<br>
+</div>
+[More from Amazon Web Services](https://aws.amazon.com/what-is/api/)
+
+```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```

@@ -6,8 +6,11 @@ title: "Blog Posts"
 ## Tutorials
 #### Collecting and Analyzing Scholarly Metadata from Scratch with the Crossref REST API [(for absolute beginners)]{.smallcaps}
 * Part 1: [What's Crossref?](/blog/CR_API_Tutorials/introduction_to_tutorial.qmd) [March 31st 2026]{.smallcaps}
-* Part 2: [Introduction to the JSON API response format](/blog/CR_API_Tutorials/JSON.qmd) [March 26th 2026]{.smallcaps}
-* Part 3: [Troubleshooting JSON browser viewing issues](/blog/CR_API_Tutorials/troubleshooting-browser-JSON-view.qmd) [March 30th 2026]{.smallcaps}
+* Part 2: [What's an API?](/blog/CR_API_Tutorials/what-is-api.qmd) [April 2nd 2026]{.smallcaps}
+    + Addendum 1: [Introduction to the JSON API response format](/blog/CR_API_Tutorials/JSON.qmd) [March 26th 2026]{.smallcaps}
+    + Addendum 2: [Troubleshooting JSON browser viewing issues](/blog/CR_API_Tutorials/troubleshooting-browser-JSON-view.qmd) [March 30th 2026]{.smallcaps}
+
+* [Glossary](/blog/CR_API_Tutorials/glossary.qmd)
 
 ## IGDORE ReproDucibilitea Summaries
 * [Open code for open science?](/blog/IGDORE/openCodeForOpenScience.qmd) [March 5th 2025]{.smallcaps}

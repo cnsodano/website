@@ -1,0 +1,195 @@
+.red {
+    color: red;
+}
+
+#api_float-button {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: $theme-contrast-primary;
+    color: $themewhite;
+    font-size: 14px;
+    font-family: monospace;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+#api_hover_overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+#api_hover_overlay.open {
+    display: flex;
+}
+
+#api_hover_popup {
+    position: relative;
+    background: $themewhite;
+    overflow: auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 400px;
+    max-height: 90vh;
+}
+
+
+.api_popup-close-x {
+    /* position: sticky; */
+    position: absolute;
+    top: 12px;
+    float: right;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    /* background: transparent; */
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    color: $themegrayedout;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 1000;
+    /* sits above the editor and other content */
+    transition: background 0.15s, color 0.15s;
+}
+
+.api_popup-close-x:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: $themeprimary1;
+}
+
+.close-x-sticky-bar-div {
+    position: sticky;
+    top: 0;
+    text-align: right;
+    z-index: 1000;
+    /* or display: flex; justify-content: flex-end; */
+}
+
+#api_hover_popup h2 {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+#input-wrapper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    /* padding: 6px 10px; */
+    padding: 1em !important;
+    margin-bottom: 1em;
+    padding: 0.3em 0em;
+    font-family: monospace;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    /* max-width: 50vw; */
+    cursor: text;
+}
+
+#api_hover_raw_query_textInput {
+    outline: none;
+    border: none;
+    font-family: monospace;
+    font-size: 14px;
+    white-space: nowrap;
+    min-width: 50vw;
+    flex: 1;
+}
+
+#api_hover_raw_query_popup-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.ace_editor {
+    border-radius: 6px;
+}
+
+.api_hover_submit-btn {
+    padding: 8px 18px;
+    background-color: $theme-contrast-primary;
+    color: $themewhite;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.submit-btn {
+    padding: 8px 18px;
+    background-color: $theme-contrast-primary;
+    color: $themewhite;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#editor {
+    height: 200px;
+}
+
+.gray-btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#close-btn {
+    padding: 8px 18px;
+    background-color: $themegrayedout;
+    color: $themeprimary1;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#output-container {
+
+    font-family: monospace;
+    font-size: 14px;
+    color: $themeprimary1;
+    background-color: $themegrayedout;
+    max-height: 20vh;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding: 10px;
+    word-break: break-all;
+}
+
+.uri-encoded-output {
+    font-family: monospace;
+    font-size: 14px;
+    background-color: $themegrayedout;
+    max-height: 10vh;
+    overflow-y: auto;
+    margin-bottom: 1vh;
+    padding: 10px;
+    word-break: break-all;
+}
+
+.api_hover_aceeditor {
+    width: 50vw;
+}

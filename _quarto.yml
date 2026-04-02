@@ -4,6 +4,7 @@ project:
   render:
     - "*.qmd"
     - "!archive/*.qmd"
+    - "!blog/CR_API_Tutorials/definition-modals/"
   resources:
     - css/*
     - js/*
@@ -38,11 +39,11 @@ website:
 format:
   html:
     theme: 
-      light: [cosmo, css/scss/styles.scss]
-      dark : [darkly, css/scss/dark_styles.scss]
+      light: [cosmo, css/scss/styles.scss, css/scss/api-hover-button.scss]
+      dark : [darkly, css/scss/dark_styles.scss, css/scss/api-hover-button.scss]
     css: 
       - css/popovers.css
-      - css/modal-ext.css
+      - css/modals.css
       - css/top-level-styles.css
       - css/code-blocks.css
       - css/jse.css

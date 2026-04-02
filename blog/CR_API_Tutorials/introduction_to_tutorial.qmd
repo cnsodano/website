@@ -37,7 +37,7 @@ While it's true that Crossref provides **free, open access** to these records as
       </div>
       <div class="modal-body">
 ```
-The next article in this series which explains what an 'API' is will come out soon. These articles are actually being released out of order of how I've written them, so if you're interested in learning more about retrieving metadata from Crossref you can look at [my article on the JSON data format^{{< fa arrow-turn-up >}}^](/blog/CR_API_Tutorials/JSON.qmd), but it may be unclear what that acronym has to do with the API acronym at the moment. My apologies!
+The next article in this series which explains what an 'API' is will come out soon. These articles are actually being released out of order of how I've written them, so if you're interested in learning more about retrieving metadata from Crossref you can look at [my article on the JSON data format^{{< fa arrow-right-to-bracket >}}^](/blog/CR_API_Tutorials/JSON.qmd), but it may be unclear what that acronym has to do with the API acronym at the moment. My apologies!
 ```{=html}
     </div>
     <div class="modal-footer">
@@ -105,7 +105,7 @@ DOIs are an internationally standardized system of identifying 'digital objects'
 
 Because there are many agencies, and agencies may come and go, DOIs are minted with the domain of the DOI foundation, and look like this: https://doi.org/10.1162/qss_a_00022 and always start with `https://doi.org/` (older DOIs may also start with `https://dx.doi.org/`), even though this DOI was registered by Crossref, whose domain is `https://crossref.org`
 
-Here's some more information on the background of DOIs and why they are needed (from the [DOI Foundation{{< fa external-link >}}^](https://www.doi.org/the-identifier/what-is-a-doi/))
+Here's some more information on the background of DOIs and why they are needed (from the [DOI Foundation^{{< fa external-link >}}^](https://www.doi.org/the-identifier/what-is-a-doi/))
 
 You can see the full list of registry agencies including those other than Crossref [here^{{< fa external-link >}}^](https://www.doi.org/the-community/existing-registration-agencies/).
 

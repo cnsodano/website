@@ -59,3 +59,19 @@ ol li {
 input {
     max-width: 100% !important;
 }
+
+.fa-solid {
+    font-size: 0.8em;
+    /* Icons a little too big, so this shrinks them */
+}
+
+.scroll-def {
+    max-height: 30vh !important;
+    overflow-y: auto;
+
+}
+
+.bold {
+    /* For when other inline styles prevent using ** ** */
+    font-weight: bold;
+}

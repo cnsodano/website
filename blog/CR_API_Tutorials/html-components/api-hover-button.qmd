@@ -1,0 +1,71 @@
+[example span]{.defined_in_light-dark_base}
+
+```{=html}
+<!-- <link rel="stylesheet" href="/drafts/html-components/api-hover-button.css"> -->
+<script src="/drafts/html-components/js/prefixTextForInput.js"></script>
+<script src="/drafts/html-components/js/pyodide_init.js"></script>
+<script src="/drafts/html-components/js/update_to_button_code.js"></script>
+```
+
+```{=html}
+<button id="api_float-button" onclick="openPopup()">API</button>
+<!-- Overlay + Popup -->
+<div id="api_hover_overlay" onclick="handleOverlayClick(event)">
+    <div id="api_hover_popup">
+        <div class="close-x-sticky-container">
+            <button class="api_popup-close-x" onclick="closePopup()" aria-label="Close">&#x2715;</button>
+        </div>
+        <h2 class="anchored" data-anchor-id="making-a-plan">Enter URL</h2>
+        <div id="input-wrapper">
+            <!-- <span id="prefix">https://corsproxy.io/?https://api.crossref.org/</span> -->
+            <input type="text" id="api_hover_raw_query_textInput" autofocus="">
+        </div>
+        <div id="api_hover_raw_query_popup-actions" class="_popup-actions">
+            <button id="api_hover_raw_query_submit-btn" class="api_hover_submit-btn" onclick="handleSubmit(window.api_hover_raw_query_jsoneditor, 'api_hover_raw_query')">Submit</button>
+            <button id="api_hover_raw_query_next-page-btn" class="gray-btn" onclick="handleNextPage(window.api_hover_raw_query_jsoneditor, 'api_hover_raw_query')" style="display:none;">Next Page
+                →</button>
+            <span id="api_hover_raw_query_page-display"
+                style="display:none; font-family:monospace; font-size:14px; align-self:center; color:#555;"></span>
+            <button id="close-btn" onclick="closePopup()">Close</button>
+        </div>
+        <div id="output-container">
+            <p> URI-encoded Query: </p>
+            <p id="api_hover_raw_query_uri-encoded-output" class="uri-encoded-output"></p>
+        </div>
+        <div id="api_hover_raw_query_jsoneditor_container" style="width: 100%; height: 400px;"></div>
+            <script type="module">
+            import {createJSONEditor} from "https://cdn.jsdelivr.net/npm/vanilla-jsoneditor@3.11.0/standalone.min.js"
+            
+            content = null
+
+            const api_hover_raw_query_jsoneditor =createJSONEditor({
+                target: document.getElementById('api_hover_raw_query_jsoneditor_container'),
+                props: {
+                    content,
+                    onChange: (updatedContent,previousContent,{contentErrors,patchResult}) => {
+                        // content is an object { json: unknown } | { text: string }
+                        console.log('onChange',{updatedContent,previousContent,contentErrors,patchResult})
+                        content=updatedContent
+                    }
+                }
+            })
+            window.api_hover_raw_query_jsoneditor = api_hover_raw_query_jsoneditor
+    </script>
+    </div>
+</div>
+<script defer>
+    // Apply formatter
+    const input=document.getElementById('api_hover_raw_query_textInput');
+    addFormatter(input,regexPrefix(/^https:\/\/corsproxy\.io\/\?https:\/\/api.crossref.org\/v1\//,'https://corsproxy.io/?https://api.crossref.org/v1/'));
+</script>
+<script defer>
+    let nextCursor=null;
+    let currentPage=1;
+    let totalPages=null;
+
+    document.getElementById("api_hover_raw_query_textInput").addEventListener("keydown",function(e) {
+        if(e.key==="Enter") handleSubmit(api_hover_raw_query_jsoneditor, 'api_hover_raw_query');
+        if(e.key==="Escape") closePopup();
+    });
+</script>
+```

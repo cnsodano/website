@@ -7,5 +7,19 @@ requires-python = ">=3.13"
 dependencies = [
     "numpy>=2.4.4",
     "pandas>=3.0.1",
+    "pip>=26.0.1",
+    "pytest>=9.0.2",
     "requests>=2.33.1",
+    "scriv",
 ]
+
+[tool.uv.sources]
+scriv = { git = "https://github.com/cnsodano/scriv", rev = "main" }
+
+[tool.scriv]
+format = "md"
+changelog="CHANGELOG.md"
+fragment_directory = "changelog_fragments"
+entry_title_template = "file: changelog_fragments/changelogtitle.md.j2"
+new_fragment_template = "file: changelog_fragments/fragment_template.md.j2"
+main_branches = [] # I want to see 'main' in entry if changes made on main

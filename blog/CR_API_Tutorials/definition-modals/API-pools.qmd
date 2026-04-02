@@ -1,0 +1,38 @@
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="API-pools-definition"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">API pools</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+API pools are a system of separating the requests made to a public API (like Crossref's REST API) to offer different levels of priority to different users. Crossref's REST API uses three pools, which are explained very well by a member of the Crossref team [here](https://community.crossref.org/t/rest-api-pools-which-to-use-and-when/15317). For a very brief summary:
+
+##### Public pool
+Anyone can send a request here, and it is the most basic form of interacting with the REST API. It is the most anonymous pool, as you don't need to provide contact information to use it, but it is also the least prioritized
+
+##### Polite pool
+Requests get routed to the polite pool by providing identifying information in the form of an email address. In reality, this is not meant to identify as much as to contact; you need not use your personal email to use this pool, as long as you regularly check that email address. You will have more lenient rate limits and if one of your automation scripts is taking up too many resources you will receive an email at that address from the team before being blocked.
+
+Although we'll go into this in more detail later in the tutorial, for those who read the [HTTP^{{< fa arrow-right-to-bracket >}}^](/blog/CR_API_Tutorials/glossary.qmd#http) glossary entry, the way you access this pool is by adding the string "mailto:\<valid-email-address\>" in an HTTP header called "User-Agent", or as a parameter in the request like so "mailto=\<valid-email-address\>"
+
+##### Plus pool
+This is best described by the Crossref team themselves, so I'll directly quote the [forum article](https://community.crossref.org/t/rest-api-pools-which-to-use-and-when/15317): 
+> ###### The plus pool
+>Some users have credentials they can use to access higher rate limits. There is a cost to accessing the Plus pool, which comes with guarantees for stability and support. One key thing to note is that the data accessed by the Plus pool is exactly the same as the other pools, only the level of service is different.
+><br>
+>The queries and filters accessible to Plus users are the same. In addition, they have access to monthly snapshots or all Crossref DOI records in JSON and XML snapshots. Once a year we release a JSON snapshot as a public data file, which is free for anyone to access.
+
+
+```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```

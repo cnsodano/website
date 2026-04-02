@@ -1,5 +1,6 @@
 /*-- scss:uses --*/
 @use "sass:color";
+@use "indents";
 
 /*-- scss:defaults --*/
 $themeprimary1: #3D5A80;
@@ -39,6 +40,7 @@ $footer-bg: $themeprimary1;
 // $code-block-bg: $themewhite;
 $code-bg: color.adjust($themewhite, $lightness: -2%);
 $code-fg: $themedarkprimary;
+
 $pink: #ff8edd;
 $red: #ae0000;
 
@@ -203,4 +205,9 @@ input {
 .jse-highlight {
     background-color: $themegrayedout;
     outline: $themegrayedout;
+}
+
+// Callouts
+.callout-note {
+    border-left-color: $themeprimary1;
 }

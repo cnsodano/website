@@ -45,9 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c776de297521c6a545951e96c11dd522.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-20cbeeb9b8463f22f9ff718abbd816fa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c776de297521c6a545951e96c11dd522.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5f1e39d500a18bea5fbb0dcf4c07eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-a930b26086ecdfda6ac7653b07810ee9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5f1e39d500a18bea5fbb0dcf4c07eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="css/popovers.css">
-<link rel="stylesheet" href="../../css/modal-ext.css">
+<link rel="stylesheet" href="../../css/modals.css">
 <link rel="stylesheet" href="../../css/top-level-styles.css">
 <link rel="stylesheet" href="../../css/code-blocks.css">
 <link rel="stylesheet" href="../../css/jse.css">
@@ -329,20 +329,20 @@ ul.task-list li input[type="checkbox"] {
 <p>When viewing JSON in your web browser, the file will be opening in a new browser tab. If the thing you saw in a new browser tab looks like <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#incorrect-JSON-format-view">this<sup><i class="fa-solid fa-square-up-right" aria-label="square-up-right"></i></sup></span>, then you need to enable JSON formatting in your browser. Here are some instructions for how you can do that <sub><i class="fa-solid fa-arrow-turn-down" aria-label="arrow-turn-down"></i></sub></p>
 <section id="fixing_json_formatting" class="level4">
 <h4 class="anchored" data-anchor-id="fixing_json_formatting">Fixing formatting</h4>
-<p></p><p></p><details><summary>Mozilla Firefox</summary><blockquote class="blockquote"><p></p>
+<p></p><p></p><details><summary>Mozilla Firefox</summary><div><p></p>
 <p>By default, this JSON formatting should be enabled. If you’re having issues, you can type <span class="inline-code">about:config</span> in the address bar, press enter, and then you will be met with the following screen:</p>
 <p><img src="../../images/about_config_screenshot.png" class="img-fluid" alt="An image displaying the 'Accept Risk and Continue' screen displayed by Firefox when visiting the 'about:config' page"></p>
 <p>You should click “Accept the Risk and Continue”, then in the search bar labelled “Search preference name” type in <span class="inline-code">devtools.jsonview.enabled</span>. If the value that comes up says <span class="inline-code">false</span>, you will will need to toggle it to <span class="inline-code">true</span> with the button on the far right of the screen.</p>
-<p></p></blockquote></details><p></p><p></p>
-<p></p><p></p><details><summary>Google Chrome</summary><blockquote class="blockquote"><p></p>
+<p></p></div></details><p></p><p></p>
+<p></p><p></p><details><summary>Google Chrome</summary><div><p></p>
 <p>As I understand it JSON formatting is not a default feature included. There are however a number of free JSON viewing/formatting extensions in the <a href="https://chromewebstore.google.com/search/json%20viewer">chrome web store<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a> which you can download for free to fix this issue for you.</p>
-<p></p></blockquote></details><p></p><p></p>
-<p></p><p></p><details><summary>Safari</summary><blockquote class="blockquote"><p></p>
+<p></p></div></details><p></p><p></p>
+<p></p><p></p><details><summary>Safari</summary><div><p></p>
 <p>As I understand it JSON formatting is not a default feature included. There are however a number of free JSON viewing/formatting extensions in the <a href="https://apps.apple.com/us/app/json-peep-for-safari/id1458969831?mt=12">App Store for Mac<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a> which you can download for free to fix this issue for you.</p>
-<p></p></blockquote></details><p></p><p></p>
-<p></p><p></p><details><summary>Microsoft Edge</summary><blockquote class="blockquote"><p></p>
+<p></p></div></details><p></p><p></p>
+<p></p><p></p><details><summary>Microsoft Edge</summary><div><p></p>
 <p>Microsoft edge does have a native formatting option, which you can enable by checking the “Pretty-print” checkbox at the top left of the screen when viewing an API response. There are also a number of <a href="https://microsoftedge.microsoft.com/addons/search/JSON%20viewer?filteredAddon=0&amp;filterFeaturedAddons=false&amp;filteredRating=0&amp;sortBy=Relevance">free extensions<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a> on the Edge Add-on store</p>
-<p></p></blockquote></details><p></p><p></p>
+<p></p></div></details><p></p><p></p>
 <!-- Modal -->
 <div class="modal fade" id="text-editor-details" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">

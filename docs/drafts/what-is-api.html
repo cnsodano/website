@@ -45,9 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c776de297521c6a545951e96c11dd522.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-20cbeeb9b8463f22f9ff718abbd816fa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-c776de297521c6a545951e96c11dd522.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6ff9a6e35367d47ff42d62d8ad313d16.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d5bd436dc19d8e133a90b2aa8860169e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6ff9a6e35367d47ff42d62d8ad313d16.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -89,10 +89,18 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 <script src="js/initializePopOvers.js"></script>
+<style>
+section#rest-api-intro details {
+  margin: -1em 0 -0.5em 1em
+}
+section#rest-api-intro details .callout{
+  margin-left: 1em
+}
+</style>
 
 
 <link rel="stylesheet" href="css/popovers.css">
-<link rel="stylesheet" href="../css/modal-ext.css">
+<link rel="stylesheet" href="css/modal-ext.css">
 <link rel="stylesheet" href="../css/top-level-styles.css">
 <link rel="stylesheet" href="../css/code-blocks.css">
 <link rel="stylesheet" href="../css/jse.css">
@@ -305,11 +313,13 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#tips-to-get-the-most-out-of-this-guide" id="toc-tips-to-get-the-most-out-of-this-guide" class="nav-link active" data-scroll-target="#tips-to-get-the-most-out-of-this-guide">Tips to get the most out of this guide</a></li>
+  <li><a href="#rest-api-intro" id="toc-rest-api-intro" class="nav-link" data-scroll-target="#rest-api-intro">What the heck is the ‘REST API’?</a></li>
+  <li><a href="#end-notes" id="toc-end-notes" class="nav-link" data-scroll-target="#end-notes">End notes</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -395,12 +405,12 @@ ul.task-list li input[type="checkbox"] {
         if(e.key==="Escape") closePopup();
     });
 </script>
-<section id="tips-to-get-the-most-out-of-this-guide" class="level2">
+<section id="tips-to-get-the-most-out-of-this-guide" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="tips-to-get-the-most-out-of-this-guide">Tips to get the most out of this guide</h2>
-<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Note</span>About this Document
@@ -409,12 +419,73 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p></p><p></p><details><summary>Click on definitions of technical terms</summary><blockquote class="blockquote"> When learning about technical topics there are a lot of daunting <span class="inline-code">technical terms</span> that can’t be avoided, but they can be helped—click on any <span class="modal-ref" data-bs-toggle="modal" data-bs-target="example-definition">link with an info icon next to it<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> to see a detailed, beginner friendly explanation in a popup, or go to the <a href="../drafts/CR_API_tutorial_glossary.html">glossary^<i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></a> to see all terms defined in order of appearance. As always, suggestions for improvement are welcome—just leave an issue on the repository for this article <a href="https://github.com/cnsodano/website">here<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a><p></p>
-<p>I hope to strike of balance in this tutorial, on one hand making it a readable guide with linear progression, on the other a complete reference resource for learning more–anywhere where I’ve abridged content for clarity you can click on links in the margin/footnotes if you want to learn more, or check out the related (LINK) appendix. </p></blockquote></details><p></p><p></p>
-<p></p><p></p><details><summary>Getting your hands dirty</summary><blockquote class="blockquote"> I’ve found it helps to be able to follow along with a guide in real time as you read. What’s great about Crossref’s REST API (more on that term <a href="#rest-api-intro">below</a>), is that if you are reading this article from an internet browser then you already have everything you need to test it out in a new browser tab. If you find switching tabs too disruptive, I’ve created an interactive API sandbox environment available by clicking on the hovering “API” button on the bottom right corner of this window (_return img here). It may be overwhelming at first, but just know when the time comes to try out what you learn, this is a pretty handy way to do it; you’ll be able to practice writing metadata <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#request-definition">requests<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> by hand, using Python <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#library-definition">libraries<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span>, or even writing Python code from scratch (as we go further). </blockquote></details><p></p><p></p>
+<p></p><p></p><details><summary>Click on definitions of technical terms</summary><div> When learning about technical topics there are a lot of daunting <span class="inline-code">technical terms</span> that can’t be avoided, but they can be helped—click on any <span class="modal-ref" data-bs-toggle="modal" data-bs-target="example-definition">link with an info icon next to it<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> to see a detailed, beginner friendly explanation in a popup, or go to the <a href="../drafts/CR_API_tutorial_glossary.html">glossary^<i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></a> to see all terms defined in order of appearance. As always, suggestions for improvement are welcome—just leave an issue on the repository for this article <a href="https://github.com/cnsodano/website">here<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a><p></p>
+<p>I hope to strike of balance in this tutorial, on one hand making it a readable guide with linear progression, on the other a complete reference resource for learning more–anywhere where I’ve abridged content for clarity you can click on links in the margin/footnotes if you want to learn more, or check out the related <a href="..\blog/CR_API_Tutorials/appendix.qmd">appendix<sup><i class="fa-solid fa-arrow-right-to-bracke" aria-label="arrow-right-to-bracke"></i></sup></a>. </p></div></details><p></p><p></p>
+<p></p><p></p><details><summary>Getting your hands dirty</summary><div> I’ve found it helps to be able to follow along with a guide in real time as you read. What’s great about Crossref’s REST API (more on that term <a href="#rest-api-intro">below</a>), is that if you are reading this article from an internet browser then you already have everything you need to test it out in a new browser tab. If you find switching tabs too disruptive, I’ve created an interactive API sandbox environment available by clicking on the hovering “API” button on the bottom right corner of this window (_return img here). It may be overwhelming at first, but just know when the time comes to try out what you learn, this is a pretty handy way to do it; you’ll be able to practice writing metadata <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#request-definition">requests<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> by hand, using Python <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#libraries-definition">libraries<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span>, or even writing Python code from scratch (as we go further). </div></details><p></p><p></p>
 </div>
 </div>
 </div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">If you’re interested in more technical explanations of APIs from first principles, you can check out the more detailed explanations in <a href="../blog/CR_API_Tutorials/glossary.html#api">these glossary entries<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a></span></div></div>
+<p>Before we go any further, you need to know that there are a lot of ways you can access Crossref’s metadata that don’t involve needing to learn what an API is; in fact, they publish a data file including the entirety of their metadata record database every year.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>You can find details on the other ways to access this data and what use cases they match with <a href="https://www.crossref.org/documentation/retrieve-metadata/">here<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a>. If you’ve checked out those resources and you’re set on learning to use their APIs (which I think is a great skill and tool to have in your metascience toolbox!), read on.</p>
+</section>
+<section id="rest-api-intro" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="rest-api-intro">What the heck is the ‘REST API’?</h2>
+<div class="page-columns page-full"><p>Yes, I understand. Yet another acronym. In truth, to be a responsible and effective user of this technology, you don’t need to know what it stands for. I’ll oversimply to keep things grounded in the context of our use case:</p><div class="no-row-height column-margin column-container"><span class="margin-aside">It still doesn’t hurt to learn what API stands for—here’s a <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#API-definition">definition<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span></span></div></div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="A Practical Definition of an API">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>A Practical Definition of an API
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Crossref has lots of data that they want to allow users to access, but with around 2 billion data requests per month there needs to be a system that allows them to manage the flow so that everyone gets the data they requested in a reasonable time, no one user hogs the system’s resources, and the costs of providing this service stay reasonable.</p>
+<p>One way they do this is by creating a very specific set of rules for users to request data which allows them to monitor and distribute the load more easily. <strong>This set of rules is an ‘API specification’, and submitting a request for data which follows those rules can be thought of as ‘using’ that API.</strong></p>
+<p>Because different data may be accessed by different users for different purposes, Crossref has made more than one API, each with different names and sets of rules. <strong>The REST API is one of those sets of rules that is particularly convenient for fact-finding and exploratory research in general</strong>.</p>
+</div>
+</div>
+<div id="endnote1">
+<p>The most common way you’ll interact with one of Crossref’s APIs is by submitting a request for some amount of metadata. Unsurprisingly this is called making an “API request” also informally described as an “API call”.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> This request is sent over the internet to a computer maintained by Crossref called a <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#server-definition">server<sup><i class="fa-solid fa-info-cirle" aria-label="info-cirle"></i></sup></span> which <strong>serves</strong> you back the data you requested.</p>
+</div>
+<div class="page-columns page-full"><p>You’ll also likely want a specific subset of data relevant to your research question, so you’ll want to specify your requests by using <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#query-early-definition">search query<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span>. Often you’ll get back more information than you need, or in a different order than you want, so you’ll also want to be able to <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#filter-early-definition">filter<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> and <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#sort-early-definition">sort<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span>. You may even want to get a <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#facet-early-definition">summary<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> of the data. For these reasons, you’ll want to use specifically the <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#REST-definition">REST API<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span>. <strong>For the purposes of getting started on doing research with Crossref’s metadata, it suffices for now to say that the REST API is a specific way of accessing Crossref’s metadata that has the following important distinguishing characteristics</strong>: </p><div class="no-row-height column-margin column-container"><span class="margin-aside">If you are curious, you can read more <a href="https://cloud.google.com/discover/what-is-rest-api?hl=en">here<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a> or <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#REST-definition">here<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span>about what the <em>REST</em> in <em>REST</em> API stands for</span></div></div>
+<p></p><p></p><details open=""><summary>Data requested is returned to us in a data format called [JSON]{.bold}</summary><div><p></p>
+<p><span class="btn btn-secondary indent-l"><a href="../blog/CR_API_Tutorials/JSON.html#whats-json">What’s JSON?<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a></span></p>
+<p></p></div></details><p></p> <p></p><details><summary>There are TONS of users of this specific API, each making loads of requests per second</summary><div><p></p>
+<ul>
+<li>According to Crossref, of the 2 billion combined requests their public APIs receive per month, <a href="https://www.crossref.org/blog/announcing-changes-to-rest-api-rate-limits/">around half</a> are made to the REST API alone.</li>
+<li>In order to continue to make this service accessible to everyone who uses it, Crossref imposes a <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#rate-limit-definition">rate limit<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> which limits the number of requests you can make per second<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li><span class="bold">To be a responsible user of this service, <span id="endnote2">you need to respect the <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#rate-limit-definition">rate limits<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span></span></span> This means that when you begin to automate your requests through analysis scripts, you follow the steps I list out in order to make sure you do not send too many automated requests at one time.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This means that unlike reading from a ‘local’ data file saved on your computer, you may have to wait to receive all of the data you requested
+<ul>
+<li>Beyond rate limits, consider the amount of data you are receiving per request. Requests that are unspecific or which use very broad <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#query-early-definition">query<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> terms may return <strong>far more data</strong> than you actually want and will cause unnecessary strain on the system. For this reason we will discuss queries and filtering at length in the upcoming articles </li></ul></li></ul></div></details><p></p> <p></p><details><summary>Each request is 'stateless' that is, every request for data is independent and there's no 'memory' of previous requests</summary><div> <p></p><details><summary>A small caveat</summary><div> Some information is retained; e.g.&nbsp;to <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#rate-limit-definition">rate limit<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span>. You can also opt to provide more information, including contact information, to join the <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#API-pools-definition">polite pool<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> where you’ll enjoy more lenient rate limits and the chance to receive a customary email before you get blocked if you have a rogue script running too many requests at once </div></details><p></p>
+
+
+<p>To understand the implications of this feature, it may help to have a slightly deeper understanding of the technology being used behind the <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#REST-definition">REST<sup><i class="fa-solid fa-info-cirle" aria-label="info-cirle"></i></sup></span> API (and I cannot stress ‘slightly’ enough…internet communication protocols can get very technical very quickly), so reading up on the <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#HTTP-definition">HTTP protocol<sup><i class="fa-solid fa-info-cirle" aria-label="info-cirle"></i></sup></span> may help. In practice, however, what statelessness means for you is that <strong>you need to plan out requests and test in small batches before automating things</strong> as realizing you need to add one additional metadata field to a request will result in the server <span id="endnote3">retrieving everything again</span>, not just the new data you’re interested in. </p></div></details><p></p><p></p>
+<p></p><p></p><details><summary>Requests can only be made for one category of record at a time</summary><div><p></p>
+<ul>
+<li>They have as of April 2026 <span id="endnote4">7</span> different categories of metadata record you can request, each representing a unique type of object which they record metadata about</li>
+<li>While the record categories are closely connected (publishers publish articles in journals, for example) and some information about one category you can surmiseby working up the relationship tree (metadata about a work will include the journal, e.g.), each record has some unique metadata fields<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+<li>The most numerous record type is <span class="inline-code">Work</span>, which is very flexible and you can often find a lot by analyzing records of this category, still…</li>
+<li>You will have to learn how to request specifically a certain <strong>category</strong> of record if you want access to these specific metadata fields.
+<ul>
+<li>For example, if you want to know the names of the different publishers which the Crossref member <a href="https://www.google.com/url?sa=t&amp;source=web&amp;rct=j&amp;opi=89978449&amp;url=https://www.wiley.com/en-us/&amp;ved=2ahUKEwjzipmOv8-TAxWKpIkEHSK2CtwQFnoECAsQAQ&amp;usg=AOvVaw3XEZna4nsxOH8LW01SbaJD">Wiley<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a> procures DOIs for, you can’t find this out other than searching for that member’s record.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a><br>
+</li></ul></li></ul></div></details><p></p> <p></p><details open=""><summary>The data it provides can be requested, retrieved, and read using nothing more than an internet browser tab</summary><div>
+
+<li><span class="indent-l">Enough reading, let’s <span class="modal-ref btn btn-secondary" data-bs-toggle="modal" data-bs-target="#coming-soon-details">try it! <i class="fa-solid fa-arrow-right-long" aria-label="arrow-right-long"></i></span></span></li>
+
+<p></p></div></details><p></p><p></p>
+<hr>
+</section>
+<section id="end-notes" class="level1">
+<h1>End notes</h1>
+<ul>
+<li>To be more accurate, large companies like Crossref likely don’t use one computer to act as their server. In practice, what looks like a single ‘endpoint’ (the place we send our requests) to us users may be a collection of many computers, where our request gets ‘routed’ to one that is not busy with other requests. <a href="#endnote1"><i class="fa-solid fa-arrow-turn-up" aria-label="arrow-turn-up"></i></a></li>
+<li>There is actually more than one rate limit. The limit applied to your request depends on a number of factors, like whether you’ve identified the purpose of your request and offered contact information or if you’re a paying subscriber to their <a href="https://www.crossref.org/services/metadata-retrieval/metadata-plus/">Metadata Plus</a> <a href="#endnote2"><i class="fa-solid fa-arrow-turn-up" aria-label="arrow-turn-up"></i></a></li>
+<li>It may not be exactly true that the server will retrieve EVERYTHING again, as there may be some internal <a href="https://en.wikipedia.org/wiki/Cache_(computing)">caching</a>(storing data you recently requested in an intermediate location so you don’t need to do the full lookup again to retrieve it again) mechanisms that I’m not familiar with, but across the publicly available documentation Crossref continually emphasizes that the responsibility for caching results lies with the API user <a href="#endnote3"><i class="fa-solid fa-arrow-turn-up" aria-label="arrow-turn-up"></i></a></li>
+<li><strong>Warning: this info may not make sense until later in the tutorial but I leave it here for accuracy:</strong> I wrote that there are 7 types of record available for request. In this series I use ‘types of record’ as a more user-friendly way of referring to different categories/abstract representations of data that are available through the 7 different <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#endpoints-definition">endpoints<sup><i class="fa-solid fa-info-cirle" aria-label="info-cirle"></i></sup></span> which can be requested. There are much more than 7 different types of scholarly <span class="inline-code">Works</span> records, for example. Moreover, currently there are only 2 fields of metadata available from the <span class="inline-code">Prefixes</span>, <span class="inline-code">Licenses</span>, and <span class="inline-code">Types</span> endpoints and this information can be mostly discovered by using filters on other endpoints like <span class="inline-code">Works</span>. In practice, you can think of there being 4 categories of record mainly in use; <span class="inline-code">Works</span>, <span class="inline-code">Members</span>, <span class="inline-code">Journals</span>, <span class="inline-code">Funders</span>.<a href="#endnote4"><i class="fa-solid fa-arrow-turn-up" aria-label="arrow-turn-up"></i></a></li>
+</ul>
 <!-- Modal -->
 <div class="modal fade" id="DOI-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
@@ -453,12 +524,291 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 </div>
-
-
+<!-- Modal -->
+<div class="modal fade" id="API-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">API</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<a href="https://en.wikipedia.org/wiki/API">Overview from Wikipedia</a> (my emphasis)
+<div class="scroll-def">
+<blockquote class="blockquote">
+<p>An application programming interface (API) is a connection between computers or between computer programs. It is a type of software interface, offering a service to other pieces of software.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>^ A document or standard that describes how to build such a connection or interface is called an API specification. <strong>A computer system that meets this standard is said to implement or expose an API. The term API may refer either to the specification or to the implementation.</strong> <br> <br> In contrast to a user interface, which connects a computer to a person, an application programming interface connects computers or pieces of software to each other. It is not intended to be used directly by a person (the end user) other than a computer programmer<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>^ who is incorporating it into software. An API is often made up of different parts which act as tools or services that are available to the programmer. A program or a programmer that uses one of these parts is said to call that portion of the API. The calls that make up the API are also known as subroutines, methods, requests, or endpoints. An API specification defines these calls, meaning that it explains how to use or implement them. <br> <br> One purpose of APIs is to hide the internal details of how a system works, exposing only those parts a programmer will find useful and keeping them consistent even if the internal details later change. An API may be custom-built for a particular pair of systems, or it may be a shared standard allowing interoperability among many systems. <br> <br> The term API is often used to refer to web APIs,[2] which allow communication between computers that are joined by the internet. There are also APIs for programming languages, software libraries, computer operating systems, and computer hardware. APIs originated in the 1940s, though the term did not emerge until the 1960s and 70s. <br> <br></p>
+</blockquote>
+</div>
+<strong>Other Resources:</strong> <br> It is specificially useful, as a user an an API, to know that: (<a href="https://www.ibm.com/think/topics/api">from IBM</a>)
+<div class="scroll-def">
+<blockquote class="blockquote">
+<p>APIs are predefined interfaces that share only the necessary data and functions for specific queries. Servers do not have to fully expose data—APIs enable the sharing of small packets of data, relevant to the specific request. They keep other internal system details hidden, which helps preserve the integrity of system security<br></p>
+</blockquote>
+</div>
+<p><a href="https://aws.amazon.com/what-is/api/">More from Amazon Web Services</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="rate-limit-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Rate Limit</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>Rate limits are limits on the number of requests a user (or ‘client’, in the frequent case that the requests are coming from an automated system) can submit in a given time period. Imposing rate limits allows systems to ensure no one user hogs their resources and that response times are evenly distributed. Different APIs are set up differently; some common consequences for exceeding the rate limit are:</p>
+<ul>
+<li>routing your requests to a different, deprioritized queue (longer wait times)</li>
+<li>timeouts (periods of time where your requests will not be responded to by the server)</li>
+<li>bans (no longer responding to requests from your credentials, either if you identified yourself with an email address or user token, or merely by your IP address)</li>
+</ul>
+<p>According to the REST API version 1 <a href="https://api.crossref.org/swagger-ui/index.html#response-codes">documentation</a>, Crossref will return an error message (an HTTP response with status code 429) when they detect request rates exceeding their rate limits, which will effectively timeout your access to the API.</p>
+<p>Note that there are technically two parts to the Crossref REST API rate limit system: the <em>concurrency limit</em> (limit on number of requests sent at the same time) and the <em>rate limit</em> (limit of number of requests sent over a given period of time)</p>
+<p><a href="https://www.crossref.org/blog/announcing-changes-to-rest-api-rate-limits/">More on the most recent changes to Crossref’s REST API rate limits (November 2025)</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="API-pools-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">API pools</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>API pools are a system of separating the requests made to a public API (like Crossref’s REST API) to offer different levels of priority to different users. Crossref’s REST API uses three pools, which are explained very well by a member of the Crossref team <a href="https://community.crossref.org/t/rest-api-pools-which-to-use-and-when/15317">here</a>. For a very brief summary:</p>
+<section id="public-pool" class="level5">
+<h5 class="anchored" data-anchor-id="public-pool">Public pool</h5>
+<p>Anyone can send a request here, and it is the most basic form of interacting with the REST API. It is the most anonymous pool, as you don’t need to provide contact information to use it, but it is also the least prioritized</p>
 </section>
+<section id="polite-pool" class="level5">
+<h5 class="anchored" data-anchor-id="polite-pool">Polite pool</h5>
+<p>Requests get routed to the polite pool by providing identifying information in the form of an email address. In reality, this is not meant to identify as much as to contact; you need not use your personal email to use this pool, as long as you regularly check that email address. You will have more lenient rate limits and if one of your automation scripts is taking up too many resources you will receive an email at that address from the team before being blocked.</p>
+<p>Although we’ll go into this in more detail later in the tutorial, for those who read the <a href="../blog/CR_API_Tutorials/glossary.html#http">HTTP<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a> glossary entry, the way you access this pool is by adding the string “mailto:&lt;valid-email-address&gt;” in an HTTP header called “User-Agent”, or as a parameter in the request like so “mailto=&lt;valid-email-address&gt;”</p>
+</section>
+<section id="plus-pool" class="level5">
+<h5 class="anchored" data-anchor-id="plus-pool">Plus pool</h5>
+<p>This is best described by the Crossref team themselves, so I’ll directly quote the <a href="https://community.crossref.org/t/rest-api-pools-which-to-use-and-when/15317">forum article</a>: &gt; ###### The plus pool &gt;Some users have credentials they can use to access higher rate limits. There is a cost to accessing the Plus pool, which comes with guarantees for stability and support. One key thing to note is that the data accessed by the Plus pool is exactly the same as the other pools, only the level of service is different. &gt;<br> &gt;The queries and filters accessible to Plus users are the same. In addition, they have access to monthly snapshots or all Crossref DOI records in JSON and XML snapshots. Once a year we release a JSON snapshot as a public data file, which is free for anyone to access.</p>
+      </section></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="REST-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">REST API</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>REST APIs (sometimes called RESTful APIs, with <a href="https://www.geeksforgeeks.org/advance-java/know-the-difference-between-rest-api-and-restful-api/">minor differences between the two</a>) are API systems that are designed with particular design philosophy known as a “REST”, which is well described by <a href="https://www.redhat.com/en/topics/api/what-is-a-rest-api">Red Hat</a> like so (my emphasis and paraphrasing):</p>
+<div class="scroll-def">
+<blockquote class="blockquote">
+<p>REST is a set of architectural constraints, not a protocol or a standard. API developers can implement REST in a variety of ways. <br> When a [user] request is made via a RESTful API, it transfers a <em><strong>representation</strong></em> of the <em><strong>state</strong></em> of the resource to the requester or endpoint. This information, or representation, is delivered in one of several formats via <a href="../blog/CR_API_Tutorials/glossary.html#http">HTTP<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a>: <a href="../blog/CR_API_Tutorials/glossary.html#json">JSON (Javascript Object Notation)<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a>, HTML, XLT, Python, PHP, or plain text. JSON is the most generally popular file format to use because, despite its name, it’s language-agnostic, as well as readable by both humans and machines.</p>
+</blockquote>
+</div>
+<p>In general, for the purpose of doing research with scholarly metadata available, knowing about REST principles is not so important. What is important is that it operates over the <a href="../blog/CR_API_Tutorials/glossary.html#http">HTTP web communication protocol</a> (a system for transfering files, including this web page, to users across the internet) (DEFINE), and if you have the itch to learn about tecchy topics, your time is probably better spent there. If you’d like to learn more about REST you can read a nice summary by Google <a href="https://cloud.google.com/discover/what-is-rest-api?hl=en">here</a> or learn more about REST architecture on Wikipedia <a href="https://en.wikipedia.org/wiki/REST#Architectural_constraints">here</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="query-early-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Queries</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>The term query has a special meaning when dealing with APIs and Crossref’s REST API specifically, which we will cover in later parts of this tutorial. If you want to skip to that section, check out the glossary entry <a href="../blog/CR_API_Tutorials/glossary.html#query">here<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="sort-early-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Sort</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>The term <span class="inline-code">sort</span> has a special meaning when dealing with Crossref’s REST API, which we will cover in later parts of this tutorial. If you want to skip to that section, check out the glossary entry <a href="../blog/CR_API_Tutorials/glossary.html#sort">here<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="filter-early-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Filter</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>The term filter has a special meaning when dealing with Crossref’s REST API, which we will cover in later parts of this tutorial. If you want to skip to that section, check out the glossary entry <a href="../blog/CR_API_Tutorials/glossary.html#filter">here<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="facet-early-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Summarize</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>Summaries of data returned from an API request have a special term called “facet” which has a special meaning when dealing with Crossref’s REST API, which we will cover in later parts of this tutorial. If you want to skip to that section, check out the glossary entry <a href="../blog/CR_API_Tutorials/glossary.html#query">here<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="server-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Server</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>#_todo definition coming soon!</p>
+<p>asdf</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="endpoints-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Endpoints</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>Definition coming soon!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="libraries-definition" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">library (software)</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>#_todo #_todo list of all the diff cr libraries (maybe embedded github serach?)</p>
+</div></div></div></div></section>
+
+<section id="library-concept-broadly" class="level4">
+<h4 class="anchored" data-anchor-id="library-concept-broadly">Library concept broadly</h4>
+</section>
+<section id="library-for-the-purposes-of-this-tutorial" class="level4">
+<h4 class="anchored" data-anchor-id="library-for-the-purposes-of-this-tutorial">Library for the purposes of this tutorial</h4>
+<section id="libraries-we-will-use" class="level5">
+<h5 class="anchored" data-anchor-id="libraries-we-will-use">Libraries we will use</h5>
+<ul>
+<li>requests</li>
+<li>crossrefapi</li>
+<li>panel (in python), listviewer (in r), reticulate</li>
+<li>altair (plotting)</li>
+<li>pandas (data manip)</li>
+</ul>
+</section>
+</section>
+<section id="differing-terms" class="level4">
+<h4 class="anchored" data-anchor-id="differing-terms">differing terms</h4>
+<ul>
+<li>R library vs package, etc</li>
+</ul>
+      </section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This data file is huge, over 200 <a href="https://en.wikipedia.org/wiki/Gigabyte">GB<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a>, and if you want to do research on your personal computer it’s not easy to work with. Though there are various ways to download it, some of them are quite technical and none of them are as simple as downloading a .csv from a public repository like you may be used to. If you want to get an idea of what the data looks like, they released a sample <a href="https://academictorrents.com/details/f692802461d1277d14551526ecb292a9637af254">here<sup><i class="fa-solid fa-external-link" aria-label="external-link"></i></sup></a>. The free method I used took something like 16 hours to get onto my device<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>In the sense that you call out to it with a request and it responds<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>As recent as November 2025 they have had to rebalance their <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#rate-limit-definition">rate limits<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> to deal with an increasing load of requests. For reference, currently (as of 2026-03-25) <span class="modal-ref" data-bs-toggle="modal" data-bs-target="#API-pools-definition">public pool<sup><i class="fa-solid fa-info-circle" aria-label="info-circle"></i></sup></span> users are limited to 5 requests per second<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>There is a technical distinction between the number of requests <em>at one time</em> (concurrency limit) and the number of requests <em>within a time period</em> (rate limit). Current limits can be found <a href="https://www.crossref.org/documentation/retrieve-metadata/rest-api/access-and-authentication/">here</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>See my short article on <a href="../blog/CR_API_Tutorials/JSON.html#whats-json">JSON</a> to learn more about metadata fields<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Once we talk about combining <em>facets</em> and <em>queries</em> you will see another, theoretically imperfect but practically identical way of getting this information by searching through the <span class="inline-code">Works</span> category, but it’s good to learn to follow the structure of the API.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://en.wikipedia.org/wiki/API#cite_note-:0-1">1</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://en.wikipedia.org/wiki/API#cite_note-:0-1">1</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    
+  
+
+<!-- Modal -->
+<div class="modal fade" id="coming-soon-details" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-1">Coming soon!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<p>The next article in this series which walks through your first API request will come out soon.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
 
 
-</main> <!-- /main -->
+
+
+
+
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -872,7 +1222,7 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-</div> <!-- /content -->
+ <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">

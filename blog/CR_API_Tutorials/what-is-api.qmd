@@ -1,0 +1,164 @@
+---
+title: What's an API?
+engine: knitr
+format:
+  html:
+    toc: false
+    include-in-header:
+      - text: |
+          <style>
+          section#rest-api-intro details {
+            margin: -1em 0 -0.5em 1em 
+          }
+          section#rest-api-intro details .callout{
+            margin-left: 1em
+          }
+          </style>
+---
+
+[If you're interested in more technical explanations of APIs from first principles, you can check out the more detailed explanations in [these glossary entries^{{< fa arrow-right-to-bracket >}}^](/blog/CR_API_Tutorials/glossary.qmd#api)]{.aside}
+
+Before we go any further, you need to know that there are a lot of ways you can access Crossref's metadata that don't involve needing to learn what an API is; in fact, they publish a data file including the entirety of their metadata record database every year.^[This data file is huge, over 200 [GB^{{< fa external-link >}}^](https://en.wikipedia.org/wiki/Gigabyte), and if you want to do research on your personal computer it's not easy to work with. Though there are various ways to download it, some of them are quite technical and none of them are as simple as downloading a .csv from a public repository like you may be used to. If you want to get an idea of what the data looks like, they released a sample [here^{{< fa external-link >}}^](https://academictorrents.com/details/f692802461d1277d14551526ecb292a9637af254). The free method I used took something like 16 hours to get onto my device]
+
+You can find details on the other ways to access this data and what use cases they match with [here^{{< fa external-link >}}^](https://www.crossref.org/documentation/retrieve-metadata/). If you've checked out those resources and you're set on learning to use their APIs (which I think is a great skill and tool to have in your metascience toolbox!), read on.
+
+## What the heck is the 'REST API'? {#rest-api-intro}
+Yes, I understand. Yet another acronym. In truth, to be a responsible and effective user of this technology, you don't need to know what it stands for. I'll oversimply to keep things grounded in the context of our use case:[It still doesn't hurt to learn what API stands for---here's a [definition^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#API-definition"}]{.aside}
+
+::: {.callout title="A Practical Definition of an API"}
+Crossref has lots of data that they want to allow users to access, but with around 2 billion data requests per month there needs to be a system that allows them to manage the flow so that everyone gets the data they requested in a reasonable time, no one user hogs the system's resources, and the costs of providing this service stay reasonable.
+
+One way they do this is by creating a very specific set of rules for users to request data which allows them to monitor and distribute the load more easily. **This set of rules is an 'API specification', and submitting a request for data which follows those rules can be thought of as 'using' that API.** 
+
+Because different data may be accessed by different users for different purposes, Crossref has made more than one API, each with different names and sets of rules. **The REST API is one of those sets of rules that is particularly convenient for fact-finding and exploratory research in general**.
+:::
+
+::: {#endnote1}
+The most common way you'll interact with one of Crossref's APIs is by submitting a request for some amount of metadata. Unsurprisingly this is called making an "API request" also informally described as an "API call".^[In the sense that you call out to it with a request and it responds] This request is sent over the internet to a computer maintained by Crossref called a [server^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#server-definition"} which **serves** you back the data you requested. 
+:::
+
+You'll also likely want a specific subset of data relevant to your research question, so you'll want to specify your requests by using [search query^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#query-early-definition"}. Often you'll get back more information than you need, or in a different order than you want, so you'll also want to be able to [filter^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#filter-early-definition"} and [sort^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#sort-early-definition"}. You may even want to get a [summary^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#facet-early-definition"} of the data. For these reasons, you'll want to use specifically the [REST API^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#REST-definition"}. **For the purposes of getting started on doing research with Crossref's metadata, it suffices for now to say that the REST API is a specific way of accessing Crossref's metadata that has the following important distinguishing characteristics**:
+[If you are curious, you can read more [here^{{< fa external-link >}}^](https://cloud.google.com/discover/what-is-rest-api?hl=en) or [here^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#REST-definition"}about what the _REST_ in _REST_ API stands for]{.aside}
+
+{{< dstart summary="Data requested is returned to us in a data format called JSON" open >}}
+
+[[What's JSON?^{{< fa arrow-right-to-bracket >}}^](/blog/CR_API_Tutorials/JSON.qmd#whats-json)]{.btn .btn-secondary .indent-l}
+
+
+{{< dstop >}}
+{{< dstart summary="There are TONS of users of this specific API, each making loads of requests per second" >}}
+<div class="outdent-l">
+* According to Crossref, of the 2 billion combined requests their public APIs receive per month, [around half](https://www.crossref.org/blog/announcing-changes-to-rest-api-rate-limits/) are made to the REST API alone. 
+* In order to continue to make this service accessible to everyone who uses it, Crossref imposes a [rate limit^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#rate-limit-definition"} which limits the number of requests you can make per second^[As recent as November 2025 they have had to rebalance their [rate limits^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#rate-limit-definition"} to deal with an increasing load of requests. For reference, currently (as of 2026-03-25) [public pool^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#API-pools-definition"} users are limited to 5 requests per second]
+* [To be a responsible user of this service, [you need to respect the [rate limits^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#rate-limit-definition"}]{#endnote2}]{.bold} This means that when you begin to automate your requests through analysis scripts, you follow the steps I list out in order to make sure you do not send too many automated requests at one time.^[There is a technical distinction between the number of requests _at one time_ (concurrency limit) and the number of requests _within a time period_ (rate limit). Current limits can be found [here](https://www.crossref.org/documentation/retrieve-metadata/rest-api/access-and-authentication/)]. This means that unlike reading from a 'local' data file saved on your computer, you may have to wait to receive all of the data you requested
+  + Beyond rate limits, consider the amount of data you are receiving per request. Requests that are unspecific or which use very broad [query^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#query-early-definition"} terms may return **far more data** than you actually want and will cause unnecessary strain on the system. For this reason we will discuss queries and filtering at length in the upcoming articles
+</div>
+{{< dstop >}}
+{{< dstart summary="Each request is 'stateless' that is, every request for data is independent and there's no 'memory' of previous requests" >}}
+<div>
+{{< dstart summary="A small caveat" >}}
+Some information is retained; e.g. to [rate limit^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#rate-limit-definition"}. You can also opt to provide more information, including contact information, to join the [polite pool^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#API-pools-definition"} where you'll enjoy more lenient rate limits and the chance to receive a customary email before you get blocked if you have a rogue script running too many requests at once
+{{< dstop >}} 
+</div>
+
+* To understand the implications of this feature, it may help to have a slightly deeper understanding of the technology being used behind the [REST^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#REST-definition"} API (and I cannot stress 'slightly' enough...internet communication protocols can get very technical very quickly), so reading up on the [HTTP protocol^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#HTTP-definition"} may help. In practice, however, what statelessness means for you is that **you need to plan out requests and test in small batches before automating things** as realizing you need to add one additional metadata field to a request will result in the server [retrieving everything again]{#endnote3}, not just the new data you're interested in. 
+{{< dstop >}}
+{{< dstart summary="Requests can only be made for one category of record at a time" >}}
+
+::: {.indent-s}
+* They have as of April 2026 [7]{#endnote4} different categories of metadata record you can request, each representing a unique type of object which they record metadata about 
+* While the record categories are closely connected (publishers publish articles in journals, for example) and some information about one category you can surmise by  working up the relationship tree (metadata about a work will include the journal, e.g.), each record has some unique metadata fields^[See my short article on [JSON](/blog/CR_API_Tutorials/JSON.qmd#whats-json) to learn more about metadata fields]
+* The most numerous record type is [Work]{.inline-code}, which is very flexible and you can often find a lot by analyzing records of this category, still...
+* You will have to learn how to request specifically a certain **category** of record if you want access to these specific metadata fields.
+  + For example, if you want to know the names of the different publishers which the Crossref member [Wiley^{{< fa external-link >}}^](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.wiley.com/en-us/&ved=2ahUKEwjzipmOv8-TAxWKpIkEHSK2CtwQFnoECAsQAQ&usg=AOvVaw3XEZna4nsxOH8LW01SbaJD) procures DOIs for, you can't find this out other than searching for that member's record.^[Once we talk about combining _facets_ and _queries_ you will see another, theoretically imperfect but practically identical way of getting this information by searching through the [Works]{.inline-code} category, but it's good to learn to follow the structure of the API.]  
+:::
+
+{{< dstop >}}
+{{< dstart summary="The data it provides can be requested, retrieved, and read using nothing more than an internet browser tab" open >}}
+
+[Enough reading, let's [try it! {{< fa arrow-right-long >}}]{.modal-ref .btn .btn-secondary data-bs-toggle="modal" data-bs-target="#coming-soon-details"}]{.indent-l}
+
+
+{{< dstop >}}
+
+
+---
+
+# End notes
+* To be more accurate, large companies like Crossref likely don't use one computer to act as their server. In practice, what looks like a single 'endpoint' (the place we send our requests) to us users may be a collection of many computers, where our request gets 'routed' to one that is not busy with other requests.  [{{< fa arrow-turn-up >}}](#endnote1)
+* There is actually more than one rate limit. The limit applied to your request depends on a number of factors, like whether you've identified the purpose of your request and offered contact information or if you're a paying subscriber to their [Metadata Plus](https://www.crossref.org/services/metadata-retrieval/metadata-plus/) [{{< fa arrow-turn-up >}}](#endnote2)
+* It may not be exactly true that the server will retrieve EVERYTHING again, as there may be  some internal [caching](https://en.wikipedia.org/wiki/Cache_(computing))(storing data you recently requested in an intermediate location so you don't need to do the full lookup again to retrieve it again) mechanisms that I'm not familiar with, but across the publicly available documentation Crossref continually emphasizes that the responsibility for caching results lies with the API user [{{< fa arrow-turn-up >}}](#endnote3)
+* **Warning: this info may not make sense until later in the tutorial but I leave it here for accuracy:** I wrote that there are 7 types of record available for request. In this series I use 'types of record' as a more user-friendly way of referring to different categories/abstract representations of data that are available through the 7 different [endpoints^{{< fa info-circle >}}^]{.modal-ref data-bs-toggle="modal" data-bs-target="#endpoints-definition"} which can be requested. There are much more than 7 different types of scholarly [Works]{.inline-code} records, for example. Moreover, currently there are only 2 fields of metadata available from the [Prefixes]{.inline-code}, [Licenses]{.inline-code}, and [Types]{.inline-code} endpoints and this information can be mostly discovered by using filters on other endpoints like [Works]{.inline-code}. In practice, you can think of there being 4 categories of record mainly in use; [Works]{.inline-code}, [Members]{.inline-code}, [Journals]{.inline-code}, [Funders]{.inline-code}.[{{< fa arrow-turn-up >}}](#endnote4)
+
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="DOI-definition"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+This is just an example!
+
+```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+
+
+{{< include definition-modals/request.qmd >}}
+
+{{< include definition-modals/API.qmd >}}
+
+{{< include definition-modals/rate-limit.qmd >}}
+
+{{< include definition-modals/API-pools.qmd >}}
+
+{{< include definition-modals/REST.qmd >}}
+
+{{< include definition-modals/early-definitions/query-early.qmd >}}
+
+{{< include definition-modals/early-definitions/sort-early.qmd >}}
+
+{{< include definition-modals/early-definitions/filter-early.qmd >}}
+
+{{< include definition-modals/early-definitions/facet-early.qmd >}}
+
+{{< include definition-modals/server.qmd >}}
+
+{{< include definition-modals/endpoints.qmd >}}
+
+{{< include definition-modals/software-library.qmd >}}
+
+{{< include definition-modals/HTTP.qmd >}}
+
+
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="coming-soon-details"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-1" >Coming soon!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+The next article in this series which walks through your first API request will come out soon.
+```{=html}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+```

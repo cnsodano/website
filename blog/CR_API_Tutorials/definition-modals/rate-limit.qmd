@@ -1,0 +1,32 @@
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="rate-limit-definition"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Rate Limit</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+Rate limits are limits on the number of requests a user (or 'client', in the frequent case that the requests are coming from an automated system) can submit in a given time period. Imposing rate limits allows systems to ensure no one user hogs their resources and that response times are evenly distributed. Different APIs are set up differently; some common consequences for exceeding the rate limit are:
+
+* routing your requests to a different, deprioritized queue (longer wait times)
+* timeouts (periods of time where your requests will not be responded to by the server)
+* bans (no longer responding to requests from your credentials, either if you identified yourself with an email address or user token, or merely by your IP address)
+
+According to the REST API version 1 [documentation](https://api.crossref.org/swagger-ui/index.html#response-codes), Crossref will return an error message (an HTTP response with status code 429) when they detect request rates exceeding their rate limits, which will effectively timeout your access to the API.
+
+Note that there are technically two parts to the Crossref REST API rate limit system: the _concurrency limit_ (limit on number of requests sent at the same time) and the _rate limit_ (limit of number of requests sent over a given period of time)
+
+[More on the most recent changes to Crossref's REST API rate limits (November 2025)](https://www.crossref.org/blog/announcing-changes-to-rest-api-rate-limits/)
+
+```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```

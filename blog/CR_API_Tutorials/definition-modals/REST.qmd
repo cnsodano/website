@@ -1,0 +1,31 @@
+```{=html}
+<!-- Modal -->
+<div class="modal fade" id="REST-definition"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">REST API</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+```
+REST APIs (sometimes called RESTful APIs, with [minor differences between the two](https://www.geeksforgeeks.org/advance-java/know-the-difference-between-rest-api-and-restful-api/)) are API systems that are designed with particular design philosophy known as a "REST", which is well described by [Red Hat](https://www.redhat.com/en/topics/api/what-is-a-rest-api) like so (my emphasis and paraphrasing):
+
+<div class="scroll-def">
+>REST is a set of architectural constraints, not a protocol or a standard. API developers can implement REST in a variety of ways.
+><br>
+><br>
+>When a [user] request is made via a RESTful API, it transfers a _**representation**_ of the _**state**_ of the resource to the requester or endpoint. This information, or representation, is delivered in one of several formats via [HTTP^{{< fa arrow-right-to-bracket >}}^](/blog/CR_API_Tutorials/glossary.qmd#http): [JSON (Javascript Object Notation)^{{< fa arrow-right-to-bracket >}}^](/blog/CR_API_Tutorials/glossary.qmd#json), HTML, XLT, Python, PHP, or plain text. JSON is the most generally popular file format to use because, despite its name, it’s language-agnostic, as well as readable by both humans and machines. 
+</div>
+
+In general, for the purpose of doing research with scholarly metadata available, knowing about REST principles is not so important. What is important is that it operates over the [HTTP web communication protocol^{{< fa arrow-right-to-bracket >}}^](/blog/CR_API_Tutorials/glossary.qmd#http) (a system for transfering files, including this web page, to users across the internet), and if you have the itch to learn about tecchy topics, your time is probably better spent there. If you'd like to learn more about REST you can read a nice summary by Google [here](https://cloud.google.com/discover/what-is-rest-api?hl=en) or learn more about REST architecture on Wikipedia [here](https://en.wikipedia.org/wiki/REST#Architectural_constraints).
+
+```{=html}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
