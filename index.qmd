@@ -12,6 +12,10 @@ about:
     - icon: github
       text: Github
       href: https://github.com/cnsodano
+format:
+  html:
+    toc: false
+
 ---
 
 ::: {.callout-important appearance="minimal"}

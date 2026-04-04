@@ -48,8 +48,8 @@ format:
       - css/code-blocks.css
       - css/jse.css
     toc: true
-    grid:
-        body-width: 600px # Max width of center column
+    # grid:
+        # body-width: 800px # Max width of center column
     include-in-header:
       - text: |
          <script src="js/initializePopOvers.js"></script>

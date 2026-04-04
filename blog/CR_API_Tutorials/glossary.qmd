@@ -18,6 +18,7 @@ Although we'll go into this in more detail later in the tutorial, for those who 
 
 ##### Plus pool
 This is best described by the Crossref team themselves, so I'll directly quote the [forum article](https://community.crossref.org/t/rest-api-pools-which-to-use-and-when/15317): 
+
 > ###### The plus pool
 >Some users have credentials they can use to access higher rate limits. There is a cost to accessing the Plus pool, which comes with guarantees for stability and support. One key thing to note is that the data accessed by the Plus pool is exactly the same as the other pools, only the level of service is different.
 ><br>

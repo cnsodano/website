@@ -12,3 +12,10 @@ div.modal-header {
     height: 10vh;
     border-bottom: none;
 }
+
+.modal-dialog {
+    display: flex;
+    max-width: 90vw;
+    justify-content: center;
+    align-items: center;
+}

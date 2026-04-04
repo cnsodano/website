@@ -1,3 +1,17 @@
+
+---
+
+# 2026-04-04 08:05
+
+## Changed
+
+- 2026-04-03 21:57:17 | body width larger
+- 2026-04-03 21:57:17 | glossary plus pool api definition quote block fixed
+- 2026-04-03 21:57:17 | scrollable definition blocks max height increased
+
+- 2026-04-03 21:59:05 | fixed link at bottom of API tutorial intro article to now resolve to next article
+
+---
 # 2026-04-02 14:45
 
 ## Added

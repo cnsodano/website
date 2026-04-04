@@ -24,29 +24,8 @@ While it's true that Crossref provides **free, open access** to these records as
 * Have the average number of references provided by authors in my area of interest changed over time?
 
 
-[Next article: What's an API? {{< fa arrow-right-long >}}]{.modal-ref .btn .btn-secondary data-bs-toggle="modal" data-bs-target="#coming-soon-details"} 
+[Next article: What's an API? {{< fa arrow-right-long >}}](/blog/CR_API_Tutorials/what-is-api.qmd) 
 
-```{=html}
-<!-- Modal -->
-<div class="modal fade" id="coming-soon-details"data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title fs-1" >Coming soon!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-```
-The next article in this series which explains what an 'API' is will come out soon. These articles are actually being released out of order of how I've written them, so if you're interested in learning more about retrieving metadata from Crossref you can look at [my article on the JSON data format^{{< fa arrow-right-to-bracket >}}^](/blog/CR_API_Tutorials/JSON.qmd), but it may be unclear what that acronym has to do with the API acronym at the moment. My apologies!
-```{=html}
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-    </div>
-  </div>
-</div>
-</div>
-```
 
 ```{=html}
 <!-- Modal -->

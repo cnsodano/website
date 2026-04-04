@@ -66,12 +66,7 @@ input {
 }
 
 .scroll-def {
-    max-height: 30vh !important;
+    max-height: 40vh !important;
     overflow-y: auto;
 
-}
-
-.bold {
-    /* For when other inline styles prevent using ** ** */
-    font-weight: bold;
 }

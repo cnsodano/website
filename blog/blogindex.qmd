@@ -10,7 +10,7 @@ title: "Blog Posts"
     + Addendum 1: [Introduction to the JSON API response format](/blog/CR_API_Tutorials/JSON.qmd) [March 26th 2026]{.smallcaps}
     + Addendum 2: [Troubleshooting JSON browser viewing issues](/blog/CR_API_Tutorials/troubleshooting-browser-JSON-view.qmd) [March 30th 2026]{.smallcaps}
 
-* [Glossary](/blog/CR_API_Tutorials/glossary.qmd)
+* [Glossary](/blog/CR_API_Tutorials/glossary.qmd){.smallcaps}
 
 ## IGDORE ReproDucibilitea Summaries
 * [Open code for open science?](/blog/IGDORE/openCodeForOpenScience.qmd) [March 5th 2025]{.smallcaps}
