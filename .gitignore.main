@@ -1,0 +1,10 @@
+/.quarto/
+**/*.quarto_ipynb
+.notes/
+.vscode/
+drafts/
+docs/drafts/
+archive/
+todo.md
+/.luarc.json
+draft*.qmd
