@@ -7,3 +7,6 @@
 archive/
 todo.md
 /.luarc.json
+
+commitment_scheme/plaintext*.txt
+commitment_scheme/key*.txt

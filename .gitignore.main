@@ -8,3 +8,6 @@ archive/
 todo.md
 /.luarc.json
 draft*.qmd
+
+commitment_scheme/plaintext*.txt
+commitment_scheme/key*.txt
