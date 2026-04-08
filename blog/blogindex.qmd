@@ -12,5 +12,8 @@ title: "Blog Posts"
 
 * [Glossary](/blog/CR_API_Tutorials/glossary.qmd){.smallcaps}
 
+## Research Software Engineering Tidbits
+* [The pitfalls of randomization](/blog/Research_Software_Engineering/randomization-seeds.qmd) [April 8th 2026]{.smallcaps}
+
 ## IGDORE ReproDucibilitea Summaries
 * [Open code for open science?](/blog/IGDORE/openCodeForOpenScience.qmd) [March 5th 2025]{.smallcaps}

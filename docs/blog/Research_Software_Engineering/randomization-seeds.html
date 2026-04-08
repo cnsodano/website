@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Blog Posts</title>
+<title>The pitfalls of randomization</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,28 +26,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../images/favicon-32x32.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-22b4aaf4c2978829df3684e8f2c068db.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-136615f1ef22005e43a56f3a9923cb4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-22b4aaf4c2978829df3684e8f2c068db.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-136615f1ef22005e43a56f3a9923cb4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -90,13 +90,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="css/popovers.css">
-<link rel="stylesheet" href="../css/modals.css">
-<link rel="stylesheet" href="../css/top-level-styles.css">
-<link rel="stylesheet" href="../css/code-blocks.css">
-<link rel="stylesheet" href="../css/jse.css">
+<link rel="stylesheet" href="../../css/modals.css">
+<link rel="stylesheet" href="../../css/top-level-styles.css">
+<link rel="stylesheet" href="../../css/code-blocks.css">
+<link rel="stylesheet" href="../../css/jse.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -270,19 +270,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects/projects.html"> 
+    <a class="nav-link" href="../../projects/projects.html"> 
 <span class="menu-text">Research Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../toolbox/index.html"> 
+    <a class="nav-link" href="../../toolbox/index.html"> 
 <span class="menu-text">Hijacked Journal Toolbox</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../blog/blogindex.html" aria-current="page"> 
+    <a class="nav-link" href="../../blog/blogindex.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -297,24 +297,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#tutorials" id="toc-tutorials" class="nav-link active" data-scroll-target="#tutorials">Tutorials</a></li>
-  <li><a href="#research-software-engineering-tidbits" id="toc-research-software-engineering-tidbits" class="nav-link" data-scroll-target="#research-software-engineering-tidbits">Research Software Engineering Tidbits</a></li>
-  <li><a href="#igdore-reproducibilitea-summaries" id="toc-igdore-reproducibilitea-summaries" class="nav-link" data-scroll-target="#igdore-reproducibilitea-summaries">IGDORE ReproDucibilitea Summaries</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog Posts</h1>
+<h1 class="title">The pitfalls of randomization</h1>
 </div>
 
 
@@ -331,31 +321,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="tutorials" class="level2">
-<h2 class="anchored" data-anchor-id="tutorials">Tutorials</h2>
-<section id="collecting-and-analyzing-scholarly-metadata-from-scratch-with-the-crossref-rest-api-for-absolute-beginners" class="level4">
-<h4 class="anchored" data-anchor-id="collecting-and-analyzing-scholarly-metadata-from-scratch-with-the-crossref-rest-api-for-absolute-beginners">Collecting and Analyzing Scholarly Metadata from Scratch with the Crossref REST API <span class="smallcaps">(for absolute beginners)</span></h4>
+<p>Someone on the <a href="https://youngmetascientists.github.io/">Platform for Young Metascientists</a>’s discord channel recently asked for some recommendations on how (and <strong>how not</strong>) to use random seeds, which made me reflect on the sheer number of hours I’ve spent debugging some incredibly nonintuitive errors that are caused by niche random seeding specifics. The response I wanted to give wouldn’t fit in the discord channel message limits, so I’m putting it here for the time being. I will probably formalize these thoughts into a more polished article.</p>
+<p>Based on my experiences, here are some things I’d think about:</p>
+<section id="general-gotchas" class="level3">
+<h3 class="anchored" data-anchor-id="general-gotchas">General gotcha’s</h3>
 <ul>
-<li>Part 1: <a href="../blog/CR_API_Tutorials/introduction_to_tutorial.html">What’s Crossref?</a> <span class="smallcaps">March 31st 2026</span></li>
-<li>Part 2: <a href="../blog/CR_API_Tutorials/what-is-api.html">What’s an API?</a> <span class="smallcaps">April 2nd 2026</span>
+<li>If you are using some kind of live scripting environment where blocks of code can be run out of order and influence global state (e.g.&nbsp;highlighting and running sections of code from an R or MATLAB script in the console, or running a Jupyter cell) you can have nonreproducible states where the random number generator’s state has been changed by an out-of-order cell being run, resulting in non-reproducible results</li>
+<li>If you don’t explicitly set the seed for a generator, some libraries (e.g.&nbsp;Python’s numpy) will initialize the random number generator in a purely unpredictable way using a random combination of whatever your computer is doing at the moment, which is going to change in between runs and isn’t reproducible. Just because the value you are passing as the ‘seed’ argument is the same (in Python, it would be “None”) doesn’t mean the generator is seeded the same.</li>
+</ul>
+</section>
+<section id="specific-topics" class="level3">
+<h3 class="anchored" data-anchor-id="specific-topics">Specific Topics:</h3>
 <ul>
-<li>Addendum 1: <a href="../blog/CR_API_Tutorials/JSON.html">Introduction to the JSON API response format</a> <span class="smallcaps">March 26th 2026</span></li>
-<li>Addendum 2: <a href="../blog/CR_API_Tutorials/troubleshooting-browser-JSON-view.html">Troubleshooting JSON browser viewing issues</a> <span class="smallcaps">March 30th 2026</span></li>
+<li><strong>Reproducibility vs generalizability tradeoff:</strong> repeatable randomness makes testing your code easy, but results which hold up regardless of the initial random seed are more robust. Some things to consider are:
+<ul>
+<li>Depending on how complex your model is and how many nested random processes it involves, picking a ‘random’ seed can be a target for p-hacking. If you want to prove that your model works regardless of the seed, you can use repeated validation methods like repeated cross validation, or you can use ‘randomness beacons’ like <a href="https://csrc.nist.gov/projects/interoperable-randomness-beacons/beacon-10">this</a> which produce a publicly verifiable random seed that is unknowable prior to the moment in time in which it is generated (e.g.&nbsp;you would pre-register your analysis and then slot in this value automatically when you run your analysis)</li>
+<li><strong>Don’t take initial conditions for granted.</strong>
+<ul>
+<li>Some stochastic algorithms are highly dependent on the initial parameters that may be chosen arbitrarily, and less dependent on subsequent draws from a random generator. If you are using a third party library that allows you to pass in a random seed, you may find that changing the seed has very little effect on the output as long as you are using the default parameters. For super common libraries (e.g.&nbsp;scikit-learn for machine learning) there are so many tutorials out there that gloss over the defaults that you may not realize just how many random initial decisions are being made for you until you read the full documentation for that function. If you test with different initial parameter values than those provided by default, you may find your results vary much more</li>
 </ul></li>
-<li><a href="../blog/CR_API_Tutorials/glossary.html" class="smallcaps">Glossary</a></li>
-</ul>
-</section>
-</section>
-<section id="research-software-engineering-tidbits" class="level2">
-<h2 class="anchored" data-anchor-id="research-software-engineering-tidbits">Research Software Engineering Tidbits</h2>
+<li><strong>Random selection =/= well-distributed:</strong>
 <ul>
-<li><a href="../blog/Research_Software_Engineering/randomization-seeds.html">The pitfalls of randomization</a> <span class="smallcaps">April 8th 2026</span></li>
-</ul>
-</section>
-<section id="igdore-reproducibilitea-summaries" class="level2">
-<h2 class="anchored" data-anchor-id="igdore-reproducibilitea-summaries">IGDORE ReproDucibilitea Summaries</h2>
+<li>if you are using randomness to simulate capturing ‘all the different possible initial states’…is it actually capturing ‘different’ initial states? <em>On average</em> over many random trials modern scientific computing libraries’ random number generators will generate a representative sampling distribution, but often times you are repeating a trial so few times that you may observe the generated values clumping, that is biasing towards some areas of the sample space. At the very least, if you chose to use a random number to test the generalizability of your analysis, check for each run that the random number that was slotted in was in fact different from what you’ve used in other runs, especially if you’re using something like np.random.choice() and choosing between say 5 elements.</li>
+</ul></li>
+</ul></li>
+<li><strong>Thread-Safety</strong>:
 <ul>
-<li><a href="../blog/IGDORE/openCodeForOpenScience.html">Open code for open science?</a> <span class="smallcaps">March 5th 2025</span></li>
+<li>If your program will be using parallel threads (which it may be doing without you realizing if you are using 3rd party libraries) then you will want to make sure that you are ‘spawning’ separate random number generator instances for each thread. If each parallel thread pulls from the same generator then in subsequent runs you are very likely to have a situation where one thread gets different numbers than it did the last time you ran it because another thread ‘stole’ the number by calling the generator before it.</li>
+</ul></li>
+<li><strong>Caching</strong>
+<ul>
+<li>If you’re doing snapshot testing or caching preprocessing steps of pipelines (e.g.&nbsp;running your analysis in steps and saving outputs to data files you then load in other steps) then you may not catch that your processing steps are behaving non-deterministically since you ‘freeze’ the random state of the first time you saved/cached that step’s output. Future analyses may be reproducible but if you were to run the entire pipeline from the beginning you get a different number out at the end.</li>
+</ul></li>
 </ul>
 
 

@@ -1,0 +1,26 @@
+---
+title: The pitfalls of randomization
+format:
+  html:
+    toc: false
+---
+
+Someone on the [Platform for Young Metascientists](https://youngmetascientists.github.io/)'s discord channel recently asked for some recommendations on how (and **how not**) to use random seeds, which made me reflect on the sheer number of hours I've spent debugging some incredibly nonintuitive errors that are caused by niche random seeding specifics. The response I wanted to give wouldn't fit in the discord channel message limits, so I'm putting it here for the time being. I will probably formalize these thoughts into a more polished article. 
+
+Based on my experiences, here are some things I'd think about:
+
+### General gotcha's
+* If you are using some kind of live scripting environment where blocks of code can be run out of order and influence global state (e.g. highlighting and running sections of code from an R or MATLAB script in the console, or running a Jupyter cell) you can have nonreproducible states where the random number generator's state has been changed by an out-of-order cell being run, resulting in non-reproducible results
+* If you don't explicitly set the seed for a generator, some libraries (e.g. Python's numpy) will initialize the random number generator in a purely unpredictable way using a random combination of whatever your computer is doing at the moment, which is going to change in between runs and isn't reproducible. Just because the value you are passing as the 'seed' argument is the same (in Python, it would be "None") doesn't mean the generator is seeded the same. 
+
+### Specific Topics:
+* **Reproducibility vs generalizability tradeoff:** repeatable randomness makes testing your code easy, but results which hold up regardless of the initial random seed are more robust. Some things to consider are: 
+  + Depending on how complex your model is and how many nested random processes it involves, picking a 'random' seed can be a target for p-hacking. If you want to prove that your model works regardless of the seed, you can use repeated validation methods like repeated cross validation, or you can use 'randomness beacons' like [this](https://csrc.nist.gov/projects/interoperable-randomness-beacons/beacon-10) which produce a publicly verifiable random seed that is unknowable prior to the moment in time in which it is generated (e.g. you would pre-register your analysis and then slot in this value automatically when you run your analysis) 
+  + **Don't take initial conditions for granted.**
+    * Some stochastic algorithms are highly dependent on the initial parameters that may be chosen arbitrarily, and less dependent on subsequent draws from a random generator. If you are using a third party library that allows you to pass in a random seed, you may find that changing the seed has very little effect on the output as long as you are using the default parameters. For super common libraries (e.g. scikit-learn for machine learning) there are so many tutorials out there that gloss over the defaults that you may not realize just how many random initial decisions are being made for you until you read the full documentation for that function. If you test with different initial parameter values than those provided by default, you may find your results vary much more 
+  + **Random selection =/= well-distributed:**
+    * if you are using randomness to simulate capturing 'all the different possible initial states'…is it actually capturing 'different' initial states? _On average_ over many random trials modern scientific computing libraries' random number generators will generate a representative sampling distribution, but often times you are repeating a trial so few times that you may observe the generated values clumping, that is biasing towards some areas of the sample space. At the very least, if you chose to use a random number to test the generalizability of your analysis, check for each run that the random number that was slotted in was in fact different from what you've used in other runs, especially if you're using something like np.random.choice() and choosing between say 5 elements. 
+* **Thread-Safety**:
+  + If your program will be using parallel threads (which it may be doing without you realizing if you are using 3rd party libraries) then you will want to make sure that you are 'spawning' separate random number generator instances for each thread. If each parallel thread pulls from the same generator then in subsequent runs you are very likely to have a situation where one thread gets different numbers than it did the last time you ran it because another thread 'stole' the number by calling the generator before it.
+* **Caching**
+  + If you're doing snapshot testing or caching preprocessing steps of pipelines (e.g. running your analysis in steps and saving outputs to data files you then load in other steps) then you may not catch that your processing steps are behaving non-deterministically since you 'freeze' the random state of the first time you saved/cached that step's output. Future analyses may be reproducible but if you were to run the entire pipeline from the beginning you get a different number out at the end. 
