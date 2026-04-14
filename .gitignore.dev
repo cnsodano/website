@@ -1,12 +1,2 @@
 /.quarto/
 **/*.quarto_ipynb
-.notes/
-.vscode/
-# drafts/
-# docs/drafts/
-archive/
-todo.md
-/.luarc.json
-
-commitment_scheme/plaintext*.txt
-commitment_scheme/key*.txt

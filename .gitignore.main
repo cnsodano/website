@@ -5,9 +5,10 @@
 drafts/
 docs/drafts/
 archive/
-todo.md
+todo/
 /.luarc.json
 draft*.qmd
+**/draft*
 
 commitment_scheme/plaintext*.txt
 commitment_scheme/key*.txt
