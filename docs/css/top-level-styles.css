@@ -61,8 +61,8 @@ input {
 }
 
 .fa-solid {
-    font-size: 0.8em;
-    /* Icons a little too big, so this shrinks them */
+    font-size: 0.8em
+        /* Icons a little too big, so this shrinks them */
 }
 
 .scroll-def {

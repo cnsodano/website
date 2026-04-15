@@ -2,13 +2,11 @@
 **/*.quarto_ipynb
 .notes/
 .vscode/
-drafts/
-docs/drafts/
 archive/
 todo/
 /.luarc.json
-draft*.qmd
-**/draft*
+**draft**
+test_env/
 
 commitment_scheme/plaintext*.txt
 commitment_scheme/key*.txt

@@ -6,9 +6,9 @@ project:
     - "!archive/*.qmd"
     - "!blog/CR_API_Tutorials/definition-modals/"
   resources:
-    - css/*
-    - js/*
-    - data/*
+    - css/**
+    - js/**
+    - data/**
     - images/*
   preview:
     port: 4200

@@ -1,0 +1,213 @@
+/*-- scss:uses --*/
+@use "sass:color";
+@use "indents";
+
+/*-- scss:defaults --*/
+$themeprimary1: #3D5A80;
+$primary: $themeprimary1;
+$theme-contrast-primary: #0074b9;
+$themeprimary2: #98C1D9;
+$secondary: $themeprimary2;
+$themeprimary3: #E0FBFC;
+$themewhite: #F9F5FF;
+$themedarkprimary: #2E4057;
+$themeaccent1: #D4C2fC;
+$themeaccent1dark: #998FC7;
+$themegrayedout: rgb(136, 149, 179);
+
+$themebuttonbackground: $themegrayedout;
+$themebuttontext: $themedarkprimary;
+
+$themecodeaccentforetext: #7d12ba;
+$themecodeaccentbacktext: #f3ebff;
+
+
+$themeaccent1darker: darken($themeaccent1dark, 0.5); // _test
+
+$body-color: $themeprimary1;
+$body-bg: $themewhite;
+// $link-color: #0081ff;
+$link-color: $theme-contrast-primary;
+$navbar-bg: $themeprimary1;
+// $navbar-bg: color.adjust($themewhite, $lightness: -1%);
+$navbar-fg: $themewhite;
+$footer-fg: $themewhite;
+$footer-bg: $themeprimary1;
+
+//Inline code
+// $code-bg: color.scale($themeprimary3, $alpha: -50%);
+// $code-block-bg: $themecodeaccentbacktext;
+// $code-block-bg: $themewhite;
+$code-bg: color.adjust($themewhite, $lightness: -2%);
+$code-fg: $themedarkprimary;
+
+$pink: #ff8edd;
+$red: #ae0000;
+
+/*-- scss:rules --*/
+.light {
+    font-weight: lighter
+}
+
+a {
+    // font-weight: 550;
+    // text-decoration-thickness: 0.09em;
+    text-decoration-skip-ink: none;
+    color: $link-color;
+    // text-underline-position: under;
+}
+
+// a sup {
+//     // font-weight: 700; // Footnote superscript links
+// }
+
+
+.btn-light {
+
+    background-color: $themewhite !important;
+    border: 1px solid $themeprimary1 !important;
+    border-radius: 4px !important;
+
+    color: $themeprimary1 !important;
+}
+
+code.sourceCode.json span.dt {
+    color: $themeprimary1;
+}
+
+code.sourceCode.json span.dv {
+    color: $red;
+}
+
+.gray {
+    color: $themegrayedout;
+}
+
+.json-key-span {
+    color: $themeprimary1;
+}
+
+code.sourceCode.json span.st {
+    // Strings
+    color: $theme-contrast-primary;
+}
+
+.json-string-value-span {
+    color: $theme-contrast-primary;
+}
+
+.column-margin {
+    color: $themeprimary1;
+}
+
+// JSE styles
+.jse-menu {
+    background-color: $themeprimary1 !important;
+}
+
+
+.jse-tree-mode {
+    background-color: $themewhite !important;
+}
+
+.jse-key,
+.jse-bracket,
+.jse-separator {
+    color: $themeprimary1 !important;
+}
+
+.jse-expand svg {
+    color: $theme-contrast-primary !important
+}
+
+.jse-value.jse-string {
+    color: $theme-contrast-primary !important;
+}
+
+.jse-value.jse-number {
+    color: $red !important;
+}
+
+.jse-index {
+    color: $themegrayedout !important
+}
+
+.jse-selected-key .jse-key {
+    color: $red !important;
+}
+
+.jse-selected-value .jse-value {
+    color: $red !important;
+}
+
+.code-with-filename-file pre strong {
+    color: $themeprimary1;
+}
+
+// div.code-copy-outer-scaffold>div.sourceCode {
+//     border: 2px $themeprimary1 solid;
+//     border-radius: 4px;
+// }
+
+dl.code-annotation-container-grid dt {
+    color: $themeprimary1;
+    border: solid $themeprimary1 1px;
+    border-top-color: $themeprimary1;
+    border-right-color: $themeprimary1;
+    border-bottom-color: $themeprimary1;
+    border-left-color: $themeprimary1;
+}
+
+a sup {
+    margin-left: 0.1em !important;
+    text-decoration: none !important;
+}
+
+a.footnote-back {
+    text-decoration: none !important;
+}
+
+.inline-code {
+    color: $themeprimary1;
+    background-color: rgba(136, 149, 179, 0.2);
+}
+
+.json-number {
+    color: $red !important;
+}
+
+.jse-tag {
+    background-color: transparent !important;
+    color: rgb(136, 149, 179) !important;
+}
+
+details summary {
+    color: $themeprimary1;
+}
+
+pre.plaintext_json_block code {
+    background-color: lightgray !important;
+}
+
+input {
+    border: 1px solid $themeprimary1 !important;
+    color: $themeprimary1 !important;
+}
+
+.modal-ref {
+    color: $link-color;
+}
+
+.jse-search-input {
+    color: $themeprimary1 !important;
+}
+
+.jse-highlight {
+    background-color: $themegrayedout;
+    outline: $themegrayedout;
+}
+
+// Callouts
+.callout-note {
+    border-left-color: $themeprimary1;
+}
