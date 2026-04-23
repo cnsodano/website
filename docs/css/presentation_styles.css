@@ -1,0 +1,29 @@
+.emphasis-text {
+    font-size: 1.1em;
+    font-weight: 900;
+}
+
+a[role="tab"][aria-selected="false"] {
+    opacity: 0.2 !important;
+}
+
+.panel-tabset-tabby {
+    height: 0vh;
+    font-size: 1.5rem;
+}
+
+.reveal pre.sourceCode code {
+    max-height: 80%;
+}
+
+section.slide button.jse-expand {
+    padding-top: 0.3em !important;
+}
+
+section.slide .jse-tree-mode {
+    font-size: 1.3em !important
+}
+
+section.slide .jsonedit.html-widget {
+    width: 100% !important;
+}

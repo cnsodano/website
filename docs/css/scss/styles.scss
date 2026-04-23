@@ -1,6 +1,7 @@
 /*-- scss:uses --*/
 @use "sass:color";
 @use "indents";
+// @use "links";
 
 /*-- scss:defaults --*/
 $themeprimary1: #3D5A80;
@@ -13,8 +14,8 @@ $themewhite: #F9F5FF;
 $themedarkprimary: #2E4057;
 $themeaccent1: #D4C2fC;
 $themeaccent1dark: #998FC7;
-$themegrayedout: rgb(136, 149, 179);
-
+$themegrayedout: #8895b3;
+$column_main_body_max_width: 800px;
 $themebuttonbackground: $themegrayedout;
 $themebuttontext: $themedarkprimary;
 
@@ -36,12 +37,16 @@ $footer-bg: $themeprimary1;
 
 //Inline code
 // $code-bg: color.scale($themeprimary3, $alpha: -50%);
-// $code-block-bg: $themecodeaccentbacktext;
+$code-block-bg: #292D3E;
+// $code-block-fg: $themewhite;
 // $code-block-bg: $themewhite;
-$code-bg: color.adjust($themewhite, $lightness: -2%);
-$code-fg: $themedarkprimary;
+$code-color: $themedarkprimary;
+$btn-code-copy-color: $themewhite;
+$btn-code-copy-color-active: #CA836A;
 
 $pink: #ff8edd;
+$pink-dark-style: #ffd8d8;
+$theme-contrast-primary-dark: #a4d1f0;
 $red: #ae0000;
 
 /*-- scss:rules --*/
@@ -71,12 +76,45 @@ a {
     color: $themeprimary1 !important;
 }
 
-code.sourceCode.json span.dt {
-    color: $themeprimary1;
+// JSON BLOCKS
+.code-with-filename-file pre strong {
+    color: $themeprimary1 !important;
 }
 
-code.sourceCode.json span.dv {
-    color: $red;
+// 
+// pre.sourceCode.json code.sourceCode.json span.st {
+//     // Strings
+//     color: $theme-contrast-primary-dark !important;
+// }
+// 
+// pre.sourceCode.json code.sourceCode.json span.ot {
+//     // Strings
+//     color: $themewhite !important;
+// }
+// 
+// pre.sourceCode.json code.sourceCode.json span.fu {
+//     // brackets
+//     color: $themewhite !important;
+// }
+// 
+// pre.sourceCode.json code.sourceCode.json span.dt {
+//     // Keys 
+//     color: $themewhite !important;
+// }
+// 
+// pre.sourceCode.json code.sourceCode.json span.dv {
+//     // numbers
+//     color: $pink-dark-style !important;
+// }
+
+//-----------------------------
+dl.code-annotation-container-grid dt {
+    color: $themeprimary1;
+    border: solid $themeprimary1 1px;
+    border-top-color: $themeprimary1;
+    border-right-color: $themeprimary1;
+    border-bottom-color: $themeprimary1;
+    border-left-color: $themeprimary1;
 }
 
 .gray {
@@ -100,62 +138,8 @@ code.sourceCode.json span.st {
     color: $themeprimary1;
 }
 
-// JSE styles
-.jse-menu {
-    background-color: $themeprimary1 !important;
-}
-
-
-.jse-tree-mode {
-    background-color: $themewhite !important;
-}
-
-.jse-key,
-.jse-bracket,
-.jse-separator {
-    color: $themeprimary1 !important;
-}
-
-.jse-expand svg {
-    color: $theme-contrast-primary !important
-}
-
-.jse-value.jse-string {
-    color: $theme-contrast-primary !important;
-}
-
-.jse-value.jse-number {
-    color: $red !important;
-}
-
-.jse-index {
-    color: $themegrayedout !important
-}
-
-.jse-selected-key .jse-key {
-    color: $red !important;
-}
-
-.jse-selected-value .jse-value {
-    color: $red !important;
-}
-
 .code-with-filename-file pre strong {
     color: $themeprimary1;
-}
-
-// div.code-copy-outer-scaffold>div.sourceCode {
-//     border: 2px $themeprimary1 solid;
-//     border-radius: 4px;
-// }
-
-dl.code-annotation-container-grid dt {
-    color: $themeprimary1;
-    border: solid $themeprimary1 1px;
-    border-top-color: $themeprimary1;
-    border-right-color: $themeprimary1;
-    border-bottom-color: $themeprimary1;
-    border-left-color: $themeprimary1;
 }
 
 a sup {
@@ -167,9 +151,9 @@ a.footnote-back {
     text-decoration: none !important;
 }
 
+code:not(:has(*)),
 .inline-code {
     color: $themeprimary1;
-    background-color: rgba(136, 149, 179, 0.2);
 }
 
 .json-number {
@@ -202,12 +186,87 @@ input {
     color: $themeprimary1 !important;
 }
 
-.jse-highlight {
-    background-color: $themegrayedout;
-    outline: $themegrayedout;
-}
+// .jse-highlight {
+//     background-color: $themegrayedout;
+//     outline: $themegrayedout;
+// }
 
 // Callouts
 .callout-note {
     border-left-color: $themeprimary1;
+}
+
+
+
+a.ext::after {
+    content: "🡥";
+    font-size: 0.6em;
+    color: $link-color;
+}
+
+// a.ext:hover::after {
+//     font-size: 1.3em;
+// }
+
+
+a.sec::after {
+    content: "§";
+    color: $link-color;
+}
+
+
+.isModal::after {
+    content: "❐";
+    /* content: "⮺"; */
+    color: $link-color;
+}
+
+a.int::after {
+    content: "⇱";
+    transform: scaleX(-1);
+    color: $link-color;
+}
+
+.def::after {
+    content: "ⓘ";
+    color: $link-color;
+}
+
+.modal-dialog {
+    display: flex;
+    width: 90vw;
+    max-width: $column_main_body_max_width;
+    justify-content: center;
+    align-items: center;
+}
+
+.workspace-title-bar {
+    background-color: $themeprimary1;
+    color: $themewhite;
+}
+
+.filename-bar {
+    background-color: $themeprimary1;
+    color: $themewhite;
+}
+
+.file-tree {
+    background-color: $themeprimary1;
+    color: $themewhite;
+    padding-right: 0.4em;
+    height: 100%;
+}
+
+
+.tree-folder:hover {
+    background: color.scale($themeprimary1, $lightness: 20%);
+}
+
+.tree-file:hover {
+    background: color.scale($themeprimary1, $lightness: 20%);
+}
+
+.tree-file.active {
+    background: $theme-contrast-primary;
+    color: color.scale($themewhite, $lightness: 20%);
 }

@@ -7,9 +7,9 @@
     display: none !important;
 }
 
-.cm-gutters {
+/* .cm-gutters {
     display: none !important;
-}
+} */
 
 .cm-lintPoint {
     display: none !important;
@@ -67,4 +67,27 @@ div.jse-text-mode div.jse-menu {
 
 .jse-json-node {
     margin-bottom: 0.2em !important;
+}
+
+
+.jse-value {
+    /* Mostly due to cursors taking up a huge amount of space; this rule improves scannability */
+    max-height: 10vh;
+    overflow-y: auto;
+}
+
+/* Prevent highlight contrast issues in dark mode */
+.jse-header,
+.jse-footer,
+.jse-footer-outer {
+    --jse-selection-background-color: transparent;
+}
+
+.jse-contents-outer>div.jse-contents {
+    --jse-selection-background-color: transparent;
+}
+
+.jse-contents {
+    scroll-padding-top: 40% !important;
+    /* So that ctrl+f snaps don't hide the match at top of container viewport */
 }

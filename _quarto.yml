@@ -5,6 +5,9 @@ project:
     - "*.qmd"
     - "!archive/*.qmd"
     - "!blog/CR_API_Tutorials/definition-modals/"
+    - "!blog/CR_API_Tutorials/walkthroughs/"
+  # post-render:
+  #   - uv run python -m build_utils.importmap_prepend
   resources:
     - css/**
     - js/**
@@ -16,8 +19,8 @@ project:
 
 website:
   favicon: images/favicon-32x32.png
-  plausible-analytics:
-    path: js/plausibleAnalyticsSnippet.html
+  # plausible-analytics:
+  #   path: js/plausibleAnalyticsSnippet.html
   page-navigation: true
   # title: "Christian N Sodano"
   page-footer:
@@ -42,21 +45,41 @@ format:
       light: [cosmo, css/scss/styles.scss, css/scss/api-hover-button.scss]
       dark : [darkly, css/scss/dark_styles.scss, css/scss/api-hover-button.scss]
     css: 
-      - css/popovers.css
       - css/modals.css
       - css/top-level-styles.css
       - css/code-blocks.css
       - css/jse.css
-    toc: true
+    toc: false
     # grid:
         # body-width: 800px # Max width of center column
-    include-in-header:
-      - text: |
-         <script src="js/initializePopOvers.js"></script>
+    # include-in-header:
     include-after-body:
       - file: js/footnote-highlight-animation.html
+  live-html:
+    theme: 
+      light: [cosmo, css/scss/styles.scss, css/scss/api-hover-button.scss]
+      dark : [darkly, css/scss/dark_styles.scss, css/scss/api-hover-button.scss]
+    css: 
+      - css/modals.css
+      - css/top-level-styles.css
+      - css/code-blocks.css
+      - css/jse.css
+    toc: false
+    # grid:
+        # body-width: 800px # Max width of center column
+    # include-in-header:
+    include-after-body:
+      - file: js/footnote-highlight-animation.html
+  live-revealjs:
+    theme: [default, css/scss/styles.scss]
+    css: 
+      - css/modals.css
+      - css/top-level-styles.css
+      - css/code-blocks.css
+      - css/jse.css
       
-
+filters:
+  - code-visibility
 
 
 

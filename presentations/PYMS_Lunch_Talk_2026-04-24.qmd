@@ -1,0 +1,711 @@
+---
+title: "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners"
+format:
+  live-revealjs:
+    width: 1300 # 1050 def
+    height: 900 # 700 def
+    code-line-numbers: true
+    include-in-header:
+    - text: |
+         <link rel="stylesheet" href="/css/presentation_styles.css">
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsoneditor/dist/jsoneditor.min.css">
+
+engine: knitr
+webr:
+  cell-options:
+    caption: "R Code"
+  packages:
+    - jsonlite
+    - httr2
+    - listviewer
+pyodide:
+  cell-options:
+    caption: Python Code    
+  packages:
+    - requests
+---
+
+```{r echo=FALSE}
+# Setup knitr for handling {webr} and {pyodide} blocks
+# TODO: With quarto-dev/quarto-cli#10169, we can implement this in a filter
+
+# We'll handle `include: false` in Lua, always include cell in knitr output
+knitr::opts_hooks$set(include = function(options) {
+    if (options$engine == "webr" || options$engine == "pyodide") {
+        options$include <- TRUE
+    }
+    options
+})
+
+# Passthrough engine for webr
+knitr::knit_engines$set(webr = function(options) {
+    knitr:::one_string(c(
+        "```{webr}",
+        options$yaml.code,
+        options$code,
+        "```"
+    ))
+})
+
+# Passthrough engine for pyodide
+knitr::knit_engines$set(pyodide = function(options) {
+    knitr:::one_string(c(
+        "```{pyodide}",
+        options$yaml.code,
+        options$code,
+        "```"
+    ))
+})
+```
+
+```{=html}
+<style>
+    .fragment.frag-bold.visible, .fragment_.frag-bold{
+        font-size:1.1em;
+        font-weight:900;
+    }
+  .fragment p::before, .fragment_ p::before{
+  content: "•";
+  font-size: 1.1em;
+  padding-right: 0.5em;
+  }
+ 
+  .fragment p,  {
+  margin-bottom: 1em !important;
+  position: relative;
+  padding-left: 0.5em;
+  display: flex;
+  align-items: first baseline;
+  }
+p:has(span.has-subbullet){
+  margin-bottom: 0.5em !important;
+}
+    /* Custom fragment class */
+ section .fragment.arrow-fragment-before {
+  position: relative;
+  padding-left: 1.5em; /* space reserved for the arrow */
+  margin-left: -1.5em;
+}
+
+/* Arrow using ::before */
+ section .fragment.arrow-fragment-before::before {
+  content: "➤"; /* or use →, ▶, etc. */
+  position: absolute;
+  left: 0;
+  /* top: 0; */
+  opacity: 0; /* hidden until fragment is visible */
+  transition: opacity 0.3s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+/* When fragment becomes visible */
+ section .fragment.arrow-fragment-before.visible::before {
+  opacity: 1;
+}
+
+section .subbullet{
+    margin-left: 1.3em;
+    font-size:0.8em;
+}
+
+section div.subbullet p{
+    margin-bottom: 1em !important;
+}
+
+section .subbullet.nobullet p::before{
+    content: "";
+}
+
+  .section .centertitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+  p:has(img)::before{
+  content: "" !important;
+}
+
+div.faded-out{
+    opacity: 0.5 !important;
+}
+
+</style>
+```
+
+## How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners
+::: {.fragment_}
+View this presentation online by going to: tinyurl.....
+:::
+
+::: {.fragment_}
+Reach out to me on discord or at cnsodano@gmail.com
+:::
+::: {.fragment_ .subbullet .nobullet}
+Happy to help with any coding/research software engineering questions or struggles!
+:::
+
+
+## Who am I?
+::::: {.columns}
+
+:::: {.column width="50%"}
+::: {.fragment .fade-in .subbullet fragment-index=2}
+
+![](/images/PYMS_lunch_session/me_performing_TMS.jpeg){width="100%"}
+<!-- Bachelor's Computer Science, subspecialty Neuroscience (EEG, TMS, tACS, sleep spindle research) -->
+:::
+::::
+
+:::: {.column width="50%"}
+::: {.fragment .fade-in .subbullet fragment-index=3}
+![](/images/PYMS_lunch_session/tilburg_presentation_action_shot.jpeg){height="50%"}
+:::
+
+::: {.fragment .fade-in .subbullet fragment-index=4}
+![](/images/PYMS_lunch_session/tilburg_presentation_screenshot.png){height="50%"}
+:::
+::::
+
+:::::
+
+<!-- ::: {.fragment .fade-in .subbullet fragment-index=5}
+Feel free to reach out for coding help!
+::: -->
+
+
+::::: {.slide-content}
+## What is this presentation? {.scrollable}
+
+
+::: {.fragment .fade-in}
+[A webpage! (not a static slide deck)]{.has-subbullet}
+:::
+
+::: {.fragment .fade-in .subbullet .nobullet}
+tinyurl.....
+:::
+
+::: {.fragment .fade-in}
+Quarto + RevealJS (+ some other stuff) == interactive code!
+:::
+
+```{webr}
+#| envir: webr_env
+#| autorun: true
+#| echo: false
+library(listviewer)
+display_msg <- function(){
+    json = "{'pyms':{'is':'very cool'}}"
+    listviewer::jsonedit(json)
+}
+```
+
+```{=html}
+<div class='fragment fade-in'>
+```
+```{webr}
+#| envir: webr_env
+print("Hello, world!")
+#plot(1:20, (1:20)^2)
+#display_msg()
+```
+
+```{=html}
+</div>
+```
+
+<!-- - LOW: clickable altair plot here -->
+:::::
+
+<!--  -->
+
+## What's Crossref? 
+
+#### (and why do I care about their data?)
+
+::: {.fragment .fade-in fragment-index=1}
+::: {.fragment .semi-fade-out fragment-index=3}
+[Not-for-profit member 'club' of over 24,000 research-work-producing organizations]{.has-subbullet}
+:::
+:::
+
+::: {.fragment .fade-in .subbullet .nobullet fragment-index=2}
+::: {.fragment .semi-fade-out fragment-index=3}
+Academic publishers, universities, funders, museums, libraries, hospitals, ...
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=3}
+::: {.fragment .semi-fade-out fragment-index=4}
+Central location for the collection, storage, and enhancement of metadata for all research works produced by member orgs
+:::
+:::
+
+## How Crossref collects metadata
+
+![](/images/PYMS_lunch_session/all_diagrams/Slide0.PNG)
+
+## How Crossref collects metadata
+
+![](/images/PYMS_lunch_session/all_diagrams/Slide01.PNG)
+
+## How Crossref collects metadata
+
+![](/images/PYMS_lunch_session/all_diagrams/Slide1.PNG)
+
+## How Crossref collects metadata
+
+![](/images/PYMS_lunch_session/all_diagrams/Slide2.PNG)
+
+## How Crossref collects metadata
+
+![](/images/PYMS_lunch_session/all_diagrams/Slide3.PNG)
+
+## How Crossref collects metadata
+
+![](/images/PYMS_lunch_session/all_diagrams/Slide4.PNG)
+
+## How Crossref collects metadata
+![](/images/PYMS_lunch_session/all_diagrams/Slide5.PNG)
+
+
+## What's Crossref? 
+
+#### (and why do I care about their data?)
+
+::: {.fragment_ .faded-out}
+[Not-for-profit member 'club' of over 24,000 research-work-producing organizations]{.has-subbullet}
+:::
+
+::: {.fragment_ .faded-out .subbullet .nobullet}
+Academic publishers, universities, funders, museums, libraries, hospitals, ...
+:::
+
+::: {.fragment_ .faded-out }
+Central location for the collection, storage, and enhancement of metadata for all research works produced by member orgs
+:::
+
+::: {.fragment .fade-in }
+::: {.fragment .custom .frag-bold}
+[95% of all DOI clicks are Crossref-issued DOIs]{.has-subbullet}
+:::
+:::
+
+::: {.fragment .fade-in .subbullet .nobullet }
+Over 180 million records
+:::
+
+::: {.fragment .fade-in .subbullet .nobullet }
+All free to access...
+:::
+
+<!--  -->
+## A motivating example: Antivaxx movement
+
+![](/images/PYMS_lunch_session/lancet_article_with_retraction_notices_everywhere.png){.r-stretch fig-align="center"}
+
+::: {.fragment .fade-in .subbullet .nobullet}
+[DOI: https://doi.org/10.1016/s0140-6736(97)11096-0]{style="font-size:0.8em; opacity:0.8;"}
+:::
+
+:::{.notes}
+- evidence of payments by lawyers
+    https://www.thetimes.com/uk/science/article/mmr-doctor-given-legal-aid-thousands-00ftl80msbs
+- evidence of stripped license by general medical council
+    https://www.theguardian.com/society/2010/may/24/mmr-doctor-andrew-wakefield-struck-off
+:::
+
+:::: {.fragment .fade-in }
+Question for you:
+
+::: {.fragment .fade-in .subbullet}
+Did the authors ever agree to retracting this claim of causal MMR Vaccine->Autism relationship?
+:::
+
+::::
+
+::: {.fragment .fade-in }
+Maybe Crossref knows?
+:::
+
+# A brief aside on "metadata requests"
+
+## What is a "request"?
+
+![](/images/PYMS_lunch_session/all_diagrams/Slide6.PNG)
+
+## What is a "request"?
+
+![](/images/PYMS_lunch_session/all_diagrams/Slide7.PNG)
+
+## What is a "request"?
+
+![](/images/PYMS_lunch_session/all_diagrams/Slide8.PNG)
+
+## What is a "request"?
+![](/images/PYMS_lunch_session/all_diagrams/Slide9.PNG)
+
+## Making an API request
+![](/images/PYMS_lunch_session/all_diagrams/Slide10.PNG)
+
+## Making an API request
+![](/images/PYMS_lunch_session/all_diagrams/Slide11.PNG)
+
+## Making an API request
+![](/images/PYMS_lunch_session/all_diagrams/Slide12.PNG)
+
+<!--  -->
+
+## An abridged metadata record
+```{json filename="metadata.json"}
+#| code-line-numbers: "||2-4|5|7,15|10-11,18-19|8"
+#| echo: true
+{
+    "title": "RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children",
+    "container-title": ["The Lancet"],           
+    "DOI": "10.1016/s0140-6736(97)11096-0",                                                                                               
+    "updated-by": [                              //<1>
+        {                                        
+            "type":"correction",                 //<2>
+            "DOI": "10.1016/s0140-6736(04)15715-2",
+            "source":"retraction-watch",         //<3>
+            "updated":{                          
+                "date-parts":[2004,3,6]          //<4>
+            }
+        },
+        {
+            "type":"retraction",
+            "DOI": "10.1016/s0140-6736(10)60175-4",
+            "source":"retraction-watch",
+            "updated":{
+                "date-parts":[2010,2,6]          //<5>
+            }
+        }
+    ]                                           //<6>
+}
+```
+
+---
+
+![](/images/PYMS_lunch_session/Fulltext_Correction_Wakefield_et_al_1998.png){.nostretch fig-align="center" width="100%"}
+
+---
+
+![](/images/PYMS_lunch_session/Fulltext_Correction_Wakefield_et_al_1998_highlighted.png){.nostretch fig-align="center" width="100%"}
+
+--- 
+
+![](/images/PYMS_lunch_session/Fulltext_Correction_Wakefield_et_al_1998_highlighted_emphasis.png){.nostretch fig-align="center" width="100%"}
+
+
+<!--  -->
+
+## Information not even linked to on the original article webpage!
+
+![](/images/PYMS_lunch_session/lancet_article_linked_articles.png){fig-align="center"}
+
+<!--  -->
+
+## Making an API request
+![](/images/PYMS_lunch_session/all_diagrams/Slide12.PNG)
+
+## Making **automated** API requests
+![](/images/PYMS_lunch_session/all_diagrams/Slide13.PNG)
+
+<!-- -->
+## A bare-bones script example {.scrollable}
+
+:::: {.panel-tabset .scrollable}
+## R
+```{r}
+#| echo: false
+library(reticulate)
+library(listviewer)
+
+display_json <- function(json){
+    listviewer::jsonedit(json)
+}
+```
+
+```{r}
+#| echo: true
+#| code-line-numbers: "||1-3|1-7|1-11|1-14|13-19||"
+#| output-location: slide
+# Imports
+library(httr2) # To make the API request
+library(glue)  # For concatenating string parts of request
+
+# Constants
+BASE_URL <- "https://api.crossref.org"
+API_VERSION <- "v1"
+
+# Specific to this request
+endpoint <- "works"
+identifier <- "10.1016/s0140-6736(97)11096-0"
+
+# https://api.crossref.org/v1/works/10.1016/s0140-6736(97)11096-0
+combined_request_url = glue("{BASE_URL}/{API_VERSION}/{endpoint}/{identifier}")
+
+req <- request(combined_request_url) # Build a "request" object
+response <- req |>
+    req_perform() |> # Makes API request, returns response
+    resp_body_json() # Extracts JSON data from response
+
+display_json(response) # Custom function for tutorial, uses `listviewer` package
+```
+
+## Python
+```{r}
+library(listviewer)
+library(reticulate)
+library(jsonlite)
+```
+
+```{python}
+#| echo: false
+import json
+def display_json(_):
+    pass
+```
+
+```{python}
+#| echo: true
+#| code-line-numbers: "||1-2|1-6|1-10|1-13|12-17||"
+# Imports
+import requests  # To make the API request
+
+# Constants
+BASE_URL = "https://api.crossref.org"
+API_VERSION = "v1"
+
+# Specific to this request
+endpoint = "works"
+identifier = "10.1016/s0140-6736(97)11096-0"
+
+# https://api.crossref.org/v1/works/10.1016/s0140-6736(97)11096-0
+combined_request_url = f"{BASE_URL}/{API_VERSION}/{endpoint}/{identifier}"
+
+req = requests.get(combined_request_url)  # Makes API request, returns response
+response = req.json()  # Extracts JSON data from response
+
+display_json(response)  # Custom function for tutorial, uses `jsonedit` javascript package
+```
+
+```{python}
+#| echo: false
+response_json_string = json.dumps(response) 
+```
+
+::: {.fragment}
+```{r}
+#| echo: false
+listviewer::jsonedit(py$response_json_string)
+``` 
+:::
+
+::::
+
+
+## Live Code-along!
+
+```{=html}
+<script>
+globalThis.webrFetch = async function(url, options = {}) {
+  const res = await fetch(url, options);
+  const text = await res.text();
+
+  return {
+    status: res.status,
+    headers: Object.fromEntries(res.headers.entries()),
+    body: text
+  };
+};
+</script>
+```
+
+::: {.panel-tabset}
+## R
+```{webr}
+#| envir: webr_env
+#| autorun: true
+#| echo: false
+library(jsonlite)
+library(listviewer)
+
+display_json <- function(json_){
+    listviewer::jsonedit(json_)
+}
+invisible(webr::eval_js("
+globalThis.webrFetchSync = function(url) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.open('GET', url, false);   // false = synchronous
+  xhr.send(null);
+
+  if (xhr.status >= 200 && xhr.status < 300) {
+    return xhr.responseText;
+  }
+
+  throw new Error('HTTP ' + xhr.status + ': ' + xhr.statusText);
+};
+
+null
+"))
+
+fetch_webr <- function(url) {
+  js <- sprintf(
+    "globalThis.webrFetchSync('%s')",
+    url
+  )
+  webr::eval_js(js)
+}
+
+req_perform_ <- function(req){
+   return(fetch_webr(req$url))
+}
+
+resp_body_json_ <- function(resp){
+    # No-op; required to make the tutorial syntax match the real R syntax, but because of limitations of webr the httr2 requests can't be made and so I replace with a wrapper for the javascript fetch api
+    return(resp) 
+}
+```
+
+```{webr}
+#| envir: webr_env
+# Imports
+library(httr2)  # To make the API request
+library(glue)   # For concatenating string parts of request
+
+# Constants
+BASE_URL <- "https://api.crossref.org"
+API_VERSION <- "v1"
+
+# Specific to this request
+endpoint <- "works"
+identifier <- "10.1016/s0140-6736(97)11096-0"
+
+# https://api.crossref.org/v1/works/10.1016/s0140-6736(97)11096-0
+combined_request_url = glue("{BASE_URL}/{API_VERSION}/{endpoint}/{identifier}")
+
+req <- request(combined_request_url) # Build a "request" object
+response <- req |>
+    req_perform_() |> # Makes API request, returns response 
+    resp_body_json_() # Extracts JSON data from response
+
+display_json(response) # Custom function for tutorial, uses `listviewer` package
+```
+
+## Python
+```{pyodide}
+#| envir: pyowjsoneditor
+#| autorun: true
+#| echo: false
+import json
+from IPython.display import HTML, display
+unique_jsoneditor_ct = 0
+def display_json(json_):
+    global unique_jsoneditor_ct
+    unique_jsoneditor_ct += 1
+    if (type(json_)==dict):
+        json_ = json.dumps(json_)
+    return display(HTML(f"""
+    <div id="editor-id{unique_jsoneditor_ct}" style="height:400px"></div>
+    <script type="module">
+        import {{ createJSONEditor }} from "https://cdn.jsdelivr.net/npm/vanilla-jsoneditor@3.11.0/standalone.min.js"
+        const JSON_tutorial_json_editor = createJSONEditor({{
+            target: document.getElementById('editor-id{unique_jsoneditor_ct}'),
+            props: {{
+                content: null,
+                onChange: (updatedContent, previousContent, {{ contentErrors, patchResult }}) => {{
+                    // content is an object {{ json: unknown }} | {{ text: string }}
+                    console.log('onChange', {{ updatedContent, previousContent, contentErrors, patchResult }})
+                    content = updatedContent
+                }}
+            }}
+        }})
+        let initialJson = {json_}
+        JSON_tutorial_json_editor.set({{"text":undefined, "json": initialJson}})
+        document.getElementById("editor-id{unique_jsoneditor_ct}").style.height="60vh"
+    </script>
+    """))
+```
+```{pyodide}
+#| envir: pyowjsoneditor
+# Imports 
+import requests # To make the API request
+
+# Constants
+BASE_URL = "https://api.crossref.org"
+API_VERSION = "v1"
+
+# Specific to this request
+endpoint = "works"
+identifier = "10.1016/s0140-6736(97)11096-0"
+
+# https://api.crossref.org/v1/works/10.1016/s0140-6736(97)11096-0
+combined_request_url = f"{BASE_URL}/{API_VERSION}/{endpoint}/{identifier}"
+
+req = requests.get(combined_request_url) # Makes API request, returns response 
+response = req.json() # Extracts JSON data from response
+
+display_json(response) # Custom function for tutorial, uses `jsonedit` javascript package
+```
+:::
+
+## What if I want more than one metadata record?
+
+::: {.panel-tabset}
+## R
+```{webr}
+#| envir: webr_env
+# Imports
+library(httr2)  # To make the API request
+library(glue)   # For concatenating string parts of request
+
+# Constants
+BASE_URL <- "https://api.crossref.org"
+API_VERSION <- "v1"
+
+# Specific to this request
+endpoint <- "journals" #! Notice change
+
+# https://api.crossref.org/v1/works/10.1016/s0140-6736(97)11096-0
+combined_request_url = glue("{BASE_URL}/{API_VERSION}/{endpoint}") #! Notice no more identifier
+
+req <- request(combined_request_url) # Build a "request" object
+response <- req |>
+    req_url_query(query="russian law journal", rows="3") |> #! NEW
+    req_perform_() |> # Makes API request, returns response 
+    resp_body_json_() # Extracts JSON data from response
+
+display_json(response) # Custom function for tutorial, uses `listviewer` package
+```
+
+## Python
+```{pyodide}
+#| envir: pyowjsoneditor
+# Imports 
+import requests # To make the API request
+
+# Constants
+BASE_URL = "https://api.crossref.org"
+API_VERSION = "v1"
+
+# Specific to this request
+endpoint = "journals"
+
+# https://api.crossref.org/v1/works/10.1016/s0140-6736(97)11096-0
+combined_request_url = f"{BASE_URL}/{API_VERSION}/{endpoint}"
+
+params = [("query", "russian law journal"), ("rows", "3")] #! NEW
+
+req = requests.get(combined_request_url, params=params) # Makes API request, returns response 
+response = req.json() # Extracts JSON data from response
+
+display_json(response) # Custom function for tutorial, uses `jsonedit` javascript package
+```
+:::
+

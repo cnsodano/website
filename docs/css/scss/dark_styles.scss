@@ -1,6 +1,7 @@
 /*-- scss:uses --*/
 @use "sass:color";
 @use "indents";
+@use "links";
 
 /*-- scss:defaults --*/
 $themeprimary1: #F9F5FF; // changed
@@ -15,7 +16,7 @@ $secondary: $themedarkprimary;
 $themeaccent1: #D4C2fC;
 $themeaccent1dark: #998FC7;
 $themegrayedout: #8895B3;
-
+$column_main_body_max_width: 800px;
 $themebuttonbackground: $themegrayedout;
 $themebuttontext: $themedarkprimary;
 
@@ -37,13 +38,14 @@ $red: #ae0000;
 $themecodeaccentforetext: $pink;
 $themecodeaccentbacktext: #decbfc;
 
-//Inline code
+//Inline coded
 
 // $code-bg: color.adjust($themewhite, $lightness: -2%);
-// $code-block-bg: $themecodeaccentbacktext;
+$code-block-bg: #292D3E;
+// $code-block-fg: $themeprimary1;
 // $code-fg: $themecodeaccentforetext;
-$code-bg: rgba(255, 253, 253, 0.1);
-$code-color: $pink;
+
+$code-color: $themeprimary1;
 
 
 /*-- scss:rules --*/
@@ -72,80 +74,65 @@ a {
 
 
 // JSE dark styles
-.jse-menu {
-    background-color: $themeprimary1 !important;
-}
+// .jse-menu {
+//     background-color: $themeprimary1 !important;
+// }
 
-.jse-button:hover {
-    background-color: $themeprimary2 !important;
-}
+// .jse-button:hover {
+//     background-color: $themeprimary2 !important;
+// }
 
-.jse-button svg {
-    color: $themewhite !important;
-}
+// .jse-button svg {
+//     color: $themewhite !important;
+// }
 
-.jse-tree-mode {
-    background-color: $themewhite !important;
-}
+// .jse-tree-mode {
+//     background-color: $themewhite !important;
+// }
+// 
+// .jse-key,
+// .jse-bracket,
+// .jse-separator {
+//     color: $themeprimary1 !important;
+// }
+// 
+// .jse-tag {
+//     background-color: $themegrayedout !important;
+// }
+// 
+// .jse-expand svg {
+//     color: $themeprimary2 !important
+// }
+// 
+// .jse-value.jse-string {
+//     color: $themeprimary2 !important;
+// }
+// 
+// .jse-value.jse-number {
+//     color: $pink !important;
+// }
 
-.jse-key,
-.jse-bracket,
-.jse-separator {
-    color: $themeprimary1 !important;
-}
-
-.jse-tag {
-    background-color: $themegrayedout !important;
-}
-
-.jse-expand svg {
-    color: $themeprimary2 !important
-}
-
-.jse-value.jse-string {
-    color: $themeprimary2 !important;
-}
-
-.jse-value.jse-number {
-    color: $pink !important;
-}
-
-.json-number {
-    color: $pink !important;
-}
-
-.jse-index {
-    color: $themegrayedout !important
-}
-
-.jse-selected-key .jse-key {
-    color: $red !important;
-}
-
-
-.jse-selected-value .jse-value {
-    color: $red !important;
-}
-
-// JSON
-code.sourceCode.json span.dt {
-    color: $themeprimary1;
-}
-
-.code-with-filename-file pre strong {
-    color: $themeprimary1 !important;
-}
 
 
 // 
-// div.code-copy-outer-scaffold>div.sourceCode {
-//     border: 2px $themeprimary1 solid;
-//     border-radius: 4px;
+// .jse-index {
+//     color: $themegrayedout !important
+// }
+// 
+// .jse-selected-key .jse-key {
+//     color: $red !important;
+// }
+// 
+// 
+// .jse-selected-value .jse-value {
+//     color: $red !important;
 // }
 
-code.sourceCode.json span.st {
-    // Strings
-    color: $theme-contrast-primary;
+// JSON
+
+
+.json-number {
+    color: $pink !important;
 }
 
 .json-key-span {
@@ -164,21 +151,40 @@ code.sourceCode.json span.st {
     color: $themegrayedout;
 }
 
-code.sourceCode.json span.ot {
-    // Strings
-    color: $themeprimary1;
+
+// JSON BLOCKS
+
+.code-with-filename-file pre strong {
+    color: $themeprimary1 !important;
 }
 
-code.sourceCode.json span.fu {
-    // Strings
-    color: $themeprimary1;
-}
+// 
+// pre.sourceCode.json code.sourceCode.json span.st {
+//     // Strings
+//     color: $theme-contrast-primary !important;
+// }
+// 
+// pre.sourceCode.json code.sourceCode.json span.ot {
+//     // array brackets
+//     color: $themeprimary1 !important;
+// }
+// 
+// pre.sourceCode.json code.sourceCode.json span.fu {
+//     // brackets
+//     color: $themeprimary1 !important;
+// }
+// 
+// pre.sourceCode.json code.sourceCode.json span.dt {
+//     // Keys 
+//     color: $themeprimary1 !important;
+// }
+// 
+// pre.sourceCode.json code.sourceCode.json span.dv {
+//     // numbers
+//     color: $pink !important;
+// }
 
-code.sourceCode.json span.dv {
-    // Strings
-    color: $pink;
-}
-
+//--------------------
 dl.code-annotation-container-grid dt {
     color: $themeprimary1;
     border: solid $themeprimary1 1px;
@@ -203,15 +209,16 @@ a.footnote-back {
     text-decoration: none !important;
 }
 
+code:not(:has(*)),
 .inline-code {
     color: $themeprimary1;
     background-color: rgba(136, 149, 179, 0.2);
 }
 
-.jse-tag {
-    background-color: transparent !important;
-    color: rgb(136, 149, 179);
-}
+// .jse-tag {
+//     background-color: transparent !important;
+//     color: rgb(136, 149, 179);
+// }
 
 details summary {
     color: $themeprimary1;
@@ -238,11 +245,87 @@ span.btn-secondary {
     color: $themeprimary1 !important;
 }
 
-.jse-search-input {
-    color: $themeprimary1 !important;
+// .jse-search-input {
+//     color: $themeprimary1 !important;
+// }
+
+// .jse-highlight {
+//     background-color: $themegrayedout;
+//     outline: $themegrayedout;
+// }
+
+a.ext::after {
+    content: "🡥";
+    font-size: 0.6em;
+    color: $link-color;
 }
 
-.jse-highlight {
-    background-color: $themegrayedout;
-    outline: $themegrayedout;
+a.sec::after {
+    content: "§";
+    color: $link-color;
 }
+
+
+.isModal::after {
+    content: "❐";
+    /* content: "⮺"; */
+    color: $link-color;
+}
+
+a.int::after {
+    content: "⇱";
+    transform: scaleX(-1);
+    color: $link-color;
+}
+
+.def::after {
+    content: "ⓘ";
+    color: $link-color;
+}
+
+.modal-dialog {
+    display: flex;
+    width: 90vw;
+    max-width: $column_main_body_max_width;
+    justify-content: center;
+    align-items: center;
+}
+
+// .file-tree {
+//     background-color: $themeprimary1;
+//     color: $themewhite;
+//     height: 100%;
+// }
+// 
+// .workspace-title-bar {
+//     background-color: $themeprimary1;
+//     color: $themewhite;
+// }
+
+// 
+// .filename-bar {
+//     background-color: $themeprimary1;
+//     color: $themewhite;
+// }
+// 
+// .tree-title {
+//     color: $themewhite;
+// }
+// 
+// .tree-folder:hover {
+//     background: color.scale($theme-contrast-primary, $lightness: 20%);
+// }
+// 
+// .tree-file:hover {
+//     background: color.scale($theme-contrast-primary, $lightness: 20%);
+// }
+// 
+// .tree-file.active {
+//     background: color.scale($theme-contrast-primary, $lightness: 30%) !important;
+//     color: color.scale($themewhite, $lightness: -20%) !important;
+// }
+// 
+// .tree-title {
+//     background: $themegrayedout;
+//     color: $themewhite;
+// }

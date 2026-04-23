@@ -208,5 +208,201 @@
     "title": "Recent Projects",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nA previous version of this site reported higher model performance; while revisting the code in preparation for presenting at Metascience 2025, I noticed some rows in the annotated dataset I used for training were duplicated, and the resulting performance post-cleaning is reflected here now.↩︎\nTraining was done in a potentially over-conservative method: 70/30 train test split with 10-fold CV on the train set, the best performing model during CV being applied to the test set. With such a small training set to begin with, this approach may have lead to underfitting despite using an approach well suited to small datasets (logistic regression). When revamping this project for publication I hope to do a targeted analysis of under/overfitting throughout training with a larger dataset.↩︎\nHere the retracted citation is [43], and the word “decreased” is not being used in reference to the citation, but its presence indicates a routine description of scientific findings, the kind of routine description where retracted works often were unacknowledged.↩︎\nCurrently I am not using cursors as I expected users to have a particular journal in mind. If none of the first 30 results for the query match exactly, it will not (as of 4/8/25) search the next page of results. This can be easily fixed when I get around to it.↩︎"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-to-collect-and-analyze-scholarly-metadata-from-scratch-with-the-crossref-rest-api-for-absolute-beginners",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-to-collect-and-analyze-scholarly-metadata-from-scratch-with-the-crossref-rest-api-for-absolute-beginners",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "text": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners\n\nView this presentation online by going to: tinyurl…..\n\n\nReach out to me on discord or at cnsodano@gmail.com\n\n\nHappy to help with any coding/research software engineering questions or struggles!"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#who-am-i",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#who-am-i",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "Who am I?",
+    "text": "Who am I?"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-this-presentation",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-this-presentation",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "What is this presentation?",
+    "text": "What is this presentation?\n\nA webpage! (not a static slide deck)\n\n\ntinyurl…..\n\n\nQuarto + RevealJS (+ some other stuff) == interactive code!"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#whats-crossref",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#whats-crossref",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "What’s Crossref?",
+    "text": "What’s Crossref?\n(and why do I care about their data?)\n\n\nNot-for-profit member ‘club’ of over 24,000 research-work-producing organizations\n\n\n\n\nAcademic publishers, universities, funders, museums, libraries, hospitals, …\n\n\n\n\nCentral location for the collection, storage, and enhancement of metadata for all research works produced by member orgs"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "How Crossref collects metadata",
+    "text": "How Crossref collects metadata"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-1",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-1",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "How Crossref collects metadata",
+    "text": "How Crossref collects metadata"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-2",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-2",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "How Crossref collects metadata",
+    "text": "How Crossref collects metadata"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-3",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-3",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "How Crossref collects metadata",
+    "text": "How Crossref collects metadata"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-4",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-4",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "How Crossref collects metadata",
+    "text": "How Crossref collects metadata"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-5",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-5",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "How Crossref collects metadata",
+    "text": "How Crossref collects metadata"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-6",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#how-crossref-collects-metadata-6",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "How Crossref collects metadata",
+    "text": "How Crossref collects metadata"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#whats-crossref-1",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#whats-crossref-1",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "What’s Crossref?",
+    "text": "What’s Crossref?\n(and why do I care about their data?)\n\nNot-for-profit member ‘club’ of over 24,000 research-work-producing organizations\n\n\nAcademic publishers, universities, funders, museums, libraries, hospitals, …\n\n\nCentral location for the collection, storage, and enhancement of metadata for all research works produced by member orgs\n\n\n\n95% of all DOI clicks are Crossref-issued DOIs\n\n\n\nOver 180 million records\n\n\nAll free to access…"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#a-motivating-example-antivaxx-movement",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#a-motivating-example-antivaxx-movement",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "A motivating example: Antivaxx movement",
+    "text": "A motivating example: Antivaxx movement\n\n\nDOI: https://doi.org/10.1016/s0140-6736(97)11096-0\n\n\n\nevidence of payments by lawyers https://www.thetimes.com/uk/science/article/mmr-doctor-given-legal-aid-thousands-00ftl80msbs\nevidence of stripped license by general medical council https://www.theguardian.com/society/2010/may/24/mmr-doctor-andrew-wakefield-struck-off\n\n\n\nQuestion for you:\n\nDid the authors ever agree to retracting this claim of causal MMR Vaccine-&gt;Autism relationship?\n\n\n\nMaybe Crossref knows?"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-a-request",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-a-request",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "What is a “request”?",
+    "text": "What is a “request”?"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-a-request-1",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-a-request-1",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "What is a “request”?",
+    "text": "What is a “request”?"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-a-request-2",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-a-request-2",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "What is a “request”?",
+    "text": "What is a “request”?"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-a-request-3",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-is-a-request-3",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "What is a “request”?",
+    "text": "What is a “request”?"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-an-api-request",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-an-api-request",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "Making an API request",
+    "text": "Making an API request"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-an-api-request-1",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-an-api-request-1",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "Making an API request",
+    "text": "Making an API request"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-an-api-request-2",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-an-api-request-2",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "Making an API request",
+    "text": "Making an API request"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#an-abridged-metadata-record",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#an-abridged-metadata-record",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "An abridged metadata record",
+    "text": "An abridged metadata record\n\n\n\nmetadata.json\n\n{\n    \"title\": \"RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children\",\n    \"container-title\": [\"The Lancet\"],           \n    \"DOI\": \"10.1016/s0140-6736(97)11096-0\",                                                                                               \n    \"updated-by\": [\n        {                                        \n            \"type\":\"correction\",\n            \"DOI\": \"10.1016/s0140-6736(04)15715-2\",\n            \"source\":\"retraction-watch\",\n            \"updated\":{                          \n                \"date-parts\":[2004,3,6]\n            }\n        },\n        {\n            \"type\":\"retraction\",\n            \"DOI\": \"10.1016/s0140-6736(10)60175-4\",\n            \"source\":\"retraction-watch\",\n            \"updated\":{\n                \"date-parts\":[2010,2,6]\n            }\n        }\n    ]\n}"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#information-not-even-linked-to-on-the-original-article-webpage",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#information-not-even-linked-to-on-the-original-article-webpage",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "Information not even linked to on the original article webpage!",
+    "text": "Information not even linked to on the original article webpage!"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-an-api-request-3",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-an-api-request-3",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "Making an API request",
+    "text": "Making an API request"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-automated-api-requests",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#making-automated-api-requests",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "Making automated API requests",
+    "text": "Making automated API requests"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#a-bare-bones-script-example",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#a-bare-bones-script-example",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "A bare-bones script example",
+    "text": "A bare-bones script example\n\nRPython\n\n\n\n# Imports\nlibrary(httr2) # To make the API request\nlibrary(glue)  # For concatenating string parts of request\n\n# Constants\nBASE_URL &lt;- \"https://api.crossref.org\"\nAPI_VERSION &lt;- \"v1\"\n\n# Specific to this request\nendpoint &lt;- \"works\"\nidentifier &lt;- \"10.1016/s0140-6736(97)11096-0\"\n\n# https://api.crossref.org/v1/works/10.1016/s0140-6736(97)11096-0\ncombined_request_url = glue(\"{BASE_URL}/{API_VERSION}/{endpoint}/{identifier}\")\n\nreq &lt;- request(combined_request_url) # Build a \"request\" object\nresponse &lt;- req |&gt;\n    req_perform() |&gt; # Makes API request, returns response\n    resp_body_json() # Extracts JSON data from response\n\ndisplay_json(response) # Custom function for tutorial, uses `listviewer` package\n\n\n\n\n\n# Imports\nimport requests  # To make the API request\n\n# Constants\nBASE_URL = \"https://api.crossref.org\"\nAPI_VERSION = \"v1\"\n\n# Specific to this request\nendpoint = \"works\"\nidentifier = \"10.1016/s0140-6736(97)11096-0\"\n\n# https://api.crossref.org/v1/works/10.1016/s0140-6736(97)11096-0\ncombined_request_url = f\"{BASE_URL}/{API_VERSION}/{endpoint}/{identifier}\"\n\nreq = requests.get(combined_request_url)  # Makes API request, returns response\nresponse = req.json()  # Extracts JSON data from response\n\ndisplay_json(response)  # Custom function for tutorial, uses `jsonedit` javascript package"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#a-bare-bones-script-example-output",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#a-bare-bones-script-example-output",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "A bare-bones script example",
+    "text": "A bare-bones script example"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#live-code-along",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#live-code-along",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "Live Code-along!",
+    "text": "Live Code-along!\n\n\nRPython"
+  },
+  {
+    "objectID": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-if-i-want-more-than-one-metadata-record",
+    "href": "presentations/PYMS_Lunch_Talk_2026-04-24.html#what-if-i-want-more-than-one-metadata-record",
+    "title": "How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners",
+    "section": "What if I want more than one metadata record?",
+    "text": "What if I want more than one metadata record?\n\nRPython"
   }
 ]
