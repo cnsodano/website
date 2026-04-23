@@ -137,7 +137,7 @@ div.faded-out{
 
 ## How to Collect and Analyze Scholarly Metadata (from scratch) with the Crossref REST API for absolute beginners
 ::: {.fragment_}
-View this presentation online by going to: tinyurl.....
+View this presentation online by going to: https://tinyurl.com/CNSodano-PYMS
 :::
 
 ::: {.fragment_}
@@ -185,7 +185,7 @@ Feel free to reach out for coding help!
 :::
 
 ::: {.fragment .fade-in .subbullet .nobullet}
-tinyurl.....
+https://tinyurl.com/CNSodano-PYMS
 :::
 
 ::: {.fragment .fade-in}
