@@ -175,7 +175,7 @@ Happy to help with any coding/research software engineering questions or struggl
 Feel free to reach out for coding help!
 ::: -->
 
-
+<!-- 
 ::::: {.slide-content}
 ## What is this presentation? {.scrollable}
 
@@ -218,7 +218,7 @@ print("Hello, world!")
 ```
 
 <!-- - LOW: clickable altair plot here -->
-:::::
+<!-- ::::: --> 
 
 <!--  -->
 
@@ -303,7 +303,7 @@ All free to access...
 :::
 
 <!--  -->
-## A motivating example: Antivaxx movement
+<!-- ## A motivating example: Antivaxx movement
 
 ![](/images/PYMS_lunch_session/lancet_article_with_retraction_notices_everywhere.png){.r-stretch fig-align="center"}
 
@@ -331,7 +331,7 @@ Did the authors ever agree to retracting this claim of causal MMR Vaccine->Autis
 Maybe Crossref knows?
 :::
 
-# A brief aside on "metadata requests"
+# A brief aside on "metadata requests" -->
 
 ## What is a "request"?
 
