@@ -27,6 +27,8 @@ format:
 
 An R package that improves the transparency of analyses that use randomness in any form by providing an interface to a random number generator that can be publicly audited after-the-fact. Connects with the Open Science Framework to create random seeds that are unknowable before code execution and tied to public preregistration of a hypothesis.
 
+Read the docs [here](https://cnsodano.github.io/beacr-alpha/)
+
 `beacr` takes its name from the concept of **randomness beacons**, which are secure public services that provide fresh random seeds on a fixed schedule (for example, every minute). These beacons make it possible to preregister an expected outcome that relies on some random process **without knowing what the seed for that random process is beforehand**. Beacons are also hash-chained, meaning that while you may not know what the random seed is before running your analysis, anyone can verify what the seed was after your analysis is completed.
 
 A pipeline that uses beacr to report the results of analyses using verifiably random seeds may look like this:
