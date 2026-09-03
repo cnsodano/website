@@ -1,5 +1,6 @@
 ---
 title: Glossary for the Crossref API Tutorial Series
+format: html
 engine: knitr
 ---
 

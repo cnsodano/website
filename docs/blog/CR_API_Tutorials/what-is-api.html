@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.35">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -75,14 +78,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-22b4aaf4c2978829df3684e8f2c068db.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-136615f1ef22005e43a56f3a9923cb4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-9a1305c135f7ff0899dec084aba64e7b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-580965d4b6c5cfc777e007f3e2be28de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-9a1305c135f7ff0899dec084aba64e7b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -112,18 +115,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<!-- Privacy-friendly analytics by Plausible -->
-
-<script async="" src="https://plausible.io/js/pa-nThGDMHeE3kpydbHY2C0i.js"></script>
-
-<script>
-
-    window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments) }, plausible.init = plausible.init || function (i) { plausible.o = i || {} };
-
-    plausible.init()
-
-</script>
-<script src="js/initializePopOvers.js"></script>
 <style>
 section#rest-api-intro details {
   margin: -1em 0 -0.5em 1em
@@ -134,7 +125,6 @@ section#rest-api-intro details .callout{
 </style>
 
 
-<link rel="stylesheet" href="css/popovers.css">
 <link rel="stylesheet" href="../../css/modals.css">
 <link rel="stylesheet" href="../../css/top-level-styles.css">
 <link rel="stylesheet" href="../../css/code-blocks.css">
@@ -714,7 +704,7 @@ section#rest-api-intro details .callout{
 <p><strong>HTTP</strong> (<strong>H</strong>yper<strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol) is a <em>transfer protocol</em>, that is, a set of agreed-upon rules and standards for computers to transfer information between each other over the internet. HTTP (or the encrypted HTTPS) is likely how you are accessing this site right now.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
 <p>The protocol is built on a ‘client-server’ model which describes the client (us) sending a request to the server (Crossref, in our case) for some information. The server will read that information (which we sent in a very specific format called an HTTP request) and respond in kind. There are many different kinds of requests a user can make, but the one that is used in Crossref’s REST API is the GET request. When we send our request we will be telling Crossref’s servers that we want to “GET” the metadata corresponding to our query. You may also hear this be called informally a “fetch” request<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
 <p>The server responds to these GET requests with a HTTP Response which is made up of three parts: a status line, headers, and a message body. In most cases you’ll only ever need to worry about the status line (“Did my request result in an error? Did I type in my query wrong? Is there no article in Crossref’s database matching that DOI?”) and the message body (the returned JSON content).</p>
-<p></p><p></p><details><summary>What a raw HTTP response looks like</summary><div> The libraries you will use to interact with Crossref’s REST API will handle converting HTTP responses into familiar datatypes like python and R objects, but if you’re wondering what they receive it looks something like this: <img src="../..\images/HTTP_response_example.png" class="img-fluid"> </div></details><p></p><p></p>
+<p></p><p></p><details><summary>What a raw HTTP response looks like</summary><div> The libraries you will use to interact with Crossref’s REST API will handle converting HTTP responses into familiar datatypes like python and R objects, but if you’re wondering what they receive it looks something like this: <img src="../../images/HTTP_response_example.png" class="img-fluid"> </div></details><p></p><p></p>
 <p>When sending a request, we actually send headers too. This is where information about us, the client, lives. Importantly, this is where you can add contact information in order to be put into the <a href="../../blog/CR_API_Tutorials/glossary.html#polite-pool">polite pool<sup><i class="fa-solid fa-arrow-right-to-bracket" aria-label="arrow-right-to-bracket"></i></sup></a> is. If you are using the <a href="https://github.com/fabiobatalha/crossrefapi">crossrefapi python library</a> these headers are set by using the <span class="inline-code">etiquette</span> option (see <a href="https://github.com/fabiobatalha/crossrefapi?tab=readme-ov-file#support-for-polite-requests-etiquette">examples</a>). If you are using the standard <span class="inline-code">requests</span> module instead then you will have to add contact information using the optional <span class="inline-code">headers</span> parameter of the <span class="inline-code">requests.get()</span> method like so:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>requests.get(<span class="st">"https://api.crossref.org/works"</span>, headers<span class="op">=</span>{<span class="st">"user-agent"</span>: <span class="st">"mailto=myname@email.com"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

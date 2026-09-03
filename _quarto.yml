@@ -1,13 +1,13 @@
 project:
   type: website
   output-dir: docs
+  # pre-render: uv run python -m build_utils.build_glossary
   render:
     - "*.qmd"
     - "!archive/*.qmd"
     - "!blog/CR_API_Tutorials/definition-modals/"
     - "!blog/CR_API_Tutorials/walkthroughs/"
-  # post-render:
-  #   - uv run python -m build_utils.importmap_prepend
+    # - "!blog/CR_API_Tutorials/html-components/"
   resources:
     - css/**
     - js/**
@@ -20,7 +20,7 @@ project:
 website:
   favicon: images/favicon-32x32.png
   # plausible-analytics:
-  #   path: js/plausibleAnalyticsSnippet.html
+    # path: js/plausibleAnalyticsSnippet.html
   page-navigation: true
   # title: "Christian N Sodano"
   page-footer:
@@ -49,10 +49,9 @@ format:
       - css/top-level-styles.css
       - css/code-blocks.css
       - css/jse.css
-    toc: false
+    toc: true
     # grid:
         # body-width: 800px # Max width of center column
-    # include-in-header:
     include-after-body:
       - file: js/footnote-highlight-animation.html
   live-html:
@@ -65,9 +64,6 @@ format:
       - css/code-blocks.css
       - css/jse.css
     toc: false
-    # grid:
-        # body-width: 800px # Max width of center column
-    # include-in-header:
     include-after-body:
       - file: js/footnote-highlight-animation.html
   live-revealjs:

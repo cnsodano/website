@@ -20,13 +20,21 @@ format:
 
 ::: {.callout-important appearance="minimal"}
 I am **currently on a job search**. If you're looking to work with someone who has the technical chops to answer tough questions about the scientific record, please reach out! I would love to talk more! (cnsodano@gmail.com). 
-::::
+:::
+
+::: {.callout-note appearance="minimal"}
+I've recently released an R package that improves transparency and trustworthiness in the results of **any** analysis that requires random numbers by making it easy to preregister a random seed that is not known at the time of analysis, yet which can be reproduced and verified by anyone after the code is run. For more information about how to use it in your R workflows, check out the docs [here](https://cnsodano.github.io/beacr-alpha/). I will be presenting on the project and how to use it in depth at the [Paul Meehl Graduate School Meta Research Symposium](https://paulmeehlschool.github.io/workshops/symposium2026/) on Oct 9th in Eindhoven, NL!
+:::
+
+::: {.callout-note appearance="minimal"}
+I recently gave a presentation on how to get started doing metascience with the Crossref REST API; you can check out those slides and code-along^[Note that the presentation will load a web-assembly version of R/Python for you to follow along with; if there is buffering at the beginning give it time to load the requisite packages] in your browser by following [this link](presentations/PYMS_Lunch_Talk_2026-04-24.qmd)
+:::
 
 ::: {#hero-heading}
 ## Summary
-I'm an independent researcher currently working in the emerging field of forensic metascience[^1] and scientometrics[^2], developing tools to detect and prevent breaches of research integrity including questionable research practices[^3], statistical and methodological errors[^4], and fraud[^5]. Prior to working in metascience, I did my Bachelor's in Computer Science with a minor specialization in Neuroscience at the [University of North Carolina](https://cs.unc.edu/) where I researched automatic sleep spindle detection algorithms and the cognitive/clinical effects of non-invasive brain stimulation. 
+I'm a research software engineer and independent researcher currently working in the emerging field of forensic metascience[^1] and scientometrics[^2], developing tools to detect and prevent breaches of research integrity including questionable research practices[^3], statistical and methodological errors[^4], and fraud[^5]. Prior to working in metascience, I did my Bachelor's in Computer Science with a minor specialization in Neuroscience at the [University of North Carolina](https://cs.unc.edu/) where I researched automatic sleep spindle detection algorithms and the cognitive/clinical effects of non-invasive brain stimulation. 
 
-My current projects in this area focus on [automating reproducibility checks](/projects/projects.qmd#automating-reproducibility-checks-for-journal-submissions), detecting so-called [paper-mills](https://osf.io/mbcw5/) (businesses conducting for-profit research fraud at large-scale) and [journal hijackings](/projects/projects.qmd#hijacked-journal-detection-toolbox), as well as authors who [game citations](/projects/projects.qmd#discovering-unreasonable-citation-stacking) for personal benefit and papers that are [unknowingly citing discredited research](/projects/projects.qmd#detecting-post-retraction-citation-awareness).
+My current projects in this area focus on improving the trustworthiness and transparency of simulation and machine learning research through [publicly auditable random seeding](/projects/projects.qmd#beacr), [automating reproducibility checks](/projects/projects.qmd#automating-reproducibility-checks-for-journal-submissions) for journal staff, detecting so-called [paper-mills](https://osf.io/mbcw5/) (businesses conducting for-profit research fraud at large-scale) and [journal hijackings](/projects/projects.qmd#hijacked-journal-detection-toolbox), as well as authors who [game citations](/projects/projects.qmd#discovering-unreasonable-citation-stacking) for personal benefit and papers that are [unknowingly citing discredited research](/projects/projects.qmd#detecting-post-retraction-citation-awareness).
 :::
 
 ## Collaborations
@@ -46,9 +54,6 @@ I'm openly exploring collaborations, so please reach out if are looking for coll
 
 I use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g. PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks.
 
-## Some more techie stuff
-
-I mainly code in Python, using the open-source [pandas](https://github.com/pandas-dev/pandas) library for data cleaning and [numpy](https://github.com/numpy/numpy) and [scikit-learn](https://github.com/scikit-learn/scikit-learn) for machine learning. I use [spaCy](https://github.com/explosion/spaCy) for more advanced NLP applications. For scientometrics, I've used [VOSviewer](https://doi.org/10.1007/s11192-009-0146-3), and recently [pybibx](https://github.com/Valdecy/pybibx)[^6]. For demonstrating analysis pipelines in a portable and interactive format, I am favoring [Marimo notebooks](https://github.com/marimo-team/marimo) over [Jupyter notebooks](https://jupyter.org/), and I try to use [docker development containers](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) for reproducibility. For automated testing I use [pytest](https://github.com/pytest-dev/pytest) and particularly the pytest plugin [pytest-BDD](https://github.com/pytest-dev/pytest-bdd). I have some coding experience in JavaScript, MATLAB, R, Java, and C.   
 
 
 [^1]: More on [Forensic Metascience](https://doi.org/10.5281/zenodo.14871843)
@@ -56,4 +61,3 @@ I mainly code in Python, using the open-source [pandas](https://github.com/panda
 [^3]: A [survey](https://replicationindex.com/2015/01/24/qrps/) of such practices
 [^4]: Like [these](https://doi.org/10.7554/eLife.48175), for example
 [^5]: Really any of the topics mentioned on the wikipedia article on [Scientific Misconduct](https://en.wikipedia.org/wiki/Scientific_misconduct)
-[^6]: PEREIRA, V.; BASILIO, M.P.; SANTOS, C.H.T. (2025). PyBibX: A Python Library for Bibliometric and Scientometric Analysis Powered with Artificial Intelligence Tools. Data Technologies and Applications. Vol. 59, Iss. 2, pp. 302-337. doi: https://doi.org/10.1108/DTA-08-2023-0461

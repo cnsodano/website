@@ -1,5 +1,24 @@
 
 ---
+# 2026-09-02 20:26
+
+## Added
+
+- 2026-09-02 20:25:12 | Link to my PYMS Crossref API presentation to bio page
+- 2026-09-02 20:25:12 | Entry for `beacr` on the projects page
+
+## Changed
+
+- 2026-09-02 19:57:30 | Bio, updated recent projects and removed 'techie stuff' (better suited for the RSE section of my blog than on homepage)
+
+## Fixed
+
+- 2026-09-02 19:46:24 | Fixed issue with html and live-html causing double rendering. Now all .qmd files have an explicit 'format: ' key in the yaml header
+- 2026-09-02 19:46:24 | Removed reference to nonexistent '@links' sass import in dark_styles.scss
+
+---
+
+---
 
 # 2026-04-04 08:05
 

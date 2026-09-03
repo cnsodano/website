@@ -8,6 +8,7 @@ todo/
 **draft**
 test_env/
 changelog_fragments/**
-
+todo.md
+.posit/
 commitment_scheme/plaintext*.txt
 commitment_scheme/key*.txt

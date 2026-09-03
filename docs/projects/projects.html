@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.35">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -40,14 +43,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-22b4aaf4c2978829df3684e8f2c068db.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-136615f1ef22005e43a56f3a9923cb4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-9a1305c135f7ff0899dec084aba64e7b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-580965d4b6c5cfc777e007f3e2be28de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-9a1305c135f7ff0899dec084aba64e7b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,21 +81,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<!-- Privacy-friendly analytics by Plausible -->
-
-<script async="" src="https://plausible.io/js/pa-nThGDMHeE3kpydbHY2C0i.js"></script>
-
-<script>
-
-    window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments) }, plausible.init = plausible.init || function (i) { plausible.o = i || {} };
-
-    plausible.init()
-
-</script>
-<script src="js/initializePopOvers.js"></script>
 
 
-<link rel="stylesheet" href="css/popovers.css">
 <link rel="stylesheet" href="../css/modals.css">
 <link rel="stylesheet" href="../css/top-level-styles.css">
 <link rel="stylesheet" href="../css/code-blocks.css">
@@ -302,7 +295,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#automating-reproducibility-checks-for-journal-submissions" id="toc-automating-reproducibility-checks-for-journal-submissions" class="nav-link active" data-scroll-target="#automating-reproducibility-checks-for-journal-submissions">Automating Reproducibility Checks for Journal Submissions</a></li>
+  <li><a href="#beacr-truly-random-publicly-auditable-seeds" id="toc-beacr-truly-random-publicly-auditable-seeds" class="nav-link active" data-scroll-target="#beacr-truly-random-publicly-auditable-seeds"><code>beacr</code>: Truly random, publicly-auditable seeds</a></li>
+  <li><a href="#automating-reproducibility-checks-for-journal-submissions" id="toc-automating-reproducibility-checks-for-journal-submissions" class="nav-link" data-scroll-target="#automating-reproducibility-checks-for-journal-submissions">Automating Reproducibility Checks for Journal Submissions</a></li>
   <li><a href="#detecting-post-retraction-citation-awareness" id="toc-detecting-post-retraction-citation-awareness" class="nav-link" data-scroll-target="#detecting-post-retraction-citation-awareness">Detecting Post-Retraction Citation Awareness</a></li>
   <li><a href="#hijacked-journal-detection-toolbox" id="toc-hijacked-journal-detection-toolbox" class="nav-link" data-scroll-target="#hijacked-journal-detection-toolbox">Hijacked Journal Detection Toolbox</a></li>
   <li><a href="#discovering-unreasonable-citation-stacking" id="toc-discovering-unreasonable-citation-stacking" class="nav-link" data-scroll-target="#discovering-unreasonable-citation-stacking">Discovering Unreasonable Citation Stacking</a></li>
@@ -339,6 +333,21 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="beacr-truly-random-publicly-auditable-seeds" class="level3">
+<h3 class="anchored" data-anchor-id="beacr-truly-random-publicly-auditable-seeds"><code>beacr</code>: Truly random, publicly-auditable seeds</h3>
+<style>
+    .r-pkg-logo {
+        width: 20vw;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+</style>
+<p><img src="../images/beacr-logo.png" class="r-pkg-logo img-fluid"></p>
+<p>An R package that improves the transparency of analyses that use randomness in any form by providing an interface to a random number generator that can be publicly audited after-the-fact. Connects with the Open Science Framework to create random seeds that are unknowable before code execution and tied to public preregistration of a hypothesis.</p>
+<p><code>beacr</code> takes its name from the concept of <strong>randomness beacons</strong>, which are secure public services that provide fresh random seeds on a fixed schedule (for example, every minute). These beacons make it possible to preregister an expected outcome that relies on some random process <strong>without knowing what the seed for that random process is beforehand</strong>. Beacons are also hash-chained, meaning that while you may not know what the random seed is before running your analysis, anyone can verify what the seed was after your analysis is completed.</p>
+<p>A pipeline that uses beacr to report the results of analyses using verifiably random seeds may look like this: <a href="../images/beacr_flowchart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="../images/beacr_flowchart.png" class="img-fluid"></a></p>
+</section>
 <section id="automating-reproducibility-checks-for-journal-submissions" class="level3">
 <h3 class="anchored" data-anchor-id="automating-reproducibility-checks-for-journal-submissions">Automating Reproducibility Checks for Journal Submissions</h3>
 <p>Inspired by conversations at the <a href="https://onscienceandacademia.org/t/igdore-reproducibilitea-thread/2218">IGDORE Reproducibilitea</a> journal club, this project aims to automate the simpler aspects of the reproducibility check process for code submitted alongside a journal article. I developed a script that parses a codebase and notifies users of the following barriers to reproducibility:</p>
@@ -1299,6 +1308,38 @@ ul.task-list li input[type="checkbox"] {
 <script src="https://releases.jquery.com/git/jquery-git.min.js"></script>
 <script src="../js/APIcall.js"></script>
 <script src="../js/fileHandling.js"></script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

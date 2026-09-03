@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.35">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -39,14 +42,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-22b4aaf4c2978829df3684e8f2c068db.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-136615f1ef22005e43a56f3a9923cb4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-6485b19263111d2cb415d94119db5e58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9a1305c135f7ff0899dec084aba64e7b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-580965d4b6c5cfc777e007f3e2be28de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-9a1305c135f7ff0899dec084aba64e7b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,21 +77,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<!-- Privacy-friendly analytics by Plausible -->
-
-<script async="" src="https://plausible.io/js/pa-nThGDMHeE3kpydbHY2C0i.js"></script>
-
-<script>
-
-    window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments) }, plausible.init = plausible.init || function (i) { plausible.o = i || {} };
-
-    plausible.init()
-
-</script>
-<script src="js/initializePopOvers.js"></script>
 
 
-<link rel="stylesheet" href="css/popovers.css">
 <link rel="stylesheet" href="css/modals.css">
 <link rel="stylesheet" href="css/top-level-styles.css">
 <link rel="stylesheet" href="css/code-blocks.css">
@@ -314,6 +304,26 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>I’ve recently released an R package that improves transparency and trustworthiness in the results of <strong>any</strong> analysis that requires random numbers by making it easy to preregister a random seed that is not known at the time of analysis, yet which can be reproduced and verified by anyone after the code is run. For more information about how to use it in your R workflows, check out the docs <a href="https://cnsodano.github.io/beacr-alpha/">here</a>. I will be presenting on the project and how to use it in depth at the <a href="https://paulmeehlschool.github.io/workshops/symposium2026/">Paul Meehl Graduate School Meta Research Symposium</a> on Oct 9th in Eindhoven, NL!</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>I recently gave a presentation on how to get started doing metascience with the Crossref REST API; you can check out those slides and code-along<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> in your browser by following <a href="./presentations/PYMS_Lunch_Talk_2026-04-24.html">this link</a></p>
+</div>
+</div>
+</div>
 <div class="quarto-about-trestles">
   <div class="about-entity">
     <img src="images/cutout_avatar_f.PNG" class="about-image
@@ -339,8 +349,8 @@ ul.task-list li input[type="checkbox"] {
   <div class="about-contents"><div id="hero-heading">
 <section id="summary" class="level2">
 <h2 data-anchor-id="summary">Summary</h2>
-<p>I’m an independent researcher currently working in the emerging field of forensic metascience<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and scientometrics<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, developing tools to detect and prevent breaches of research integrity including questionable research practices<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, statistical and methodological errors<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, and fraud<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Prior to working in metascience, I did my Bachelor’s in Computer Science with a minor specialization in Neuroscience at the <a href="https://cs.unc.edu/">University of North Carolina</a> where I researched automatic sleep spindle detection algorithms and the cognitive/clinical effects of non-invasive brain stimulation.</p>
-<p>My current projects in this area focus on <a href="./projects/projects.html#automating-reproducibility-checks-for-journal-submissions">automating reproducibility checks</a>, detecting so-called <a href="https://osf.io/mbcw5/">paper-mills</a> (businesses conducting for-profit research fraud at large-scale) and <a href="./projects/projects.html#hijacked-journal-detection-toolbox">journal hijackings</a>, as well as authors who <a href="./projects/projects.html#discovering-unreasonable-citation-stacking">game citations</a> for personal benefit and papers that are <a href="./projects/projects.html#detecting-post-retraction-citation-awareness">unknowingly citing discredited research</a>.</p>
+<p>I’m a research software engineer and independent researcher currently working in the emerging field of forensic metascience<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and scientometrics<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, developing tools to detect and prevent breaches of research integrity including questionable research practices<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, statistical and methodological errors<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, and fraud<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. Prior to working in metascience, I did my Bachelor’s in Computer Science with a minor specialization in Neuroscience at the <a href="https://cs.unc.edu/">University of North Carolina</a> where I researched automatic sleep spindle detection algorithms and the cognitive/clinical effects of non-invasive brain stimulation.</p>
+<p>My current projects in this area focus on improving the trustworthiness and transparency of simulation and machine learning research through <a href="./projects/projects.html#beacr">publicly auditable random seeding</a>, <a href="./projects/projects.html#automating-reproducibility-checks-for-journal-submissions">automating reproducibility checks</a> for journal staff, detecting so-called <a href="https://osf.io/mbcw5/">paper-mills</a> (businesses conducting for-profit research fraud at large-scale) and <a href="./projects/projects.html#hijacked-journal-detection-toolbox">journal hijackings</a>, as well as authors who <a href="./projects/projects.html#discovering-unreasonable-citation-stacking">game citations</a> for personal benefit and papers that are <a href="./projects/projects.html#detecting-post-retraction-citation-awareness">unknowingly citing discredited research</a>.</p>
 </section>
 </div></div>
 </div>
@@ -358,10 +368,6 @@ ul.task-list li input[type="checkbox"] {
 <section id="techniques" class="level2">
 <h2 data-anchor-id="techniques">Techniques</h2>
 <p>I use openly accessible APIs to extract and analyze scholarly metadata from a variety of sources (Scopus, OpenAlex, Crossref) and analyze trends. I also perform natural language processing on full-text data of open access articles (e.g.&nbsp;PubMed Open Access Corpus) and peer reviews. I have implemented anomaly detectors using various techniques, including data-driven approaches, time-frequency techniques, and neural networks.</p>
-</section>
-<section id="some-more-techie-stuff" class="level2">
-<h2 data-anchor-id="some-more-techie-stuff">Some more techie stuff</h2>
-<p>I mainly code in Python, using the open-source <a href="https://github.com/pandas-dev/pandas">pandas</a> library for data cleaning and <a href="https://github.com/numpy/numpy">numpy</a> and <a href="https://github.com/scikit-learn/scikit-learn">scikit-learn</a> for machine learning. I use <a href="https://github.com/explosion/spaCy">spaCy</a> for more advanced NLP applications. For scientometrics, I’ve used <a href="https://doi.org/10.1007/s11192-009-0146-3">VOSviewer</a>, and recently <a href="https://github.com/Valdecy/pybibx">pybibx</a><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. For demonstrating analysis pipelines in a portable and interactive format, I am favoring <a href="https://github.com/marimo-team/marimo">Marimo notebooks</a> over <a href="https://jupyter.org/">Jupyter notebooks</a>, and I try to use <a href="https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers">docker development containers</a> for reproducibility. For automated testing I use <a href="https://github.com/pytest-dev/pytest">pytest</a> and particularly the pytest plugin <a href="https://github.com/pytest-dev/pytest-bdd">pytest-BDD</a>. I have some coding experience in JavaScript, MATLAB, R, Java, and C.</p>
 
 
 
@@ -371,12 +377,12 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>More on <a href="https://doi.org/10.5281/zenodo.14871843">Forensic Metascience</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>More on <a href="https://doi.org/10.48550/arXiv.2404.00478">Forensic Scientometrics</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>A <a href="https://replicationindex.com/2015/01/24/qrps/">survey</a> of such practices<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Like <a href="https://doi.org/10.7554/eLife.48175">these</a>, for example<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Really any of the topics mentioned on the wikipedia article on <a href="https://en.wikipedia.org/wiki/Scientific_misconduct">Scientific Misconduct</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>PEREIRA, V.; BASILIO, M.P.; SANTOS, C.H.T. (2025). PyBibX: A Python Library for Bibliometric and Scientometric Analysis Powered with Artificial Intelligence Tools. Data Technologies and Applications. Vol. 59, Iss. 2, pp.&nbsp;302-337. doi: https://doi.org/10.1108/DTA-08-2023-0461<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Note that the presentation will load a web-assembly version of R/Python for you to follow along with; if there is buffering at the beginning give it time to load the requisite packages<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>More on <a href="https://doi.org/10.5281/zenodo.14871843">Forensic Metascience</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>More on <a href="https://doi.org/10.48550/arXiv.2404.00478">Forensic Scientometrics</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>A <a href="https://replicationindex.com/2015/01/24/qrps/">survey</a> of such practices<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Like <a href="https://doi.org/10.7554/eLife.48175">these</a>, for example<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Really any of the topics mentioned on the wikipedia article on <a href="https://en.wikipedia.org/wiki/Scientific_misconduct">Scientific Misconduct</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

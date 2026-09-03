@@ -6,7 +6,7 @@ def reset_glossary():
     file = "./blog/CR_API_Tutorials/glossary.qmd"
     with open(file, "wt") as f:
         f.write(
-            "---\ntitle: Glossary for the Crossref API Tutorial Series\nengine: knitr\n---\n"
+            "---\ntitle: Glossary for the Crossref API Tutorial Series\nformat: html\nengine: knitr\n---\n"
         )
     return None
 
