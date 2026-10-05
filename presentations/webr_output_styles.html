@@ -1,0 +1,19 @@
+<style>
+    /* Output area of webr cells */
+.cell-output-display,
+.webr-output,
+.cell-output {
+  max-height: 60vh;      /* adjust to taste; leaves room for the code cell */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Make the plot scale to fit instead of being cropped */
+.cell-output-display canvas,
+.cell-output-display img,
+.cell-output-display svg {
+  max-width: 100%;
+  height: auto !important;
+  object-fit: contain;
+}
+</style>

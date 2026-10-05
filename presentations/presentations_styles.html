@@ -1,0 +1,101 @@
+<link href='https://fonts.googleapis.com/css?family=Atkinson Hyperlegible' rel='stylesheet'>
+<style>
+    h1, h2, h3, h4, h5, h6, p {
+    font-family: "Atkinson Hyperlegible" !important;
+    }
+    .fragment.frag-bold.visible,
+    .fragment_.frag-bold {
+        font-size: 1.1em;
+        font-weight: 900;
+    }
+
+    .fragment.bullet p::before,
+    .fragment_.bullet p::before {
+        content: "•";
+        font-size: 1.1em;
+        padding-right: 0.5em;
+    }
+
+    .fragment p{
+    margin-bottom: 1em !important;
+    position: relative;
+    padding-left: 0.5em;
+    display: flex;
+    align-items: first baseline;
+    }
+
+    p:has(span.has-subbullet) {
+        margin-bottom: 0.5em !important;
+    }
+
+    /* Custom fragment class */
+    section .fragment.arrow-fragment-before {
+        position: relative;
+        padding-left: 1.2em;
+        /* space reserved for the arrow */
+        /* margin-left: -1.5em; */
+    }
+
+    /* Arrow using ::before */
+    section .fragment.arrow-fragment-before::before {
+        content: "➤";
+        /* or use →, ▶, etc. */
+        position: absolute;
+        left: 0.6em;
+        /* top: 0; */
+        opacity: 0;
+        /* hidden until fragment is visible */
+        transition: opacity 0.3s ease;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+    /* When fragment becomes visible */
+    section .fragment.arrow-fragment-before.visible::before {
+        opacity: 1;
+    }
+
+    section .subbullet {
+        margin-left: 1.3em;
+        font-size: 0.8em;
+    }
+
+    section div.subbullet p {
+        margin-bottom: 1em !important;
+    }
+
+    section .subbullet.nobullet p::before {
+        content: "";
+    }
+
+    section .nobullet p::before {
+        content: "";
+        margin-right: 0;
+    }
+
+    .section .centertitle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+
+    p:has(img)::before {
+        content: "" !important;
+    }
+
+    div.faded-out {
+        opacity: 0.5 !important;
+    }
+
+    .indent_ {
+        padding-left: 1em;
+    }
+
+
+/* Make sure inline monospace text (code references) are in line with the line it's on vertically. This alignment is different than elsewhere on my site */
+code:not(:has(*)), .inline-code {
+  vertical-align: -0.4em !important;
+}
+</style>

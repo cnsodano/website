@@ -27,3 +27,7 @@ section.slide .jse-tree-mode {
 section.slide .jsonedit.html-widget {
     width: 100% !important;
 }
+
+.italic { 
+    font-style: italic !important;
+}

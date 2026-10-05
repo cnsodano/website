@@ -1,0 +1,241 @@
+---
+pagetitle: "Eliminate Seed-Hacking: Signaling Trustworthy Results Using Truly Random, Publicly Auditable Seeds"
+format:
+  live-revealjs:
+    width: 1300 # 1050 def
+    height: 900 # 700 def
+    code-line-numbers: true
+    include-in-header:
+    - file: presentations_styles.html
+    - file: webr_output_styles.html
+    - text: |
+         <link rel="stylesheet" href="/css/presentation_styles.css">
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsoneditor/dist/jsoneditor.min.css">
+
+engine: knitr
+webr:
+  cell-options:
+    caption: "R Code"
+  packages:
+    - jsonlite
+    - httr2
+    - listviewer
+pyodide:
+  cell-options:
+    caption: Python Code    
+  packages:
+    - requests
+---
+
+```{r echo=FALSE}
+# Setup knitr for handling {webr} and {pyodide} blocks
+# TODO: With quarto-dev/quarto-cli#10169, we can implement this in a filter
+
+# We'll handle `include: false` in Lua, always include cell in knitr output
+knitr::opts_hooks$set(include = function(options) {
+    if (options$engine == "webr" || options$engine == "pyodide") {
+        options$include <- TRUE
+    }
+    options
+})
+
+# Passthrough engine for webr
+knitr::knit_engines$set(webr = function(options) {
+    knitr:::one_string(c(
+        "```{webr}",
+        options$yaml.code,
+        options$code,
+        "```"
+    ))
+})
+
+# Passthrough engine for pyodide
+knitr::knit_engines$set(pyodide = function(options) {
+    knitr:::one_string(c(
+        "```{pyodide}",
+        options$yaml.code,
+        options$code,
+        "```"
+    ))
+})
+```
+## Eliminate Seed-Hacking! 
+
+<br>
+
+::: {.r-stack}
+::: {.fragment fragment-index="3" .fade-out}
+### Signaling Trustworthy Results Using Truly Random, Publicly Auditable Seeds {.indent_}
+:::
+
+::: {.fragment fragment-index="3" .fade-in}
+### Signaling [*more*]{style="font-size: 1.4em"} Trustworthy Results Using Truly Random, Publicly Auditable Seeds {.indent_}
+:::
+:::
+
+<br>
+
+
+::::: {.columns style="display: flex;"}
+
+:::: {.column .indent_ width="50%"}
+::: {.fragment fragment-index="2"}
+![](/presentations/PMGS/placeholder_QR.jpg){style="width:80%; padding-left: 10%"}
+:::
+::::
+
+:::: {.column .indent_ width="50%" style="display: flex; align-items: center; height: 50vh;"}
+::: {.fragment fragment-index="2"}
+View this presentation online by going to: #!_RETURN Add tinyurl here
+:::
+::::
+
+:::::
+
+
+::: footer
+Contact me at cnsodano@gmail.com
+:::
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+
+## What's seed hacking? 
+
+<br>
+
+::: {.fragment .nobullet}
+Manually adjusting features in your analysis to cause the random variation that is due purely to differences in random seeding to appear to demonstrate a non-random effect in line with your hypothesis
+:::
+
+::: {.fragment .arrow-fragment-before .fragment-index-3}
+Selecting a\ *hyper*\ specific seed: 
+:::
+
+
+<!-- To make sure coin_flip is loaded in the later cell block's namespace -->
+
+```{webr}  
+#| envir: coin_flip
+#| autorun: true
+#| echo: false
+coin_flip <- function(num_flips){
+    flips = sample(x=c("H", "T"), size=num_flips, replace=TRUE)
+    heads = sum(flips=="H")
+    print(
+        glue::glue(
+            "Number of heads from {num_flips} coin flips: {heads}"
+            )
+        )
+    return(invisible(heads))
+}
+```
+
+
+
+```{=html}
+<div class='fragment fade-in'>
+```
+```{webr}
+#| envir: coin_flip
+set.seed(4623119)
+coin_flip(num_flips=10)
+coin_flip(num_flips=10)
+```
+
+```{=html}
+</div>
+```
+
+```{=html}
+<details>
+<summary> <code>coin_flip</code> function:</summary>
+```
+
+```{webr}
+coin_flip <- function(num_flips){
+    flips = sample(x=c("H", "T"), size=num_flips, replace=TRUE)
+    heads = sum(flips=="H")
+    print(
+        glue::glue(
+            "Number of heads from {num_flips} coin flips: {heads}"
+            )
+        )
+    return(invisible(heads))
+}
+```
+```{=html}
+</details>
+```
+
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+
+---
+But do people actually do this?
+
+::: {.fragment .nobullet}
+Github repository search: `path:*.R /set.seed\(\d{7,}\)/`
+:::
+
+```{r}
+#| echo: true
+
+###
+### Simulate 100 different 'journals' where the p-values
+### that are reported are all the p-values less than 0.05
+###
+
+print("hi")
+```
+
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+
+## What about 42? 123? 875309?
+
+
+
+
+
+
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+
+## What if  [gasp]{style="text-decoration:underline solid"} no seed!?
+
+
+
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+
+## How to handle random variation in analysis outcomes 'trustlessly' 
+
+<br> 
+
+#### Ideal: 
+
+<br>
+
+#### Reality: 
+
+
+
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+
+
+## How `beacr` fits in:
+
+
+
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+
+## `beacr` in action:
+
+
+
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+
+## Current limitations of `beacr`

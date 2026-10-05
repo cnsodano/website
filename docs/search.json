@@ -383,5 +383,96 @@
     "title": "Recent Projects",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nA previous version of this site reported higher model performance; while revisting the code in preparation for presenting at Metascience 2025, I noticed some rows in the annotated dataset I used for training were duplicated, and the resulting performance post-cleaning is reflected here now.↩︎\nTraining was done in a potentially over-conservative method: 70/30 train test split with 10-fold CV on the train set, the best performing model during CV being applied to the test set. With such a small training set to begin with, this approach may have lead to underfitting despite using an approach well suited to small datasets (logistic regression). When revamping this project for publication I hope to do a targeted analysis of under/overfitting throughout training with a larger dataset.↩︎\nHere the retracted citation is [43], and the word “decreased” is not being used in reference to the citation, but its presence indicates a routine description of scientific findings, the kind of routine description where retracted works often were unacknowledged.↩︎\nCurrently I am not using cursors as I expected users to have a particular journal in mind. If none of the first 30 results for the query match exactly, it will not (as of 4/8/25) search the next page of results. This can be easily fixed when I get around to it.↩︎"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#eliminate-seed-hacking-signaling-trustworthy-results-using-truly-random-publicly-auditable-seeds",
+    "href": "presentations/PMGS_pres.html#eliminate-seed-hacking-signaling-trustworthy-results-using-truly-random-publicly-auditable-seeds",
+    "title": "",
+    "section": "Eliminate Seed-Hacking: Signaling Trustworthy Results Using Truly Random, Publicly Auditable Seeds",
+    "text": "Eliminate Seed-Hacking: Signaling Trustworthy Results Using Truly Random, Publicly Auditable Seeds\n\nView this presentation online by going to: #!_RETURN Add tinyurl here\n\n\nContact me at cnsodano@gmail.com"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#slide-title-lalala",
+    "href": "presentations/PMGS_pres.html#slide-title-lalala",
+    "title": "",
+    "section": "Slide title lalala",
+    "text": "Slide title lalala\n\nView this presentation online by going to: #!_RETURN Add tinyurl here\n\n\nanother thing coming in"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#eliminate-seed-hacking",
+    "href": "presentations/PMGS_pres.html#eliminate-seed-hacking",
+    "title": "",
+    "section": "Eliminate Seed-Hacking!",
+    "text": "Eliminate Seed-Hacking!\n\n\n\nSignaling Trustworthy Results Using Truly Random, Publicly Auditable Seeds\n\n\nSignaling more Trustworthy Results Using Truly Random, Publicly Auditable Seeds\n\n\n\n\n\n\n\n\n\n\nView this presentation online by going to: #!_RETURN Add tinyurl here\n\n\n\nContact me at cnsodano@gmail.com"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#next-slide",
+    "href": "presentations/PMGS_pres.html#next-slide",
+    "title": "",
+    "section": "next slide",
+    "text": "next slide\naaaa"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#whats-seed-hacking",
+    "href": "presentations/PMGS_pres.html#whats-seed-hacking",
+    "title": "",
+    "section": "What’s seed hacking?",
+    "text": "What’s seed hacking?\n\n\nManually adjusting features in your analysis to cause the random variation that is due purely to differences in random seeding to appear to demonstrate a non-random effect in line with your hypothesis\n\n\nSelecting a hyper specific seed:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n coin_flip function:"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#new-slide",
+    "href": "presentations/PMGS_pres.html#new-slide",
+    "title": "",
+    "section": "new slide",
+    "text": "new slide\n\nprint(\"hi\")\n\n[1] \"hi\""
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#what-about-42-123-875309",
+    "href": "presentations/PMGS_pres.html#what-about-42-123-875309",
+    "title": "",
+    "section": "What about 42? 123? 875309?",
+    "text": "What about 42? 123? 875309?"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#what-if-gasp-no-seed",
+    "href": "presentations/PMGS_pres.html#what-if-gasp-no-seed",
+    "title": "",
+    "section": "What if gasp no seed!?",
+    "text": "What if gasp no seed!?"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#how-to-handle-random-variation-in-analysis-outcomes-trustlessly",
+    "href": "presentations/PMGS_pres.html#how-to-handle-random-variation-in-analysis-outcomes-trustlessly",
+    "title": "",
+    "section": "How to handle random variation in analysis outcomes ‘trustlessly’",
+    "text": "How to handle random variation in analysis outcomes ‘trustlessly’\n\nIdeal:\n\nReality:"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#how-beacr-fits-in",
+    "href": "presentations/PMGS_pres.html#how-beacr-fits-in",
+    "title": "",
+    "section": "How beacr fits in:",
+    "text": "How beacr fits in:"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#beacr-in-action",
+    "href": "presentations/PMGS_pres.html#beacr-in-action",
+    "title": "",
+    "section": "beacr in action:",
+    "text": "beacr in action:"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#limitations-of-random",
+    "href": "presentations/PMGS_pres.html#limitations-of-random",
+    "title": "",
+    "section": "Limitations of random",
+    "text": "Limitations of random"
+  },
+  {
+    "objectID": "presentations/PMGS_pres.html#current-limitations-of-beacr",
+    "href": "presentations/PMGS_pres.html#current-limitations-of-beacr",
+    "title": "",
+    "section": "Current limitations of beacr",
+    "text": "Current limitations of beacr"
   }
 ]

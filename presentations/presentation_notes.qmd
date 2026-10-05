@@ -1,0 +1,4 @@
+::: {.fragment_ .subbullet .nobullet}
+::: {.fragment .fade-in .subbullet fragment-index=2}
+[A webpage! (not a static slide deck)]{.has-subbullet}
+::: {.fragment .fade-in .subbullet .nobullet}
