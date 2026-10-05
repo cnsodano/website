@@ -203,11 +203,117 @@ print("hi")
 
 ## What if  [gasp]{style="text-decoration:underline solid"} no seed!?
 
+::: {.fragment}
+How R handles this: generate a *random* random seed at the time you first need it
+:::
+
+::: {.fragment}
+maybe something here about set.seed(NULL) and then later abotu shimming it
+:::
+
+::: {.fragment}
+Benefit: not known beforehand...
+:::
+
+::: {.fragment}
+Drawback: not reproducible...
+:::
+
+::: {.fragment .subbullet .indent_}
+Also, who's to say you didn't set your seed in your environment beforehand?
+:::
 
 
 
 <!-- ------------------------------------------ SLIDE BREAK -->
+## New: slide to talk about: want somethign not known beforehand AND totally reproducible
 
+- talk about reproducible vs auditable and how they go hand in hand
+- talk about how auditable requires known execution context...3rd party execution
+
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+## new: even more scary: what if set.seed() gets shimmed in the console before executing?
+
+```{webr}
+#| autorun: true
+#| echo: false 
+#| envir: shim_set_seed
+
+set.seed <- function(i) {base::set.seed(614)}
+```
+
+```{webr}
+#| envir: shim_set_seed
+# Set in the console beforehand:
+# > set.seed <- function(i){base::set.seed(614)}
+
+# Flip 10 coins
+sample(c("H","T"), size=10, replace=TRUE)
+```
+
+::: {.fragment}
+'It works on my machine...'
+:::
+
+::: {.fragment}
+Some solutions:
+:::
+
+- docker (ship the machine)...but still can run the shim in the console
+    - not everyone has docker/can fit heavy containers/learning is a pain/intimidating
+- public, remote execution 
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+solution: keep code the same: base::set.seed(beacr::get_seed(...)), use one seed for development/pilot testing (or as many as you wish; you can change often; defaults to using the same for ease of use) and then when time to deploy (after data collection finished, after a given date, at a certain pulse index...i kinda need help deciding how best to do this, but ghactions can facilitate any. The point is that you commit during the prereg to a timepoint so that if you do or may have access to the data beforehand you can't just keep running it every minute until you get a seed from the beacon that you like.
+
+gh action
+`RUN rm beacr/seed_log.json`
+`RUN 
+
+```yaml
+jobs:
+    run_with_fresh-seed:
+        steps:
+            name: purge seed used for development
+            run: rm beacr/seed_log.json # bash
+            # OR 
+            run: Rscript -e "beacr::reset_seed_log(purge_all=TRUE, yes_to_all=TRUE)"
+
+            name: run 
+            # targets::tar_make() (CONFIRM THIS IS HOW)
+            # rmarkdown::render("analysis.Rmd")
+            #
+
+            name: publish results for transparency
+
+```
+
+- drawbacks: what if publishign step fails? 
+- is this log public? can the history be spoofed or tampered with?
+- is there a solution that is decentralized//doesn't make us rely on github? ehh kinda need some computing infrastructure; someone has to pay for the machines
+
+
+*more on that ... later...
+<!-- ------------------------------------------ SLIDE BREAK -->
+So now we're at a place where we have maybe a solution to the issue of "how to run it so that you can accurately record the seed used" but HOW DO YOU CHOOSE A SEED? 
+
+Qualities:
+- has to be unknown before 1) hypothesis is published (prereg) and ideally 2) data collection has finished 
+-   - why after data collection finished?: no ordering effects 9
+
+
+Some ideas how: 
+- precommit to a date (or a number of dates for backup), or after N participants' data have been collected, etc: something that precludes collecting more data after the seed is known 
+- central repository/hub that handles the entire project (hub and spoke model; osf for registration, xyz for data store, etc); ggithub action to wait for a fresh pulse (e.g. not just 60s bc may be some error in the beacon but until a literal new pulse) and then use that new pulse as the seed for the analysis, 
+    - added benefit of on-demand running: can continue to validate/audit as more data is collected (running public tally) 
+    - interesting thing about github; can you make it so ppl can run actions but the results of their runs aren't comitted if they aren't maintainers//can be verified by reviewers? 
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+funny acronym: AASKing
+analyzing after seed is known 
+
+<!-- ------------------------------------------ SLIDE BREAK -->
 ## How to handle random variation in analysis outcomes 'trustlessly' 
 
 <br> 
