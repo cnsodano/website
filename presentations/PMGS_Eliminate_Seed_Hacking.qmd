@@ -74,6 +74,9 @@ knitr::knit_engines$set(pyodide = function(options) {
 
 <br>
 
+::: {.fragment fragment-index="4" }
+Follow along at: https://tinyurl.com/PMGScnsodano
+:::
 
 ::: footer
 Contact me at cnsodano@gmail.com
