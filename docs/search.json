@@ -536,7 +536,7 @@
     "href": "presentations/PMGS_Eliminate_Seed_Hacking.html#what-about-42-123-875309",
     "title": "",
     "section": "What about 42? 123? 875309?",
-    "text": "What about 42? 123? 875309?\n\nread_data_transparently_published_on_osf &lt;- function(identifier){\n    project = osfr::osf_retrieve_node(paste0(\"https://osf.io/\", identifier\n    ,\"/\")) |&gt; osfr::osf_ls_files()\n    data_summary = osfr::osf_download(project, conflict=\"skip\")\n    df = read.csv(data_summary[[\"local_path\"]]) \n    return(df)\n}\n\n\n\n# Without any dubiousness\nlibrary(dplyr)\nset.seed(42)\ndata = read_data_transparently_published_on_osf(\"dw2rz\")\nglimpse(data)\n\nRows: 333\nColumns: 9\n$ species           &lt;chr&gt; \"Adelie\", \"Adelie\", \"Adelie\", \"Adelie\", \"Adelie\", \"A…\n$ island            &lt;chr&gt; \"Torgersen\", \"Torgersen\", \"Torgersen\", \"Torgersen\", …\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.3, 39.2, 38.6, 39.5, 40.3, 36.7, 38.9, 34.6…\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 20.6, 19.6, 21.2, 17.4, 18.0, 19.3, 17.8, 21.1…\n$ flipper_length_mm &lt;int&gt; 181, 190, 195, 191, 186, 195, 193, 181, 198, 182, 19…\n$ body_mass_g       &lt;int&gt; 3750, 3650, 4675, 3800, 3800, 3250, 3450, 3625, 4400…\n$ sex               &lt;chr&gt; \"male\", \"male\", \"male\", \"male\", \"female\", \"female\", …\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\n$ label             &lt;int&gt; 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0…\n\npredictions = coin_flip(nrow(data))\ncat(\"Accuracy: \", mean(predictions == data$label), \"\\n\")\n\nAccuracy:  0.975976"
+    "text": "What about 42? 123? 875309?\n\n\nread_data_transparently_published_on_osf &lt;- function(identifier){\n    project = osfr::osf_retrieve_node(paste0(\"https://osf.io/\", identifier\n    ,\"/\")) |&gt; osfr::osf_ls_files()\n    data_summary = osfr::osf_download(project, conflict=\"skip\")\n    df = read.csv(data_summary[[\"local_path\"]]) \n    return(df)\n}\n\n\n\n\n# Without any dubiousness\nlibrary(dplyr)\nset.seed(42)\ndata = read_data_transparently_published_on_osf(\"dw2rz\")\nglimpse(data)\n\nRows: 333\nColumns: 9\n$ species           &lt;chr&gt; \"Adelie\", \"Adelie\", \"Adelie\", \"Adelie\", \"Adelie\", \"A…\n$ island            &lt;chr&gt; \"Torgersen\", \"Torgersen\", \"Torgersen\", \"Torgersen\", …\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.3, 39.2, 38.6, 39.5, 40.3, 36.7, 38.9, 34.6…\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 20.6, 19.6, 21.2, 17.4, 18.0, 19.3, 17.8, 21.1…\n$ flipper_length_mm &lt;int&gt; 181, 190, 195, 191, 186, 195, 193, 181, 198, 182, 19…\n$ body_mass_g       &lt;int&gt; 3750, 3650, 4675, 3800, 3800, 3250, 3450, 3625, 4400…\n$ sex               &lt;chr&gt; \"male\", \"male\", \"male\", \"male\", \"female\", \"female\", …\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\n$ label             &lt;int&gt; 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0…\n\n\n\n\npredictions = coin_flip(nrow(data)) cat(“Accuracy:”, mean(predictions == data$label), “”) ```"
   },
   {
     "objectID": "presentations/PMGS_Eliminate_Seed_Hacking.html#so-what-happened",
@@ -551,5 +551,12 @@
     "title": "",
     "section": "How to handle the seed issue?",
     "text": "How to handle the seed issue?"
+  },
+  {
+    "objectID": "presentations/PMGS_Eliminate_Seed_Hacking.html#not-done-yet",
+    "href": "presentations/PMGS_Eliminate_Seed_Hacking.html#not-done-yet",
+    "title": "",
+    "section": "Not done yet…",
+    "text": "Not done yet…"
   }
 ]

@@ -546,6 +546,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJSIENvZGUiLCJlZGl0Ijp0cnVlLCJlbnZpciI6ImNvaW5fZmxpcCIs
 </section>
 <section id="what-about-42-123-875309" class="slide level2">
 <h2>What about 42? 123? 875309?</h2>
+<div class="fragment fade-in">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>read_data_transparently_published_on_osf <span class="ot">&lt;-</span> <span class="cf">function</span>(identifier){</span>
 <span id="cb1-2"><a aria-label="2"></a>    project <span class="ot">=</span> osfr<span class="sc">::</span><span class="fu">osf_retrieve_node</span>(<span class="fu">paste0</span>(<span class="st">"https://osf.io/"</span>, identifier</span>
@@ -556,6 +557,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiJSIENvZGUiLCJlZGl0Ijp0cnVlLCJlbnZpciI6ImNvaW5fZmxpcCIs
 <span id="cb1-7"><a aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
+<div class="fragment fade-in">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Without any dubiousness</span></span>
 <span id="cb2-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
@@ -575,13 +577,11 @@ $ sex               &lt;chr&gt; "male", "male", "male", "male", "female", "femal
 $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
 $ label             &lt;int&gt; 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0…</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>predictions <span class="ot">=</span> <span class="fu">coin_flip</span>(<span class="fu">nrow</span>(data))</span>
-<span id="cb4-2"><a aria-label="2"></a><span class="fu">cat</span>(<span class="st">"Accuracy: "</span>, <span class="fu">mean</span>(predictions <span class="sc">==</span> data<span class="sc">$</span>label), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Accuracy:  0.975976 </code></pre>
 </div>
-</div>
-</section>
+<p><br></p>
+<div class="fragment fade-in">
+<p>predictions = coin_flip(nrow(data)) cat(“Accuracy:”, mean(predictions == data$label), “”) ```</p>
+</div></div></div></section>
 <section id="so-what-happened" class="slide level2">
 <h2>So what happened?</h2>
 </section>
@@ -684,12 +684,45 @@ $ label             &lt;int&gt; 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 
 
 
 <img data-src="../presentations/PMGS/beacr_diagrams/beacr_diagram-13.png" class="r-stretch"></section>
+<section id="not-done-yet" class="slide level2">
+<h2>Not done yet…</h2>
+
+<img data-src="../presentations/PMGS/compilation_hacking/compilation_hack-1.png" class="r-stretch"></section>
 <section class="slide level2">
+
+
+<img data-src="../presentations/PMGS/compilation_hacking/compilation_hack-2.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="../presentations/PMGS/compilation_hacking/compilation_hack-3.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="../presentations/PMGS/compilation_hacking/compilation_hack-4.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="../presentations/PMGS/compilation_hacking/compilation_hack-5.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="../presentations/PMGS/compilation_hacking/compilation_hack-6.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="../presentations/PMGS/compilation_hacking/dcompilation-1.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="../presentations/PMGS/compilation_hacking/dcompilation-2.png" class="r-stretch"></section>
+<section class="slide level2">
+
 
 <!-- ------------------------------------------ SLIDE BREAK -->
 
 
-<script type="webr-data">
+<img data-src="../presentations/PMGS/compilation_hacking/dcompilation-3.png" class="r-stretch"><script type="webr-data">
 eyJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC41LjgvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyIsImdsdWUiLCJvc2ZyIl0sInJlcG9zIjpbXX0sInJlbmRlcl9kZiI6ImRlZmF1bHQifQ==
 </script>
 <script type="ojs-module-contents">

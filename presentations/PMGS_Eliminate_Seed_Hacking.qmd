@@ -192,6 +192,10 @@ Training splits determined by seeding
 <!-- ------------------------------------------ SLIDE BREAK -->
 
 ## What about 42? 123? 875309?
+
+```{=html}
+<div class='fragment fade-in'>
+```
 ```{r}
 #| echo: true
 read_data_transparently_published_on_osf <- function(identifier){
@@ -201,6 +205,9 @@ read_data_transparently_published_on_osf <- function(identifier){
     df = read.csv(data_summary[["local_path"]]) 
     return(df)
 }
+```
+```{html}
+</div>
 ```
 
 ```{r}
@@ -212,6 +219,9 @@ coin_flip <- function(n){
 
 <br>
 
+```{=html}
+<div class='fragment fade-in'>
+```
 ```{r}
 #| echo: true
 # Without any dubiousness
@@ -219,11 +229,22 @@ library(dplyr)
 set.seed(42)
 data = read_data_transparently_published_on_osf("dw2rz")
 glimpse(data)
+```
+```{html}
+</div>
+```
 
+<br>
+
+```{=html}
+<div class='fragment fade-in'>
+```
 predictions = coin_flip(nrow(data))
 cat("Accuracy: ", mean(predictions == data$label), "\n")
 ```
-
+```{html}
+</div>
+```
 
 ## So what happened?
 
@@ -333,8 +354,42 @@ cat("Accuracy: ", mean(predictions == data$label), "\n")
 
 ![](/presentations/PMGS/beacr_diagrams/beacr_diagram-13.png)
 
+
+## Not done yet...
+
+![](/presentations/PMGS/compilation_hacking/compilation_hack-1.png)
+
 ---
 
+![](/presentations/PMGS/compilation_hacking/compilation_hack-2.png)
+
+---
+
+![](/presentations/PMGS/compilation_hacking/compilation_hack-3.png)
+
+---
+
+![](/presentations/PMGS/compilation_hacking/compilation_hack-4.png)
+
+---
+
+![](/presentations/PMGS/compilation_hacking/compilation_hack-5.png)
+
+---
+
+![](/presentations/PMGS/compilation_hacking/compilation_hack-6.png)
+
+---
+
+![](/presentations/PMGS/compilation_hacking/dcompilation-1.png)
+
+---
+
+![](/presentations/PMGS/compilation_hacking/dcompilation-2.png)
+
+---
+
+![](/presentations/PMGS/compilation_hacking/dcompilation-3.png)
 
 
 <!-- ------------------------------------------ SLIDE BREAK -->
