@@ -242,10 +242,13 @@ glimpse(data)
 ```{=html}
 <div class='fragment fade-in'>
 ```
+
 ```{r}
+#| echo: TRUE
 predictions = coin_flip(nrow(data))
 cat("Accuracy: ", mean(predictions == data$label), "\n")
 ```
+
 ```{html}
 </div>
 ```

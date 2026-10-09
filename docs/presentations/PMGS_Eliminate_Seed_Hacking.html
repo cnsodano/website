@@ -459,6 +459,9 @@
 </div>
 </div>
 <p><br></p>
+<div class="fragment" data-fragment-index="4">
+<p>Follow along at: https://tinyurl.com/PMGScnsodano</p>
+</div>
 <div class="footer">
 <p>Contact me at cnsodano@gmail.com</p>
 </div>
@@ -580,7 +583,13 @@ $ label             &lt;int&gt; 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 
 </div>
 <p><br></p>
 <div class="fragment fade-in">
-<p>predictions = coin_flip(nrow(data)) cat(“Accuracy:”, mean(predictions == data$label), “”) ```</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>predictions <span class="ot">=</span> <span class="fu">coin_flip</span>(<span class="fu">nrow</span>(data))</span>
+<span id="cb4-2"><a aria-label="2"></a><span class="fu">cat</span>(<span class="st">"Accuracy: "</span>, <span class="fu">mean</span>(predictions <span class="sc">==</span> data<span class="sc">$</span>label), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy:  0.975976 </code></pre>
+</div>
+</div>
 </div></div></div></section>
 <section id="so-what-happened" class="slide level2">
 <h2>So what happened?</h2>
