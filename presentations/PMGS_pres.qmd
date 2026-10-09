@@ -17,7 +17,6 @@ webr:
   cell-options:
     caption: "R Code"
   packages:
-    - jsonlite
     - httr2
     - listviewer
 pyodide:
@@ -225,6 +224,24 @@ Also, who's to say you didn't set your seed in your environment beforehand?
 
 
 
+
+
+<!-- ------------------------------------------ SLIDE BREAK -->
+<!-- ------------------------------------------ SLIDE BREAK -->
+<!-- ------------------------------------------ SLIDE BREAK -->
+<!-- new start -->
+ok not really just eliminating 
+<!-- ------------------------------------------ SLIDE BREAK -->
+## problems with hyper spec
+- may just decide today i'll use ....
+- no way of telling how many diff seeds you tried
+
+## so what about 
+
+## 42
+
+- issue if you're doing same data / diff models / params 
+- even breaks down repreat k fold: if randomization in model and then you use randomly diff shuffling then you dunno what the ordering is (yes I know this is very small likelihood and doesn't 
 <!-- ------------------------------------------ SLIDE BREAK -->
 ## New: slide to talk about: want somethign not known beforehand AND totally reproducible
 
